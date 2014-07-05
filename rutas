@@ -1,0 +1,136 @@
++--------+-----------------------------------------------------------------------+------------------------------------+---------------------------------------------+----------------+----------------+
+| Domain | URI                                                                   | Name                               | Action                                      | Before Filters | After Filters  |
++--------+-----------------------------------------------------------------------+------------------------------------+---------------------------------------------+----------------+----------------+
+|        | GET|HEAD _debugbar/open                                               | debugbar.openhandler               | Closure                                     |                |                |
+|        | GET|HEAD /                                                            |                                    | OficiosController@inicio                    | auth           |                |
+|        | GET|HEAD login                                                        |                                    | AuthController@showLogin                    |                |                |
+|        | POST login                                                            |                                    | AuthController@postLogin                    |                |                |
+|        | GET|HEAD inicio                                                       | inicio                             | OficiosController@inicio                    | auth           |                |
+|        | GET|HEAD usuarios/clave                                               | usuarios.clave                     | UsuariosController@getCambiarClave          | auth           |                |
+|        | POST usuarios/clave                                                   | usuarios.clave                     | UsuariosController@postCambiarClave         | auth           |                |
+|        | GET|HEAD oficios                                                      | oficios.index                      | OficiosController@index                     | auth           |                |
+|        | GET|HEAD oficios/create                                               | oficios.create                     | OficiosController@create                    | auth           |                |
+|        | POST oficios                                                          | oficios.buscar                     | OficiosController@filtrar                   | auth, role     | filtro_despues |
+|        | GET|HEAD oficios/{oficios}                                            | oficios.show                       | OficiosController@show                      | auth           |                |
+|        | GET|HEAD oficios/{oficios}/edit                                       | oficios.edit                       | OficiosController@edit                      | auth           |                |
+|        | PUT oficios/{oficios}                                                 | oficios.update                     | OficiosController@update                    | auth           |                |
+|        | PATCH oficios/{oficios}                                               |                                    | OficiosController@update                    | auth           |                |
+|        | DELETE oficios/{oficios}                                              | oficios.destroy                    | OficiosController@destroy                   | auth           |                |
+|        | GET|HEAD oficios/busqueda                                             | oficios.buscar                     | OficiosController@index                     | auth           |                |
+|        | GET|HEAD admin                                                        | admin.index                        | AdminController@index                       | auth, role     |                |
+|        | GET|HEAD admin/create                                                 | admin.create                       | AdminController@create                      | auth, role     |                |
+|        | POST admin                                                            | admin.store                        | AdminController@store                       | auth, role     |                |
+|        | GET|HEAD admin/{admin}                                                | admin.show                         | AdminController@show                        | auth, role     |                |
+|        | GET|HEAD admin/{admin}/edit                                           | admin.edit                         | AdminController@edit                        | auth, role     |                |
+|        | PUT admin/{admin}                                                     | admin.update                       | AdminController@update                      | auth, role     |                |
+|        | PATCH admin/{admin}                                                   |                                    | AdminController@update                      | auth, role     |                |
+|        | DELETE admin/{admin}                                                  | admin.destroy                      | AdminController@destroy                     | auth, role     |                |
+|        | GET|HEAD usuarios                                                     | usuarios.index                     | UsuariosController@index                    | auth, role     |                |
+|        | GET|HEAD usuarios/create                                              | usuarios.create                    | UsuariosController@create                   | auth, role     |                |
+|        | POST usuarios                                                         | usuarios.store                     | UsuariosController@store                    | auth, role     |                |
+|        | GET|HEAD usuarios/{usuarios}                                          | usuarios.show                      | UsuariosController@show                     | auth, role     |                |
+|        | GET|HEAD usuarios/{usuarios}/edit                                     | usuarios.edit                      | UsuariosController@edit                     | auth, role     |                |
+|        | PUT usuarios/{usuarios}                                               | usuarios.update                    | UsuariosController@update                   | auth, role     |                |
+|        | PATCH usuarios/{usuarios}                                             |                                    | UsuariosController@update                   | auth, role     |                |
+|        | DELETE usuarios/{usuarios}                                            | usuarios.destroy                   | UsuariosController@destroy                  | auth, role     |                |
+|        | GET|HEAD panel                                                        | panel.index                        | AdminController@index                       | auth, role     |                |
+|        | GET|HEAD panel/create                                                 | panel.create                       | AdminController@create                      | auth, role     |                |
+|        | POST panel                                                            | panel.store                        | AdminController@store                       | auth, role     |                |
+|        | GET|HEAD panel/{panel}                                                | panel.show                         | AdminController@show                        | auth, role     |                |
+|        | GET|HEAD panel/{panel}/edit                                           | panel.edit                         | AdminController@edit                        | auth, role     |                |
+|        | PUT panel/{panel}                                                     | panel.update                       | AdminController@update                      | auth, role     |                |
+|        | PATCH panel/{panel}                                                   |                                    | AdminController@update                      | auth, role     |                |
+|        | DELETE panel/{panel}                                                  | panel.destroy                      | AdminController@destroy                     | auth, role     |                |
+|        | GET|HEAD mails                                                        | mails.index                        | MailsController@index                       | auth, role     |                |
+|        | GET|HEAD mails/create                                                 | mails.create                       | MailsController@create                      | auth, role     |                |
+|        | POST mails                                                            | mails.store                        | MailsController@store                       | auth, role     |                |
+|        | GET|HEAD mails/{mails}                                                | mails.show                         | MailsController@show                        | auth, role     |                |
+|        | GET|HEAD mails/{mails}/edit                                           | mails.edit                         | MailsController@edit                        | auth, role     |                |
+|        | PUT mails/{mails}                                                     | mails.update                       | MailsController@update                      | auth, role     |                |
+|        | PATCH mails/{mails}                                                   |                                    | MailsController@update                      | auth, role     |                |
+|        | DELETE mails/{mails}                                                  | mails.destroy                      | MailsController@destroy                     | auth, role     |                |
+|        | POST oficios/cesar                                                    | oficios.cesar                      | OficiosController@cesar                     | auth, role     |                |
+|        | GET|HEAD solicitud_paradero                                           | solicitud_paradero.index           | OficioSolicitudParaderoController@index     | auth, role     |                |
+|        | POST solicitud_paradero                                               | solicitud_paradero.store           | OficioSolicitudParaderoController@store     | auth, role     |                |
+|        | GET|HEAD solicitud_paradero/{solicitud_paradero}/edit                 | solicitud_paradero.edit            | OficioSolicitudParaderoController@edit      | auth, role     |                |
+|        | PUT solicitud_paradero/{solicitud_paradero}                           | solicitud_paradero.update          | OficioSolicitudParaderoController@update    | auth, role     |                |
+|        | PATCH solicitud_paradero/{solicitud_paradero}                         |                                    | OficioSolicitudParaderoController@update    | auth, role     |                |
+|        | DELETE solicitud_paradero/{solicitud_paradero}                        | solicitud_paradero.destroy         | OficioSolicitudParaderoController@destroy   | auth, role     |                |
+|        | GET|HEAD secuestro_elementos                                          | secuestro_elementos.index          | SecuestroElementosController@index          | auth, role     |                |
+|        | POST secuestro_elementos                                              | secuestro_elementos.store          | SecuestroElementosController@store          | auth, role     |                |
+|        | GET|HEAD secuestro_elementos/{secuestro_elementos}/edit               | secuestro_elementos.edit           | SecuestroElementosController@edit           | auth, role     |                |
+|        | PUT secuestro_elementos/{secuestro_elementos}                         | secuestro_elementos.update         | SecuestroElementosController@update         | auth, role     |                |
+|        | PATCH secuestro_elementos/{secuestro_elementos}                       |                                    | SecuestroElementosController@update         | auth, role     |                |
+|        | DELETE secuestro_elementos/{secuestro_elementos}                      | secuestro_elementos.destroy        | SecuestroElementosController@destroy        | auth, role     |                |
+|        | GET|HEAD secuestro_vehicular                                          | secuestro_vehicular.index          | PedidosSecuestroVehicularController@index   | auth, role     |                |
+|        | POST secuestro_vehicular                                              | secuestro_vehicular.store          | PedidosSecuestroVehicularController@store   | auth, role     |                |
+|        | GET|HEAD secuestro_vehicular/{secuestro_vehicular}/edit               | secuestro_vehicular.edit           | PedidosSecuestroVehicularController@edit    | auth, role     |                |
+|        | PUT secuestro_vehicular/{secuestro_vehicular}                         | secuestro_vehicular.update         | PedidosSecuestroVehicularController@update  | auth, role     |                |
+|        | PATCH secuestro_vehicular/{secuestro_vehicular}                       |                                    | PedidosSecuestroVehicularController@update  | auth, role     |                |
+|        | DELETE secuestro_vehicular/{secuestro_vehicular}                      | secuestro_vehicular.destroy        | PedidosSecuestroVehicularController@destroy | auth, role     |                |
+|        | GET|HEAD prohibicion_salida                                           | prohibicion_salida.index           | ProhibicionSalidaPaisController@index       | auth, role     |                |
+|        | POST prohibicion_salida                                               | prohibicion_salida.store           | ProhibicionSalidaPaisController@store       | auth, role     |                |
+|        | GET|HEAD prohibicion_salida/{prohibicion_salida}/edit                 | prohibicion_salida.edit            | ProhibicionSalidaPaisController@edit        | auth, role     |                |
+|        | PUT prohibicion_salida/{prohibicion_salida}                           | prohibicion_salida.update          | ProhibicionSalidaPaisController@update      | auth, role     |                |
+|        | PATCH prohibicion_salida/{prohibicion_salida}                         |                                    | ProhibicionSalidaPaisController@update      | auth, role     |                |
+|        | DELETE prohibicion_salida/{prohibicion_salida}                        | prohibicion_salida.destroy         | ProhibicionSalidaPaisController@destroy     | auth, role     |                |
+|        | GET|HEAD pedidos_captura                                              | pedidos_captura.index              | PedidosCapturaController@index              | auth, role     |                |
+|        | POST pedidos_captura                                                  | pedidos_captura.store              | PedidosCapturaController@store              | auth, role     |                |
+|        | GET|HEAD pedidos_captura/{pedidos_captura}/edit                       | pedidos_captura.edit               | PedidosCapturaController@edit               | auth, role     |                |
+|        | PUT pedidos_captura/{pedidos_captura}                                 | pedidos_captura.update             | PedidosCapturaController@update             | auth, role     |                |
+|        | PATCH pedidos_captura/{pedidos_captura}                               |                                    | PedidosCapturaController@update             | auth, role     |                |
+|        | DELETE pedidos_captura/{pedidos_captura}                              | pedidos_captura.destroy            | PedidosCapturaController@destroy            | auth, role     |                |
+|        | GET|HEAD medidas_restrictivas                                         | medidas_restrictivas.index         | MedidasRestrictivasController@index         | auth, role     |                |
+|        | POST medidas_restrictivas                                             | medidas_restrictivas.store         | MedidasRestrictivasController@store         | auth, role     |                |
+|        | GET|HEAD medidas_restrictivas/{medidas_restrictivas}/edit             | medidas_restrictivas.edit          | MedidasRestrictivasController@edit          | auth, role     |                |
+|        | PUT medidas_restrictivas/{medidas_restrictivas}                       | medidas_restrictivas.update        | MedidasRestrictivasController@update        | auth, role     |                |
+|        | PATCH medidas_restrictivas/{medidas_restrictivas}                     |                                    | MedidasRestrictivasController@update        | auth, role     |                |
+|        | DELETE medidas_restrictivas/{medidas_restrictivas}                    | medidas_restrictivas.destroy       | MedidasRestrictivasController@destroy       | auth, role     |                |
+|        | GET|HEAD solicitud_paradero_req_jud                                   | solicitud_paradero_req_jud.index   | SolicitudParaderoReqJudController@index     | auth, role     |                |
+|        | POST solicitud_paradero_req_jud                                       | solicitud_paradero_req_jud.store   | SolicitudParaderoReqJudController@store     | auth, role     |                |
+|        | GET|HEAD solicitud_paradero_req_jud/{solicitud_paradero_req_jud}/edit | solicitud_paradero_req_jud.edit    | SolicitudParaderoReqJudController@edit      | auth, role     |                |
+|        | PUT solicitud_paradero_req_jud/{solicitud_paradero_req_jud}           | solicitud_paradero_req_jud.update  | SolicitudParaderoReqJudController@update    | auth, role     |                |
+|        | PATCH solicitud_paradero_req_jud/{solicitud_paradero_req_jud}         |                                    | SolicitudParaderoReqJudController@update    | auth, role     |                |
+|        | DELETE solicitud_paradero_req_jud/{solicitud_paradero_req_jud}        | solicitud_paradero_req_jud.destroy | SolicitudParaderoReqJudController@destroy   | auth, role     |                |
+|        | GET|HEAD habeas_corpus                                                | habeas_corpus.index                | HabeasCorpusController@index                | auth, role     |                |
+|        | POST habeas_corpus                                                    | habeas_corpus.store                | HabeasCorpusController@store                | auth, role     |                |
+|        | GET|HEAD habeas_corpus/{habeas_corpus}/edit                           | habeas_corpus.edit                 | HabeasCorpusController@edit                 | auth, role     |                |
+|        | PUT habeas_corpus/{habeas_corpus}                                     | habeas_corpus.update               | HabeasCorpusController@update               | auth, role     |                |
+|        | PATCH habeas_corpus/{habeas_corpus}                                   |                                    | HabeasCorpusController@update               | auth, role     |                |
+|        | DELETE habeas_corpus/{habeas_corpus}                                  | habeas_corpus.destroy              | HabeasCorpusController@destroy              | auth, role     |                |
+|        | GET|HEAD solicitud_paradero/create                                    | solicitud_paradero.create          | OficioSolicitudParaderoController@create    | auth, role     |                |
+|        | GET|HEAD secuestro_elementos/create                                   | secuestro_elementos.create         | SecuestroElementosController@create         | auth, role     |                |
+|        | GET|HEAD secuestro_vehicular/create                                   | secuestro_vehicular.create         | PedidosSecuestroVehicularController@create  | auth, role     |                |
+|        | GET|HEAD prohibicion_salida/create                                    | prohibicion_salida.create          | ProhibicionSalidaPaisController@create      | auth, role     |                |
+|        | GET|HEAD pedidos_captura/create                                       | pedidos_captura.create             | PedidosCapturaController@create             | auth, role     |                |
+|        | GET|HEAD medidas_restrictivas/create                                  | medidas_restrictivas.create        | MedidasRestrictivasController@create        | auth, role     |                |
+|        | GET|HEAD solicitud_paradero_req_jud/create                            | solicitud_paradero_req_jud.create  | SolicitudParaderoReqJudController@create    | auth, role     |                |
+|        | GET|HEAD habeas_corpus/create                                         | habeas_corpus.create               | HabeasCorpusController@create               | auth, role     |                |
+|        | POST oficios/localidad                                                | combo.localidad                    | CombosController@getLocalidad               | auth, role     |                |
+|        | POST oficios/partido                                                  | combo.partido                      | CombosController@getPartido                 | auth, role     |                |
+|        | GET|HEAD solicitud_paradero/{solicitud_paradero}                      | solicitud_paradero.show            | OficioSolicitudParaderoController@show      | auth, role     | filtro_despues |
+|        | GET|HEAD secuestro_elementos/{secuestro_elementos}                    | secuestro_elementos.show           | SecuestroElementosController@show           | auth, role     | filtro_despues |
+|        | GET|HEAD secuestro_vehicular/{secuestro_vehicular}                    | secuestro_vehicular.show           | PedidosSecuestroVehicularController@show    | auth, role     | filtro_despues |
+|        | GET|HEAD prohibicion_salida/{prohibicion_salida}                      | prohibicion_salida.show            | ProhibicionSalidaPaisController@show        | auth, role     | filtro_despues |
+|        | GET|HEAD pedidos_captura/{pedidos_captura}                            | pedidos_captura.show               | PedidosCapturaController@show               | auth, role     | filtro_despues |
+|        | GET|HEAD medidas_restrictivas/{medidas_restrictivas}                  | medidas_restrictivas.show          | MedidasRestrictivasController@show          | auth, role     | filtro_despues |
+|        | GET|HEAD solicitud_paradero_req_jud/{solicitud_paradero_req_jud}      | solicitud_paradero_req_jud.show    | SolicitudParaderoReqJudController@show      | auth, role     | filtro_despues |
+|        | GET|HEAD habeas_corpus/{habeas_corpus}                                | habeas_corpus.show                 | HabeasCorpusController@show                 | auth, role     | filtro_despues |
+|        | GET|HEAD medidas_restrictivas/pdf/{id}                                | medidas_restrictivas.pdf           | MedidasRestrictivasController@getPdf        | auth, role     | filtro_despues |
+|        | GET|HEAD pedidos_captura/pdf/{id}                                     | pedidos_captura.pdf                | PedidosCapturaController@getPdf             | auth, role     | filtro_despues |
+|        | GET|HEAD habeas_corpus/pdf/{id}                                       | habeas_corpus.pdf                  | HabeasCorpusController@getPdf               | auth, role     | filtro_despues |
+|        | GET|HEAD solicitud_paradero/pdf/{id}                                  | solicitud_paradero.pdf             | OficioSolicitudParaderoController@getPdf    | auth, role     | filtro_despues |
+|        | GET|HEAD solicitud_paradero_req_jud/pdf/{id}                          | solicitud_paradero_req_jud.pdf     | SolicitudParaderoReqJudController@getPdf    | auth, role     | filtro_despues |
+|        | GET|HEAD prohibicion_salida/pdf/{id}                                  | prohibicion_salida.pdf             | ProhibicionSalidaPaisController@getPdf      | auth, role     | filtro_despues |
+|        | GET|HEAD secuestro_elementos/pdf/{id}                                 | secuestro_elementos.pdf            | SecuestroElementosController@getPdf         | auth, role     | filtro_despues |
+|        | GET|HEAD secuestro_vehicular/pdf/{id}                                 | secuestro_vehicular.pdf            | PedidosSecuestroVehicularController@getPdf  | auth, role     | filtro_despues |
+|        | GET|HEAD consultas                                                    | consultas.index                    | OficiosConsultaController@index             | auth, role     | filtro_despues |
+|        | GET|HEAD consultas/create                                             | consultas.create                   | OficiosConsultaController@create            | auth, role     | filtro_despues |
+|        | POST consultas                                                        | consultas.store                    | OficiosConsultaController@store             | auth, role     | filtro_despues |
+|        | GET|HEAD consultas/{consultas}                                        | consultas.show                     | OficiosConsultaController@show              | auth, role     | filtro_despues |
+|        | GET|HEAD consultas/{consultas}/edit                                   | consultas.edit                     | OficiosConsultaController@edit              | auth, role     | filtro_despues |
+|        | PUT consultas/{consultas}                                             | consultas.update                   | OficiosConsultaController@update            | auth, role     | filtro_despues |
+|        | PATCH consultas/{consultas}                                           |                                    | OficiosConsultaController@update            | auth, role     | filtro_despues |
+|        | DELETE consultas/{consultas}                                          | consultas.destroy                  | OficiosConsultaController@destroy           | auth, role     | filtro_despues |
+|        | GET|HEAD logout                                                       |                                    | AuthController@logOut                       | auth           |                |
++--------+-----------------------------------------------------------------------+------------------------------------+---------------------------------------------+----------------+----------------+

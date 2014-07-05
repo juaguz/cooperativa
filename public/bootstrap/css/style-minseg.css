@@ -1,0 +1,103 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+#wrapper {
+}
+
+#main-container {
+    /*position: absolute;*/
+    /*top: 12px;*/
+    /*background-color: #fff;*/
+    /*padding-top: 39px;*/
+}
+
+#logominseg {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.contenedor {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#top-nav.skin-6 {
+    height: 50px;
+    background: -webkit-linear-gradient(top, #4ca4d6 0%, #0a4aa8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4ca4d6 0%, #0a4aa8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #4ca4d6 0%, #0a4aa8 100%); /* IE10+ */
+
+    border-bottom: 1px solid #0d3f87;
+}
+
+aside {
+    padding-top: 50px;
+}
+
+#top-nav .brand span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    /*text-transform: uppercase;*/
+}
+
+section.encabezado h1 {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+section.encabezado hr {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#top-nav .navbar-toggle {
+    margin: 5px 0 0;
+}
+
+#top-nav.skin-6 .brand {
+    color: #BECFE0;
+    background: none;
+}
+
+#top-nav .brand {
+}
+
+@media (min-width: 768px) {
+
+    #wrapper.sidebar-mini #top-nav .brand {
+        width: 194px;
+        display: none;
+    }
+
+    
+}
+
+@media (max-width: 768px) {
+
+    #wrapper.sidebar-mini #top-nav .brand {
+        width: 194px;
+    }
+
+
+}
+
+
+
+
+h1, h2, h3, h4 {
+    color: #000;
+}
+
+.dis {
+    display: none;
+}

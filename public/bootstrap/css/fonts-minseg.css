@@ -1,0 +1,41 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?qpr12x');
+	src:url('../fonts/icomoon.eot?#iefixqpr12x') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?qpr12x') format('woff'),
+		url('../fonts/icomoon.ttf?qpr12x') format('truetype'),
+		url('../fonts/icomoon.svg?qpr12x#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Logo MinSeg =========== */
+.icon-Logo_MinSeg-bn:before {
+	content: "\e600";
+}
+/* Iso MinSeg =========== */
+.icon-iso_MinSeg-svg:before {
+	content: "\e601";
+}
+/* Logo Sist =========== */
+.icon-logo_sistemas-svg:before {
+	content: "\e602";
+}
+/* Iso Sist =========== */
+.icon-iso_sistemas:before {
+	content: "\e603";
+}
