@@ -4,7 +4,8 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
     "require-dev":{
-        "barryvdh/laravel-debugbar": "1.*"
+        "barryvdh/laravel-debugbar": "1.*",
+        "xethron/migrations-generator": "dev-master"
     },
 	"require": {
 		"laravel/framework": "4.1.*",

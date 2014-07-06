@@ -106,10 +106,11 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-        
         'Combos\Composers\ComposerServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
         'Thujohn\Pdf\PdfServiceProvider',
+        'Way\Generators\GeneratorsServiceProvider',
+        'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
 
 	),
 
