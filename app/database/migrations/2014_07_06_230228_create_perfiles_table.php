@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateParentezcosTable extends Migration {
+class CreatePerfilesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class CreateParentezcosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('parentezcos', function(Blueprint $table)
+		Schema::create('perfiles', function(Blueprint $table)
 		{
-			$table->integer('id')->primary();
+			$table->integer('id', true);
 			$table->string('descripcion', 45)->nullable();
+			$table->timestamp('create_time')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('update_time')->nullable();
 		});
 	}
 
@@ -27,7 +29,7 @@ class CreateParentezcosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('parentezcos');
+		Schema::drop('perfiles');
 	}
 
 }
