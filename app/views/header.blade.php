@@ -26,7 +26,7 @@
         <!-- breadcrumb -->
         <div id="breadcrumb">
             <ul class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="{{ route('oficios.index') }}"> Inicio</a></li>
+                <li><i class="fa fa-home"></i><a href=""> Inicio</a></li>
                 @yield('breadcrumb')
             </ul>
         </div>
@@ -34,11 +34,7 @@
 
         <div class="padding-md">
         @include("errores")
-        @if ( Session::has("id") )
-            <div class="alert alert-animated alert-success">
-                Requerimiento Cargado Correctamente
-            </div>
-        @endif
+
         @yield('content')
 
         </div>

@@ -1,9 +1,16 @@
-<?php namespace Usuarios\Entities;
+<?php
+/**
+ * Created by PhpStorm.
+ * User: juan
+ * Date: 09/07/14
+ * Time: 21:18
+ */
 
-class Perfiles extends \Eloquent
-{
-    protected $table = 'perfiles';
-    protected $fillable = array('id', 'perfil');
+namespace Usuarios\Entities;
+
+
+class Perfiles extends \Eloquent {
+
+    protected $table  = "perfiles";
 
 }
-?>

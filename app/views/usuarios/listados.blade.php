@@ -7,22 +7,24 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
+			<th>Nombre de Usuario</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
-			<th>DNI</th>
-			<th>Perfil</th>
-			<th>Email</th>
+            <th>Tipo Documento</th>
+            <th>DNI</th>
+            <th>Perfil</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach($users as $key => $value)
 		<tr>
+			<td>{{ $value->usuario }}</td>
 			<td>{{ $value->nombre }}</td>
-			<td>{{ $value->apellido }}</td>
-			<td>{{ $value->dni }}</td>
-			<td>{{ $value->perfil }}</td>
-			<td>{{ $value->email }}</td>
+            <td>{{ $value->apellido }}</td>
+            <td>{{ $value->getTipoDocumento->descripcion }}</td>
+            <td>{{ $value->nro_documento }}</td>
+            <td>{{ $value->getPerfil->descripcion }}</td>
 
 			<!-- we will also add show, edit, and delete buttons -->
 			<td>

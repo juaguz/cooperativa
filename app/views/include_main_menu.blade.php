@@ -22,14 +22,14 @@
                 <li class="openable open">
                     <a href="#"> <span class="menu-icon"> <i class="fa fa-user"></i></span>
 
-                        <span class="text"> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }} </span> <span class="menu-hover"></span> </a>
+                        <span class="text"> @{{ Auth::user()->nombre }} @{{ Auth::user()->apellido }} </span> <span class="menu-hover"></span> </a>
                     <ul class="submenu">
                         <li><a href="#"><span class="submenu-label">Modificar contraseña</span></a></li>
                         <li><a href="#"><span class="submenu-label">Manual</span></a></li>
                     </ul>
                 </li>
                 <li class="openable open">
-                    <a href="{{ route('inicio') }}"> <span class="menu-icon"> <i class="fa fa-home "></i></span>
+                    <a href=""> <span class="menu-icon"> <i class="fa fa-home "></i></span>
                         <span class="text"> Inicio </span> <span class="menu-hover"></span> </a>
                 </li>
                 <li class="">
@@ -46,14 +46,9 @@
                     </a>
                 </li>
 
-                @if( (Auth::user()->id_perfil==1) or (Auth::user()->id_perfil==3) )
-                    @include('menu.oficios')
-                @endif
-                @if(Auth::user()->id_perfil==1)
-                    @include('menu.administrador')
-                @endif
+
                 <li class="">
-                    <a href="{{ route('oficios.index') }}"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                    <a href="@{{ route('oficios.index') }}"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
                         <span class="text">Consulta de  Requerimientos</span> <span class="menu-hover"></span> </a>
                 </li>
 

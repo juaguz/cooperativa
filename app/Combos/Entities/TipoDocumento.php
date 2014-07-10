@@ -1,6 +1,6 @@
 <?php namespace Combos\Entities;
 
-class ComboTipoDocumento extends \Eloquent {
-    protected $table = 'tipo_doc';
+class TipoDocumento extends \Eloquent {
+    protected $table = 'tipos_documentos';
     protected $fillable = array('descripcion');
 } 

@@ -2,7 +2,7 @@
 
 use Usuarios\Entities\User;
 
-class AuthController extends BaseController {
+class AuthController extends \BaseController {
 	/*
 	 |--------------------------------------------------------------------------
 	 | Controlador de la autenticación de usuarios

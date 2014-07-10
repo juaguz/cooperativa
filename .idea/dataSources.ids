@@ -21,77 +21,57 @@
     <schema name="" catalog="performance_schema"/>
     <schema name="" catalog="pericias"/>
     <schema name="" catalog="phpmyadmin"/>
-    <table name="parentezcos" schema="" catalog="cooperativa" type="TABLE">
-      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+    <table name="estudios" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="descripcion" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="perfiles" schema="" catalog="cooperativa" type="TABLE">
-      <column name="id_perfil" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="nombre_pefil" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="id_perfil"/>
-      <exported-key name="fk_usuarios_perfiles1" table="usuarios" schema="" catalog="cooperativa" columns="id_perfil"/>
-    </table>
-    <table name="personas" schema="" catalog="cooperativa" type="TABLE">
-      <column name="id_persona" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="nombre" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="apellido" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="nro_doc" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="direccion" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="localidad" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="telefono" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
-      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
-      <column name="usuarios_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="usuarios_id_perfil" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="usuarios_id_persona" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="usuarios_perfiles_id_perfil" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="taller" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="id_sexo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id_persona,usuarios_id_persona,id_sexo"/>
-      <foreign-key name="fk_personas_usuarios1" columns="id_persona" ref-table="usuarios" ref-schema="" ref-catalog="cooperativa" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_socios_personas1" table="socios" schema="" catalog="cooperativa" columns="id_persona"/>
-    </table>
-    <table name="socios" schema="" catalog="cooperativa" type="TABLE">
-      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="id_persona" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="hsocio" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="nro_socio" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="vacon" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
-      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
-      <column name="personas_id_persona" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="personas_usuarios_id_persona" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="id_tipo_socio" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="fecha_socio" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
-      <primary-key name="PRIMARY" columns="id,id_persona,id_tipo_socio"/>
-      <foreign-key name="fk_socios_personas1" columns="id_persona" ref-table="personas" ref-schema="" ref-catalog="cooperativa" ref-columns="id_persona" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_tipo_socios_socios1" table="tipo_socios" schema="" catalog="cooperativa" columns="id"/>
-      <index name="fk_socios_personas1_idx" unique="false" columns="id_persona"/>
-    </table>
-    <table name="tipo_socios" schema="" catalog="cooperativa" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="descripcion" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="socios_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="socios_id_persona" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="socios_personas_id_persona" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="socios_id_tipo_socio" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="fk_tipo_socios_socios1" columns="id" ref-table="socios" ref-schema="" ref-catalog="cooperativa" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_usuarios_1_perfil" table="usuarios" schema="" catalog="cooperativa" columns="id_perfil"/>
+    </table>
+    <table name="sexos" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tipos_documentos" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tipos_socios" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="usuarios" schema="" catalog="cooperativa" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="id_perfil" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="id_persona" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="nombre_usuario" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="password" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
-      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
-      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
-      <column name="perfiles_id_perfil" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id,id_perfil,id_persona,perfiles_id_perfil"/>
-      <foreign-key name="fk_usuarios_perfiles1" columns="id_perfil" ref-table="perfiles" ref-schema="" ref-catalog="cooperativa" ref-columns="id_perfil" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_personas_usuarios1" table="personas" schema="" catalog="cooperativa" columns="id_persona"/>
-      <index name="fk_usuarios_perfiles1_idx" unique="false" columns="id_perfil"/>
+      <column name="nombre" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="apellido" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="id_perfil" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="id_tipo_documento" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="nro_documento" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="usuario" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12"/>
+      <column name="clave" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_usuarios_1_perfil" columns="id_perfil" ref-table="perfiles" ref-schema="" ref-catalog="cooperativa" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="usuario_UNIQUE" unique="true" columns="usuario"/>
+      <index name="fk_usuarios_1_perfil_idx" unique="false" columns="id_perfil"/>
     </table>
     <table name="cursos" schema="" catalog="cursos" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>

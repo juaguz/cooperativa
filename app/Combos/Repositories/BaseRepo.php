@@ -40,4 +40,10 @@ abstract class BaseRepo {
 
     }
 
+    public function getCombos($option,$value){
+
+        return $this->model->all()->lists($option,$value);
+
+    }
+
 } 
