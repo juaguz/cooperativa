@@ -12,7 +12,7 @@
 */
 
 
-
+//hola hola hola hgjh
 // Nos mostrará el formulario de login.
 Route::get('/', 'AuthController@showLogin');
 
