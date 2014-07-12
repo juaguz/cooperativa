@@ -1,4 +1,4 @@
-<script src="http://173.10.1.149:3000/socket.io/socket.io.js"></script>
+
 
 <!-- javascript
 ================================================== -->
@@ -43,7 +43,7 @@
 
 
 
-<script src="http://173.10.1.149:3000/socket.io/socket.io.js"></script>
+
 
 
 {{ HTML::script('assets/js/notificaciones.js') }}
