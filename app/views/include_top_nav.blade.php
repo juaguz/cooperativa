@@ -7,18 +7,18 @@
         <img src="{{ URL::asset('bootstrap/images/logo-minseg.png')}}" id="logominseg">
     </figure>
     <!-- logo -->
+    <div class="brand">
+        <span>
+            Cooperativa
+
+        </span>
+    </div>
     <button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
     </button>
     <button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
     </button>
-    <div class="brand">
-        <span>
-            S.I.R.J.
-            Secretaría de Cooperación con los Poderes Judiciales, Ministerios Públicos y Legislaturas
-        </span>
-    </div>
 
 
     <!--<ul class="nav-notification clearfix">

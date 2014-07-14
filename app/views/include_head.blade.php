@@ -34,3 +34,4 @@
 
 <!-- Endless -->
 <!-- <link href="css/endless.min.css" rel="stylesheet">-->
+@yield('style')

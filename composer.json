@@ -20,7 +20,9 @@
         "psr-4":{
           "Combos\\":"app/Combos",
          
-          "Usuarios\\":"app/Usuarios"
+          "Usuarios\\":"app/Usuarios",
+          "Socios\\":"app/Socios"
+
         },
 		"classmap": [
 			"app/commands",

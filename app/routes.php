@@ -26,6 +26,9 @@ Route::post('login', 'AuthController@postLogin');
 //Route::group(array('before' => 'auth'), function () {
 
         Route::resource("usuarios", "UsuariosController");
+        Route::resource("socios", "SociosController");
+        Route::post("socios/buscar",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);
+
 
 //});
 

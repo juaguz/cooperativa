@@ -34,7 +34,7 @@
 
         <div class="padding-md">
         @include("errores")
-
+        @include("mensaje_correcto")
         @yield('content')
 
         </div>

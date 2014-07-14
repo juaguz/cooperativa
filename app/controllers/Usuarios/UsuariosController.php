@@ -8,16 +8,6 @@ use Usuarios\Repositories\UsuariosRepo;
 use Combos\Repositories\TiposDocumentosRepo;
 
 
-/*<?php
-    if ($user->exists):
-        $form_data = array('route' => array('usuarios.update', $user->id), 'method' => 'PATCH');
-        $action    = 'Editar';
-    else:
-
-    endif;
-
-?>
-*/
 class UsuariosController extends BaseController {
 
     protected $perfilesRepo,$documentosRepo,$usuariosRepo;
