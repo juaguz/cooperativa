@@ -12,6 +12,17 @@
 
 
 <div class="row">
+    <div class="form-group col-md-4">
+        {{ Form::label('nro_socio', 'Legajo') }}
+        {{ Form::text('nro_socio', null, array('placeholder' => 'Ingrese el Legajo del Socio', 'class' => 'form-control')) }}
+
+    </div>
+    <div class="form-group col-md-4">
+        {{ Form::label('id_tipo_socio', 'Tipo de Socio') }}
+        {{ Form::select('id_tipo_socio',$tipoSocio ,null,array('class' => 'form-control','id'=>'')) }}
+    </div>
+</div>
+<div class="row">
 	<div class="form-group col-md-4">
 		{{ Form::label('nombre', 'Nombre') }}
 		{{ Form::text('nombre', null, array('placeholder' => 'Ingrese el Nombre del Socio', 'class' => 'form-control')) }}
