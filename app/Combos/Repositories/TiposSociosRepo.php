@@ -9,7 +9,7 @@
 namespace Combos\Repositories;
 use Combos\Entities\TipoSocio;
 
-class TiposSocios extends BaseRepo{
+class TiposSociosRepo extends BaseRepo{
 
     public function getModel()
     {

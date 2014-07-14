@@ -19,7 +19,7 @@
     </div>
     <div class="form-group col-md-4">
         {{ Form::label('id_tipo_socio', 'Tipo de Socio') }}
-        {{ Form::select('id_tipo_socio',$tipoSocio ,null,array('class' => 'form-control','id'=>'')) }}
+        {{ Form::select('id_tipo_socio',$tiposSocios ,null,array('class' => 'form-control','id'=>'')) }}
     </div>
 </div>
 <div class="row">
