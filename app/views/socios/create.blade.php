@@ -13,8 +13,8 @@
 
 <div class="row">
     <div class="form-group col-md-4">
-        {{ Form::label('nro_socio', 'Legajo') }}
-        {{ Form::text('nro_socio', null, array('placeholder' => 'Ingrese el Legajo del Socio', 'class' => 'form-control')) }}
+        {{ Form::label('nro_legajo', 'Legajo') }}
+        {{ Form::text('nro_legajo', null, array('placeholder' => 'Ingrese el Legajo del Socio', 'class' => 'form-control')) }}
 
     </div>
     <div class="form-group col-md-4">
