@@ -27,7 +27,7 @@ Route::post('login', 'AuthController@postLogin');
 
         Route::resource("usuarios", "UsuariosController");
         Route::resource("socios", "SociosController");
-        Route::post("socios/buscar",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);
+        Route::get("socios/buscar/{slug?}",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);
 
 
 //});

@@ -7,9 +7,12 @@
  */
 
 namespace Socios\Repositories;
+
 use Socios\Entities\Socios;
 
-class SociosRepo extends BaseRepo {
+
+class SociosRepo extends BaseRepo
+{
 
     public function getModel()
     {
@@ -20,7 +23,8 @@ class SociosRepo extends BaseRepo {
 
     }
 
-    public function newSocio(){
+    public function newSocio()
+    {
 
         $socio = new Socios();
         //$socio->id_usuario = \Auth::user()->id;
@@ -28,6 +32,22 @@ class SociosRepo extends BaseRepo {
         $socio->id_usuario = 1;
 
         return $socio;
+
+    }
+
+    public function buscar($busqueda)
+    {
+
+        if (isset($busqueda['nombre']) and !empty($busqueda['nombre'])) {
+            $nombre = $busqueda["nombre"];
+            $datos = $this->model->where("nombre", "LIKE", "%$nombre%");
+        }
+
+        if (isset($datos)) {
+            return $datos->paginate(20);
+        }
+
+        return $this->model->paginate(20);
 
     }
 

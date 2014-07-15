@@ -12,7 +12,7 @@
 @section ('content')
     <a href="{{ route('socios.create') }}"><button class="btn btn-primary" >Cargar Socio <i class="glyphicon glyphicon-user"></i></button></a>
 <h2>Listados de Socios</h2>
-{{ Form::model(isset($busqueda) ? $busqueda : null,["route"=>"socios.buscar","method"=>"POST"]) }}
+{{ Form::model(isset($busqueda) ? $busqueda : null,["method"=>"GET"]) }}
 <div class="row" id="busqueda">
     <div class="col-md-2">
         {{ Form::text('nombre',null,array('class'=>'form-control','type'=>'text','placeholder'=>'Ingrese Nombre')) }}
@@ -60,6 +60,7 @@
 	@endforeach
 	</tbody>
 </table>
-{{ $socios->links() }}
+
+{{ $socios->appends( $busqueda )->links() }}
 
 @stop

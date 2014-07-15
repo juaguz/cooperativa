@@ -25,33 +25,14 @@ class SociosController extends \BaseController {
 	public function index()
 	{
 
-        $socios = $this->sociosRepo->paginate();
+        $busqueda = Input::except('page');
 
-        return View::make('socios.listados',compact("socios"));
-
-	}
-
-
-    public function buscar(){
-
-        $busqueda = Input::all();
-
-        $socios  = $this->sociosRepo;
-
-        if(isset($busqueda['nombre']) and !empty($busqueda['nombre'])){
-
-            $nombre = $busqueda["nombre"];
-            $socios = $this->sociosRepo->whereLike("nombre",$nombre);
-        }
-            $socios = $socios->paginate(1);
-
-
-
+        $socios   = $this->sociosRepo->buscar($busqueda);
 
         return View::make('socios.listados',compact("socios","busqueda"));
 
+	}
 
-    }
 
 
 	/**
