@@ -2,6 +2,16 @@
 ================================================== -->
 <!-- <link rel="shortcut icon" href="favicon.png"> -->
 <!-- Bootstrap core CSS -->
+
+
+<style>
+    input[type="checkbox"]{
+        opacity: 100 !important;
+        margin-left:15px !important;
+    }
+</style>
+
+
 {{ HTML::style('bootstrap/bootstrap/css/bootstrap.css', array('media' => 'screen')) }}
 <!-- Font Awesome -->
 {{ HTML::style('bootstrap/css/font-awesome.min.css', array('media' => 'screen')) }}
@@ -34,4 +44,8 @@
 
 <!-- Endless -->
 <!-- <link href="css/endless.min.css" rel="stylesheet">-->
+
+
+
+
 @yield('style')

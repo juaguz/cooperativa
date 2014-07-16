@@ -46,6 +46,30 @@
 
 	</div>
  </div>
+<div class="row">
+    <div class="form-group col-md-4">
+        {{ Form::label('id_sexo', 'Sexo') }}
+        {{ Form::select('id_sexo',$sexos ,null,array('class' => 'form-control','id'=>'')) }}
+    </div>
+    <div class="form-group col-md-4">
+        {{ Form::label('fecha_nac', 'Fecha de Nacimiento') }}
+        {{ Form::text('nro_documento', null, array('placeholder' => 'Ingrese el Dni del Usuario ', 'class' => 'form-control')) }}
+
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-4 ">
+        {{ Form::label('socio_coop', 'Es socio de Cooperativa?') }}
+        {{ Form::checkbox('socio_coop', '1',true) }}
+
+    </div>
+    <div class="form-group col-md-4">
+        {{ Form::label('fecha_nac', 'Fecha de Nacimiento') }}
+        {{ Form::text('nro_documento', null, array('placeholder' => 'Ingrese el Dni del Usuario ', 'class' => 'form-control')) }}
+
+    </div>
+</div>
+
 
 <div class="row">
 	

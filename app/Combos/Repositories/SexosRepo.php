@@ -9,7 +9,7 @@
 namespace Combos\Repositories;
 use Combos\Entities\Sexo;
 
-class Sexos extends BaseRepo{
+class SexosRepo extends BaseRepo{
 
     public function getModel()
     {
