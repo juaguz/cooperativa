@@ -41,7 +41,11 @@
 
 
 
-
+<script>
+    $('.fecha').datepicker({
+        "language":'es'
+    });
+</script>
 
 
 

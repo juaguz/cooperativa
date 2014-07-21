@@ -53,23 +53,64 @@
     </div>
     <div class="form-group col-md-4">
         {{ Form::label('fecha_nac', 'Fecha de Nacimiento') }}
-        {{ Form::text('nro_documento', null, array('placeholder' => 'Ingrese el Dni del Usuario ', 'class' => 'form-control')) }}
+        {{ Form::text('nro_documento', null, array('placeholder' => 'Ingrese Fecha de Nacimiento ', 'class' => 'form-control fecha')) }}
 
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-md-4 ">
-        {{ Form::label('socio_coop', 'Es socio de Cooperativa?') }}
-        {{ Form::checkbox('socio_coop', '1',true) }}
-
+    <div class="form-group col-md-4">
+        {{ Form::label('direccion', 'Direcci&oacute;n') }}
+        {{ Form::text('direccion',null,array('placeholder' => 'Ingrese la direcci&oacute;n','class' => 'form-control')) }}
     </div>
     <div class="form-group col-md-4">
-        {{ Form::label('fecha_nac', 'Fecha de Nacimiento') }}
-        {{ Form::text('nro_documento', null, array('placeholder' => 'Ingrese el Dni del Usuario ', 'class' => 'form-control')) }}
+        {{ Form::label('localidad', 'Localidad') }}
+        {{ Form::text('localidad', null, array('placeholder' => 'Ingrese la Localidad ', 'class' => 'form-control')) }}
 
     </div>
 </div>
+<div class="row">
+    <div class="form-group col-md-4">
+        {{ Form::label('tel_part', 'Tel&eacute;fono Particular') }}
+        {{ Form::text('tel_part',null,array('placeholder' => 'Ingrese Tel Particular','class' => 'form-control')) }}
+    </div>
+    <div class="form-group col-md-4">
+        {{ Form::label('tel_cel', 'Tel&eacute;fono Celular') }}
+        {{ Form::text('tel_cel', null, array('placeholder' => 'Ingrese Nro de Celular ', 'class' => 'form-control')) }}
 
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-4">
+        {{ Form::label('tel_lab', 'Tel&eacute;fono Laboral') }}
+        {{ Form::text('tel_lab',null,array('placeholder' => 'Ingrese Tel Laboral','class' => 'form-control')) }}
+    </div>
+    <div class="form-group col-md-4 ">
+        {{ Form::label('socio_coop', '¿Es socio de Cooperativa?') }}
+        {{ Form::select('socio_coop',$sino ,null,array('class' => 'form-control','id'=>'')) }}
+
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-4">
+        {{ Form::label('socio_futbol', '¿Es socio de F&uacute;tbol?') }}
+        {{ Form::select('socio_futbol',$sino ,null,array('class' => 'form-control','id'=>'')) }}
+
+    </div>
+    <div class="form-group col-md-4 ">
+        {{ Form::label('socio_pesca', '¿Es socio de Pesca?') }}
+        {{ Form::select('socio_pesca',$sino ,null,array('class' => 'form-control','id'=>'')) }}
+
+    </div>
+</div>
+<div class="row">
+
+    <div class="form-group col-md-4">
+        {{ Form::label('id_estudio', 'Estudios') }}
+        {{ Form::select('id_estudio',$estudios ,null,array('class' => 'form-control','id'=>'')) }}
+
+    </div>
+
+</div>
 
 <div class="row">
 	
@@ -82,6 +123,5 @@
 @stop
 
 @section('scripts')
-
 
 @stop

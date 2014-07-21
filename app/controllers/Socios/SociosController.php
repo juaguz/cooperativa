@@ -7,6 +7,8 @@ use Socios\Repositories\SociosRepo;
 use Socios\Managers\SociosManager;
 
 use Combos\Repositories\SexosRepo;
+use Combos\Repositories\SiNoRepo;
+use Combos\Repositories\EstudiosRepo;
 
 class SociosController extends \BaseController {
 
@@ -15,13 +17,15 @@ class SociosController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-    protected $documentosRepo,$sociosRepo,$tiposSociosRepo,$sexosRepo;
-    public function __construct(TiposDocumentosRepo $documentosRepo,SociosRepo $sociosRepo,TiposSociosRepo $tiposSociosRepo,SexosRepo $sexosRepo){
+    protected $documentosRepo,$sociosRepo,$tiposSociosRepo,$sexosRepo,$siNoRepo,$estudiosRepo;
+    public function __construct(TiposDocumentosRepo $documentosRepo,SociosRepo $sociosRepo,TiposSociosRepo $tiposSociosRepo,SexosRepo $sexosRepo, SiNoRepo $siNoRepo,EstudiosRepo $estudiosRepo){
 
         $this->documentosRepo  = $documentosRepo;
         $this->sociosRepo      = $sociosRepo;
         $this->tiposSociosRepo = $tiposSociosRepo;
         $this->sexosRepo = $sexosRepo;
+        $this->siNoRepo = $siNoRepo;
+        $this->estudiosRepo = $estudiosRepo;
     }
 
 
@@ -50,8 +54,10 @@ class SociosController extends \BaseController {
         $tiposDocumentos = $this->documentosRepo->getComboTiposDocumentos();
         $tiposSocios     = $this->tiposSociosRepo->getComboTipoSocio();
         $sexos           = $this->sexosRepo->getComboSexo();
+        $sino            = $this->siNoRepo->getComboSiNo();
+        $estudios        = $this->estudiosRepo->getComboEstudio();
 
-        return compact("tiposDocumentos","tiposSocios","sexos");
+        return compact("tiposDocumentos","tiposSocios","sexos","sino","estudios");
     }
 
 	public function create()

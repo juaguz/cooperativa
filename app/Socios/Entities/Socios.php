@@ -12,7 +12,7 @@ class Socios extends \Eloquent{
 
     protected $table = "socios";
 
-    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac");
+    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop");
 
     public function getTipoDocumento(){
 
@@ -24,6 +24,11 @@ class Socios extends \Eloquent{
         return $this->hasOne('Combos\Entities\Sexo','id','id_sexo');
 
     }
+    public function getSiNo(){
+
+        return $this->hasOne('Combos\Entities\SiNo','id','socio_coop');
+
+    }
     public function getEstudio(){
 
         return $this->hasOne('Combos\Entities\Estudio','id','id_estudio');
@@ -33,5 +38,15 @@ class Socios extends \Eloquent{
 
         return $this->hasOne('Combos\Entities\TipoSocio','id','id_tipo_socio');
 
+    }
+
+    public function setFechaNacAttribute($value){
+
+        $this->attributes["fecha_nac"] = \Time::FormatearToMysql($value);
+
+    }
+    public function getFechaNacAttribute($value){
+
+        return \Time::FormatearToNormal($value);
     }
 }

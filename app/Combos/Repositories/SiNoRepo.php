@@ -7,16 +7,16 @@
  */
 
 namespace Combos\Repositories;
-use Combos\Entities\Estudio;
+use Combos\Entities\SiNo;
 
-class EstudiosRepo extends BaseRepo{
+class SiNoRepo extends BaseRepo{
 
     public function getModel()
     {
-        return new Estudio();
+        return new SiNo();
     }
 
-    public function getComboEstudio(){
+    public function getComboSiNo(){
 
         return $this->getCombos("descripcion","id");
 

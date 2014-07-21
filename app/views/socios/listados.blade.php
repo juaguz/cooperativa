@@ -51,6 +51,7 @@
 
 				<!-- show the nerd (uses the show method found at GET /nerds/{id} -->
 				<a class="btn btn-small btn-info" href="{{ route('socios.edit',$value->id) }}">Editar</a>
+                <a class="btn btn-small btn-info" href="{{ route('familiares.create',$value->id) }}">Agregar Familiares</a>
 
 
 
