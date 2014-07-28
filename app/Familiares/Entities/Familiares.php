@@ -6,13 +6,13 @@
  * Time: 19:27
  */
 
-namespace Socios\Entities;
+namespace Familiares\Entities;
 
-class Socios extends \Eloquent{
+class Familiares extends \Eloquent{
 
-    protected $table = "socios";
+    protected $table = "familiares";
 
-    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop");
+    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_parentezco","id_socio","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop");
 
     public function getTipoDocumento(){
 
@@ -50,8 +50,15 @@ class Socios extends \Eloquent{
         return \Time::FormatearToNormal($value);
     }
 
-    public function getFamiliares(){
-        return $this->hasMany('Familiares\Entities\Familiares','id_socio','id');
+    public function getSocio(){
+
+        return $this->belongsTo('Socios\Entities\Socios','id_socio','id');
 
     }
+    public function getParentezco(){
+
+        return $this->hasOne('Combos\Entities\Parentezco','id','id_parentezco');
+
+    }
+
 }

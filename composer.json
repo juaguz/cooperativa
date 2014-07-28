@@ -21,7 +21,8 @@
           "Combos\\":"app/Combos",
          
           "Usuarios\\":"app/Usuarios",
-          "Socios\\":"app/Socios"
+          "Socios\\":"app/Socios",
+          "Familiares\\":"app/Familiares"
 
         },
 		"classmap": [

@@ -63,7 +63,7 @@ class SociosController extends \BaseController {
 	public function create()
 	{
         $form_data       = array('route' => 'socios.store', 'method' => 'POST');
-        $action          = 'Crear';
+        $action          = 'Nuevo';
         $combos          = $this->combos();
 
         return View::make("socios.create",compact("form_data","action")+$combos);
@@ -112,7 +112,7 @@ class SociosController extends \BaseController {
 	public function edit($id)
 	{
         $form_data       = array('route' => ['socios.update',$id], 'method' => 'PATCH');
-        $action          = 'Crear';
+        $action          = 'Modificar';
         $combos          = $this->combos();
         $socio           = $this->sociosRepo->find($id);
         return View::make("socios.create",compact("form_data","action","socio")+$combos);

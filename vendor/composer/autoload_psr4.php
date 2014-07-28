@@ -9,5 +9,6 @@ return array(
     'Usuarios\\' => array($baseDir . '/app/Usuarios'),
     'Socios\\' => array($baseDir . '/app/Socios'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Familiares\\' => array($baseDir . '/app/Familiares'),
     'Combos\\' => array($baseDir . '/app/Combos'),
 );
