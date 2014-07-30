@@ -29,6 +29,7 @@ Route::post('login', 'AuthController@postLogin');
         Route::resource("socios", "SociosController");
         Route::get("familiares/create/{id_socio}",array("uses"=>"FamiliaresController@create","as"=>"familiares.create"));
         Route::get("familiares/{id_familiar}",array("uses"=>"FamiliaresController@edit","as"=>"familiares.edit"));
+        Route::get("familiares/exportar/excel",array("uses"=>"FamiliaresController@exportarExcel","as"=>"familiares.exportar.excel"));
         Route::post("familiares/{id_socio}",array("uses"=>"FamiliaresController@store","as"=>"familiares.store"));
         Route::patch("familiares/{id_socio}",array("uses"=>"FamiliaresController@update","as"=>"familiares.update"));
         Route::get("socios/buscar/{slug?}",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);

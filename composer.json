@@ -9,7 +9,10 @@
     },
 	"require": {
 		"laravel/framework": "4.1.*",
-        "thujohn/pdf": "dev-master"
+        "thujohn/pdf": "dev-master",
+         "maatwebsite/excel": "1.*"
+
+
 
 
 

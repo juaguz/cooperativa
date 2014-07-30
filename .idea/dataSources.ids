@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source source="LOCAL" name="MySQL - @localhost" uuid="94016ee7-4096-4be9-9435-990980e60749">
-    <database-info product="MySQL" version="5.5.32" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+    <database-info product="MySQL" version="5.5.38-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="cdcol"/>
     <schema name="" catalog="citep"/>
     <schema name="" catalog="citep_viejo"/>
@@ -395,9 +395,40 @@
       <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
+    <table name="familiares" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_parentezco" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_sexo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="id_estudio" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="id_tipo_documento" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="updated_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="nombre" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="apellido" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="nro_documento" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="direccion" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="localidad" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="socio_futbol" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <column name="socio_pesca" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="tel_cel" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="tel_part" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="tel_lab" sqlType="VARCHAR" length="45" precision="0" nullable="true" jdbcType="12"/>
+      <column name="estudios_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="tipos_socios_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="fecha_nac" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="id_usuario" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="socio_coop" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="id_socio" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="migrations" schema="" catalog="cooperativa" type="TABLE">
       <column name="migration" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="batch" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="parentezcos" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="perfiles" schema="" catalog="cooperativa" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -414,14 +445,19 @@
       <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
+    <table name="si_no" schema="" catalog="cooperativa" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="socios" schema="" catalog="cooperativa" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="id_sexo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="id_estudio" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="id_tipo_documento" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="id_tipo_socio" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="create_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
-      <column name="update_time" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="created_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="updated_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
       <column name="nro_legajo" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="nombre" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
       <column name="apellido" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
@@ -438,6 +474,7 @@
       <column name="tipos_socios_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="fecha_nac" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
       <column name="id_usuario" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="socio_coop" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id,estudios_id,tipos_socios_id,id_sexo,id_tipo_socio"/>
     </table>
     <table name="tipos_documentos" schema="" catalog="cooperativa" type="TABLE">

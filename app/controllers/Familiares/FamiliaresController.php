@@ -166,6 +166,35 @@ class FamiliaresController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
+    public function exportarExcel(){
+
+        $familiares  = $this->familiaresRepo->all();
+
+        $data = array(
+            array('data1', 'data2'),
+            array('data3', 'data4')
+        );
+
+        Excel::create('Filename', function($excel) use($familiares) {
+
+            $excel->sheet('Sheetname', function($sheet) use($familiares) {
+
+                $sheet->loadView('familiares.listado_excel',compact("familiares"));
+
+                //$sheet->row(1, array(//cabecera
+
+                //));
+
+
+            });
+
+        })->export('xls');
+
+    }
+
+
+
 	public function destroy($id)
 	{
 		//

@@ -111,8 +111,11 @@ return array(
         'Thujohn\Pdf\PdfServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
+        'Maatwebsite\Excel\ExcelServiceProvider',
 
-	),
+
+
+    ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -179,6 +182,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Carbon'		  => 'Carbon\Carbon',
         'PDF'             => 'Thujohn\Pdf\PdfFacade',
+        'Excel'           => 'Maatwebsite\Excel\Facades\Excel',
 
 	),
 

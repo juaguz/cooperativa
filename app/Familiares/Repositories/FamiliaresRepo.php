@@ -36,6 +36,20 @@ class FamiliaresRepo extends BaseRepo
 
     }
 
+    public function excel(){
+        //$familiares = $this->model->with('getTipoDocumento','getSocio','getParentezco')
+        $familiares   = $this->model->whereHas('getTipoDocumento',function($q){
+                $q->select('descripcion');
+        })->get();
+        //->get(['getTipoDocumento']);
+
+
+        dd($familiares);
+        return $familiares;
+
+    }
+
+
     public function buscar($busqueda)
     {
 
