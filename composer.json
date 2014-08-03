@@ -22,10 +22,10 @@
 	"autoload": {
         "psr-4":{
           "Combos\\":"app/Combos",
-         
           "Usuarios\\":"app/Usuarios",
           "Socios\\":"app/Socios",
-          "Familiares\\":"app/Familiares"
+          "Familiares\\":"app/Familiares",
+          "Cocheria\\":"app/Cocheria"
 
         },
 		"classmap": [

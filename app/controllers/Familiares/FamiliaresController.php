@@ -62,6 +62,17 @@ class FamiliaresController extends \BaseController {
     }
 
 
+    public function getFamiliaresSocio(){
+
+        $idSocio = Input::get('id_socio');
+
+        $familares = $this->familiaresRepo->getFamiliaresSocio($idSocio);
+
+        return Response::json($familares);
+
+    }
+
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -171,10 +182,7 @@ class FamiliaresController extends \BaseController {
 
         $familiares  = $this->familiaresRepo->all();
 
-        $data = array(
-            array('data1', 'data2'),
-            array('data3', 'data4')
-        );
+
 
         Excel::create('Filename', function($excel) use($familiares) {
 
@@ -182,9 +190,7 @@ class FamiliaresController extends \BaseController {
 
                 $sheet->loadView('familiares.listado_excel',compact("familiares"));
 
-                //$sheet->row(1, array(//cabecera
 
-                //));
 
 
             });

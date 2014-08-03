@@ -11,4 +11,5 @@ return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Familiares\\' => array($baseDir . '/app/Familiares'),
     'Combos\\' => array($baseDir . '/app/Combos'),
+    'Cocheria\\' => array($baseDir . '/app/Cocheria'),
 );

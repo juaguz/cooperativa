@@ -29,7 +29,7 @@ return array(
 	*/
 
 
-	'model' => 'Usuarios\Entities\User',
+	'model' => 'Usuarios\Entities\Usuarios',
 
 	/*
 	|--------------------------------------------------------------------------

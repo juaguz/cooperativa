@@ -22,7 +22,7 @@
                 <li class="openable open">
                     <a href="#"> <span class="menu-icon"> <i class="fa fa-user"></i></span>
 
-                        <span class="text"> @{{ Auth::user()->nombre }} @{{ Auth::user()->apellido }} </span> <span class="menu-hover"></span> </a>
+                        <span class="text"> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }} </span> <span class="menu-hover"></span> </a>
                     <ul class="submenu">
                         <li><a href="#"><span class="submenu-label">Modificar contraseña</span></a></li>
                         <li><a href="#"><span class="submenu-label">Manual</span></a></li>
@@ -32,47 +32,48 @@
                     <a href=""> <span class="menu-icon"> <i class="fa fa-home "></i></span>
                         <span class="text"> Inicio </span> <span class="menu-hover"></span> </a>
                 </li>
-                <li class="">
-                    <a href="#">
-								<span class="menu-icon">
-									<i class="fa fa-bell fa-lg"></i>
-								</span>
-								<span class="text" class=" tooltip-test"  data-toggle="tooltip" data-placement="top" title="Requerimentos Pendientes">
-									Requerimientos
-								</span>
-                                <span class="menu-hover"></span>
-                        <span class="badge badge-danger bounceIn animation-delay6 cantidad_no_leidos" ></span>
-
-                    </a>
-                </li>
 
 
-                <li class="">
-                    <a href="@{{ route('oficios.index') }}"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
-                        <span class="text">Consulta de  Requerimientos</span> <span class="menu-hover"></span> </a>
-                </li>
 
-                <!--
+
+
                 <li class="openable">
                     <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
-                        <span class="text"> Menu 2 </span> <span class="menu-hover"></span> </a>
+                        <span class="text"> Socios </span> <span class="menu-hover"></span> </a>
                     <ul class="submenu">
-                        <li><a href="#"><span class="submenu-label">Items 1</span></a></li>
-                        <li><a href="#"><span class="submenu-label">Items 2</span></a></li>
-                        <li><a href="#"><span class="submenu-label">Items 3</span></a></li>
-                        <li><a href="#"><span class="submenu-label">Items 4</span></a></li>
+                        <li><a href="{{ route('socios.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Socios</span></a></li>
+                        <li><a href="{{ route('socios.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Cargar Socio</span></a></li>
+                        <li><a href="{{ route('socios.create') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
                     </ul>
                 </li>
-                <li> <a href="#">
-                        <span class="menu-icon"> <i class="fa fa-chevron-right"></i> </span>
-                        <span class="text"> Menu 3 </span>
-                        <span class="menu-hover"></span> </a>
+
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Familiares </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('familiares.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Familiares</span></a></li>
+                        <li><a href="{{ route('familiares.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a Excel </span></a></li>
+
+                    </ul>
                 </li>
-                <li> <a href="#">
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Cocheria </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('cocheria.facturas.index') }}"><span class="submenu-label"><i class="fa fa-list-ul"></i>  Listado de Facturas</span></a></li>
+                        <li><a href="{{ route('cocheria.facturas.create') }}"><span class="submenu-label"><i class="fa fa-list-alt"></i>  Cargar Factura</span></a></li>
+                        <li><a href="{{ route('cocheria.facturas.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a Excel </span></a></li>
+
+                    </ul>
+                </li>
+
+
+                <!--<li> <a href="#">
                         <span class="menu-icon"> <i class="fa fa-chevron-right"></i> </span>
                         <span class="text"> Menu 4 </span>
-                        <span class="menu-hover"></span> </a> </li>-->
-            </ul>
+                        <span class="menu-hover"></span> </a> </li>
+            </ul>-->
         </div>
         <!-- /main-menu -->
     </div>

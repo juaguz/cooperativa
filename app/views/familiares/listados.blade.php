@@ -10,7 +10,7 @@
 @stop
 
 @section ('content')
-    <a href="{{ route('familiares.create') }}"><button class="btn btn-primary" >Cargar Familiar <i class="glyphicon glyphicon-user"></i></button></a>
+
 <h2>Listados de Familiares</h2>
 {{ Form::model(isset($busqueda) ? $busqueda : null,["method"=>"GET"]) }}
 <div class="row" id="busqueda">
@@ -62,6 +62,6 @@
 	</tbody>
 </table>
 
-{{ $socios->appends( $busqueda )->links() }}
+{{ $familiares->appends( $busqueda )->links() }}
 
 @stop

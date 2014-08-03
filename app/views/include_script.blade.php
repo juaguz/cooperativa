@@ -4,6 +4,12 @@
 ================================================== -->
 {{ HTML::script('assets/js/jquery.js') }}
 
+{{ HTML::script('assets/js/select2.js') }}
+{{ HTML::script('assets/js/select2_locale_es.js') }}
+
+{{ HTML::script('assets/js/jquery.validate.js') }}
+{{ HTML::script('assets/js/messages_es_AR.js') }}
+
 <!-- Bootstrap -->
 <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
 {{ HTML::script('bootstrap/bootstrap/js/bootstrap.min.js') }}
@@ -41,10 +47,12 @@
 
 
 
+
+
 <script>
-    $('.fecha').datepicker({
-        "language":'es'
-    });
+    $('.fecha').datepicker({"language":'es'});
+    $('.select2').select2();
+
 </script>
 
 

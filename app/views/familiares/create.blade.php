@@ -105,7 +105,7 @@
 
     <div class="form-group col-md-4">
         {{ Form::label('id_estudio', 'Estudios') }}
-        {{ Form::select('id_estudio',$estudios ,null,array('class' => 'form-control','id'=>'')) }}
+        {{ Form::select('id_estudio',$estudios ,null,array('class' => 'form-control')) }}
 
     </div>
 

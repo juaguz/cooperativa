@@ -104,6 +104,11 @@
 </div>
 <div class="row">
 
+    <div class="form-group col-md-4 ">
+        {{ Form::label('socio_cocheria', '¿Cocheria?') }}
+        {{ Form::select('socio_cocheria',$sino ,null,array('class' => 'form-control','id'=>'')) }}
+
+    </div>
     <div class="form-group col-md-4">
         {{ Form::label('id_estudio', 'Estudios') }}
         {{ Form::select('id_estudio',$estudios ,null,array('class' => 'form-control','id'=>'')) }}

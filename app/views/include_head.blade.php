@@ -36,6 +36,10 @@
 {{ HTML::style('bootstrap/css/bootstrap-timepicker.min.css', array('media' => 'screen')) }}
 
 {{ HTML::style('bootstrap/css/gritter/jquery.gritter.css', array('media' => 'screen')) }}
+{{ HTML::style('assets/css/select2.css', array('media' => 'screen')) }}
+{{ HTML::style('assets/css/select2-bootstrap.css', array('media' => 'screen')) }}
+{{ HTML::style('assets/css/style.css', array('media' => 'screen')) }}
+
 
 
 

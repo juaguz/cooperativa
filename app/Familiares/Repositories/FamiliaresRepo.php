@@ -27,11 +27,8 @@ class FamiliaresRepo extends BaseRepo
     {
 
         $familiar = new Familiares();
-        //$socio->id_usuario = \Auth::user()->id;
-
-        $familiar->id_usuario = 1;
+        $familiar->id_usuario = \Auth::user()->id;
         $familiar->id_socio = $idSocio;
-
         return $familiar;
 
     }
@@ -64,6 +61,11 @@ class FamiliaresRepo extends BaseRepo
 
         return $this->model->paginate(20);
 
+    }
+
+    public function  getFamiliaresSocio($idSocio){
+
+        return $this->model->select(\DB::raw('concat (apellido," ",nombre) as full_name,id'))->where('id_socio','=',$idSocio)->get();
     }
 
 

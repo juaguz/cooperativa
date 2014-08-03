@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>@yield('title', 'Sistema Integrado de Requerimientos Judiciales')</title>
+    <title>@yield('title', 'Cooperativa')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
 
     @include("include_head")
 </head>

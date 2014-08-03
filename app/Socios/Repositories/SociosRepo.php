@@ -27,11 +27,17 @@ class SociosRepo extends BaseRepo
     {
 
         $socio = new Socios();
-        //$socio->id_usuario = \Auth::user()->id;
+        $socio->id_usuario = \Auth::user()->id;
 
-        $socio->id_usuario = 1;
+
 
         return $socio;
+
+    }
+
+    public function tieneCocheria(){
+
+        return $this->model->select(\DB::raw('concat (apellido," ",nombre," Nro Legajo: ",nro_legajo) as full_name,id'))->where('socio_cocheria','=','2')->orderBy('apellido')->lists('full_name', 'id');
 
     }
 

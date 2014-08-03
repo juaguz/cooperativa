@@ -24,11 +24,21 @@ class Familiares extends \Eloquent{
         return $this->hasOne('Combos\Entities\Sexo','id','id_sexo');
 
     }
-    public function getSiNo(){
+    public function getSiNoSocioCoop(){
 
         return $this->hasOne('Combos\Entities\SiNo','id','socio_coop');
 
     }
+    public function getSiNoSocioFutbol(){
+
+        return $this->hasOne('Combos\Entities\SiNo','id','socio_futbol');
+
+    }public function getSiNoSocioPesca(){
+
+        return $this->hasOne('Combos\Entities\SiNo','id','socio_pesca');
+
+    }
+
     public function getEstudio(){
 
         return $this->hasOne('Combos\Entities\Estudio','id','id_estudio');
