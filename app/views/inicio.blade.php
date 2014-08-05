@@ -9,7 +9,7 @@
 @section ('content')
 <div class="main-header clearfix">
     <div class="page-title">
-        <h3 class="no-margin">SIRJ</h3>
+        <h3 class="no-margin">Cooperativa C.A.S.A.L Ltda.</h3>
         <span>{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</span>
     </div>
     <!-- /page-title -->

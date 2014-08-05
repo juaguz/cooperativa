@@ -64,22 +64,25 @@
 </head>
 
 <body>
+
+<!--test-->
+<!--123456-->
 <div class="login-wrapper">
     <div class="text-center">
-        <img src="{{ URL::asset('bootstrap/images/login-logo_03.png')}}" class="fadeInUp animation-delay9">
+        <img src="{{ URL::asset('bootstrap/images/Cooperativas.gif')}}" class="fadeInUp animation-delay9">
     </div>
     <div class="text-center">
         <h2 class="fadeInUp animation-delay8" style="font-weight:bold">
-            <span class="text-success">S.I.R.J</span>
+            <span class="text-success">Cooperativa C.A.S.A.L Ltda.</span>
             <br>
-            <span class="text-success">Sistema Integrado De Requerimientos Judiciales</span>
+            <span class="text-success"></span>
         </h2>
     </div>
     <div class="login-widget animation-delay1">
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <div class="pull-left">
-                    <i class="fa fa-lock fa-lg"></i> Login
+                    <i class="fa fa-lock fa-lg"></i> Ingreso
                 </div>
             </div>
             <div class="panel-body">
@@ -111,7 +114,7 @@
     <div class="text-center">
         <h2 class="fadeInUp animation-delay8" style="font-weight:bold">
             <span
-                class="text-success">Secretaría de Cooperación con los Poderes Judiciales, Ministerios Públicos y Legislaturas</span>
+                class="text-success"></span>
         </h2>
     </div>
 </div>

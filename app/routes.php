@@ -29,6 +29,7 @@ Route::group(array('before' => 'auth'), function () {
         Route::resource("usuarios", "UsuariosController");
         Route::resource("inicio", "SociosController");
         Route::resource("socios", "SociosController");
+        Route::resource("comercios", "ComerciosController");
         Route::resource("cocheria/facturas","FacturasController");
         Route::get("cocheria/facturas/exportar/excel",array("uses"=>"FacturasController@exportarExcel","as"=>"cocheria.facturas.exportar.excel"));
 
@@ -50,6 +51,8 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("socios/familiares",array("uses"=>"FamiliaresController@getFamiliaresSocio","as"=>"getFamiliaresSocios"));
 
         Route::patch("familiares/{id_socio}",array("uses"=>"FamiliaresController@update","as"=>"familiares.update"));
+
+        Route::get("comercios/exportar/excel",array("uses"=>"ComerciosController@exportarExcel","as"=>"comercios.exportar.excel"));
 
 
 

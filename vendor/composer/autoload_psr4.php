@@ -10,6 +10,7 @@ return array(
     'Socios\\' => array($baseDir . '/app/Socios'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Familiares\\' => array($baseDir . '/app/Familiares'),
+    'Comercios\\' => array($baseDir . '/app/Comercios'),
     'Combos\\' => array($baseDir . '/app/Combos'),
     'Cocheria\\' => array($baseDir . '/app/Cocheria'),
 );

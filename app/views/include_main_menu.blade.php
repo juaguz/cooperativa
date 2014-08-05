@@ -68,6 +68,17 @@
                     </ul>
                 </li>
 
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Comercios </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('comercios.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Comercios</span></a></li>
+                        <li><a href="{{ route('comercios.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Comercio</span></a></li>
+                        <li><a href="{{ route('comercios.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
+                    </ul>
+                </li>
+
 
                 <!--<li> <a href="#">
                         <span class="menu-icon"> <i class="fa fa-chevron-right"></i> </span>

@@ -4,12 +4,12 @@
     <!-- logo -->
     <figure>
 
-        <img src="{{ URL::asset('bootstrap/images/logo-minseg.png')}}" id="logominseg">
+        <img src="{{ URL::asset('bootstrap/images/Cooperativas.gif')}}" id="logominseg">
     </figure>
     <!-- logo -->
     <div class="brand">
         <span>
-            Cooperativa
+            Cooperativa C.A.S.A.L Ltda.
 
         </span>
     </div>

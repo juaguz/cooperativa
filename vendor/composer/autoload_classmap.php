@@ -9,6 +9,7 @@ return array(
     'AddForeignKeysToUsuariosTable' => $baseDir . '/app/database/migrations/2014_07_12_184945_add_foreign_keys_to_usuarios_table.php',
     'AuthController' => $baseDir . '/app/controllers/Usuarios/AuthController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
+    'ComerciosController' => $baseDir . '/app/controllers/Comercios/ComerciosController.php',
     'CompaniaCelularTableSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'CreateEstudiosTable' => $baseDir . '/app/database/migrations/2014_07_06_230228_create_estudios_table.php',
     'CreatePerfilesTable' => $baseDir . '/app/database/migrations/2014_07_06_230228_create_perfiles_table.php',

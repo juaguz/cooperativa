@@ -25,7 +25,8 @@
           "Usuarios\\":"app/Usuarios",
           "Socios\\":"app/Socios",
           "Familiares\\":"app/Familiares",
-          "Cocheria\\":"app/Cocheria"
+          "Cocheria\\":"app/Cocheria",
+          "Comercios\\":"app/Comercios"
 
         },
 		"classmap": [
