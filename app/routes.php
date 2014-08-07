@@ -34,6 +34,7 @@ Route::group(array('before' => 'auth'), function () {
         Route::get("cocheria/facturas/exportar/excel",array("uses"=>"FacturasController@exportarExcel","as"=>"cocheria.facturas.exportar.excel"));
 
         Route::get("socios/buscar/{slug?}",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);
+        Route::get("socios/exportar/excel",array("uses"=>"SociosController@exportarExcel","as"=>"socios.exportar.excel"));
 
         //Familiares//
 

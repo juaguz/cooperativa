@@ -144,6 +144,27 @@ class SociosController extends \BaseController {
 
 	}
 
+    public function exportarExcel(){
+
+        $socios  = $this->sociosRepo->all();
+
+
+
+        Excel::create('Socios', function($excel) use($socios) {
+
+            $excel->sheet('Sheetname', function($sheet) use($socios) {
+
+                $sheet->loadView('socios.listado_excel',compact("socios"));
+
+
+
+
+            });
+
+        })->export('xls');
+
+    }
+
 
 	/**
 	 * Remove the specified resource from storage.

@@ -43,7 +43,7 @@
                     <ul class="submenu">
                         <li><a href="{{ route('socios.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Socios</span></a></li>
                         <li><a href="{{ route('socios.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Cargar Socio</span></a></li>
-                        <li><a href="{{ route('socios.create') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+                        <li><a href="{{ route('socios.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
 
                     </ul>
                 </li>
