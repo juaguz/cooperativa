@@ -4,7 +4,7 @@
     <!-- logo -->
     <figure>
 
-        <img src="{{ URL::asset('bootstrap/images/Cooperativas.gif')}}" id="logominseg">
+        <img src="{{ URL::asset('bootstrap/images/CooperativaMini.gif')}}" id="logominseg">
     </figure>
     <!-- logo -->
     <div class="brand">
