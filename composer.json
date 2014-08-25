@@ -26,7 +26,10 @@
           "Socios\\":"app/Socios",
           "Familiares\\":"app/Familiares",
           "Cocheria\\":"app/Cocheria",
-          "Comercios\\":"app/Comercios"
+          "Comercios\\":"app/Comercios",
+          "Rifas\\":"app/Rifas",
+          "Circulos\\":"app/Circulos",
+          "Prestamos\\":"app/Prestamos"
 
         },
 		"classmap": [

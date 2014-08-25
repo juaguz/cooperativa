@@ -8,9 +8,12 @@ $baseDir = dirname($vendorDir);
 return array(
     'Usuarios\\' => array($baseDir . '/app/Usuarios'),
     'Socios\\' => array($baseDir . '/app/Socios'),
+    'Rifas\\' => array($baseDir . '/app/Rifas'),
+    'Prestamos\\' => array($baseDir . '/app/Prestamos'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Familiares\\' => array($baseDir . '/app/Familiares'),
     'Comercios\\' => array($baseDir . '/app/Comercios'),
     'Combos\\' => array($baseDir . '/app/Combos'),
     'Cocheria\\' => array($baseDir . '/app/Cocheria'),
+    'Circulos\\' => array($baseDir . '/app/Circulos'),
 );

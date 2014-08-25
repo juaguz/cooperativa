@@ -9,6 +9,7 @@
 
 {{ HTML::script('assets/js/jquery.validate.js') }}
 {{ HTML::script('assets/js/messages_es_AR.js') }}
+{{ HTML::script('assets/js/jquery.blockUI.js') }}
 
 <!-- Bootstrap -->
 <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
@@ -50,8 +51,13 @@
 
 
 <script>
-    $('.fecha').datepicker({"language":'es'});
+    function fecha(){
+        $('.fecha').datepicker({"language":'es'});
+    }
+    fecha();
     $('.select2').select2();
+
+
 
 </script>
 

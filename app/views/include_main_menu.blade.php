@@ -79,6 +79,37 @@
                     </ul>
                 </li>
 
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Rifas </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('rifas.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Rifas</span></a></li>
+                        <li><a href="{{ route('rifas.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Rifa</span></a></li>
+                        <li><a href="{{ route('rifas.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
+                    </ul>
+                </li>
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Círculos </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('circulos.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Círculos</span></a></li>
+                        <li><a href="{{ route('circulos.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Círculo</span></a></li>
+                        <li><a href="{{ route('circulos.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
+                    </ul>
+                </li>
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Prestamos </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('prestamos.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Prestamos</span></a></li>
+                        <li><a href="{{ route('prestamos.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Prestamo </span></a></li>
+                        <li><a href="@{{ route('circulos.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
+                    </ul>
+                </li>
+
 
                 <!--<li> <a href="#">
                         <span class="menu-icon"> <i class="fa fa-chevron-right"></i> </span>

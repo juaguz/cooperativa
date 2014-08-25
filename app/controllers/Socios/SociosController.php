@@ -115,7 +115,7 @@ class SociosController extends \BaseController {
         $action          = 'Modificar';
         $combos          = $this->combos();
         $socio           = $this->sociosRepo->find($id);
-        return View::make("socios.create",compact("form_data","action","socio")+$combos);
+        return View::make("socios.socio",compact("form_data","action","socio")+$combos);
 	}
 
 

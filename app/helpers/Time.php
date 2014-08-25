@@ -19,19 +19,23 @@ class Time {
     }
 
     public static function FormatearToMysql($sFecha) {
-        if(strpos($sFecha,"/") > 0)
-            self::$sFecha = str_replace('/', '-', $sFecha);
-        else
-            self::$oFecha =  new DateTime($sFecha);
+        if(!empty($sFecha)){
+            if(strpos($sFecha,"/") > 0)
+                self::$sFecha = str_replace('/', '-', $sFecha);
+            else
+                self::$oFecha =  new DateTime($sFecha);
 
-        self::$sFormato = "Y-m-d";
-        return self::fecha();
+            self::$sFormato = "Y-m-d";
+            return self::fecha();
+        }
     }
 
     public static function FormatearToNormal($sFecha){
-        self::$sFecha = $sFecha;
-        self::$sFormato = "d/m/Y";
-        return self::fecha();
+        if(!empty($sFecha)){
+            self::$sFecha = $sFecha;
+            self::$sFormato = "d/m/Y";
+            return self::fecha();
+        }
     }
 
 }

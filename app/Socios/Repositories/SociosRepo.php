@@ -40,6 +40,11 @@ class SociosRepo extends BaseRepo
         return $this->model->select(\DB::raw('concat (apellido," ",nombre," Nro Legajo: ",nro_legajo) as full_name,id'))->where('socio_cocheria','=','2')->orderBy('apellido')->lists('full_name', 'id');
 
     }
+    public function getComboNroLegajo(){
+
+        return $this->model->select(\DB::raw('concat (apellido," ",nombre," Nro Legajo: ",nro_legajo) as full_name,id'))->orderBy('apellido')->lists('full_name', 'id');
+
+    }
 
     public function buscar($busqueda)
     {

@@ -30,7 +30,23 @@ Route::group(array('before' => 'auth'), function () {
         Route::resource("inicio", "SociosController");
         Route::resource("socios", "SociosController");
         Route::resource("comercios", "ComerciosController");
+        Route::resource("rifas", "RifasController");
         Route::resource("cocheria/facturas","FacturasController");
+        Route::resource("circulos", "CirculosController");
+        Route::resource("prestamos","PrestamosController");
+
+        Route::post("prestamos/getTabla",["as"=>"prestamos.getTabla","uses"=>"PrestamosController@getTabla"]);
+
+        Route::post("circulos/getTabla",["as"=>"circulos.getTabla","uses"=>"CirculosController@getTabla"]);
+
+
+
+        Route::post("prestamos/actualizar",["as"=>"prestamos.actualizar","uses"=>"PrestamosController@actualizar"]);
+
+        Route::post("prestamos/getTablaPrestamo",["as"=>"prestamos.getTablaPrestamo","uses"=>"PrestamosController@getTablaPrestamo"]);
+
+        Route::post("circulos/getTablaCirculo",["as"=>"circulos.getTablaCirculo","uses"=>"CirculosController@getTablaCirculo"]);
+
         Route::get("cocheria/facturas/exportar/excel",array("uses"=>"FacturasController@exportarExcel","as"=>"cocheria.facturas.exportar.excel"));
 
         Route::get("socios/buscar/{slug?}",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);
@@ -54,6 +70,8 @@ Route::group(array('before' => 'auth'), function () {
         Route::patch("familiares/{id_socio}",array("uses"=>"FamiliaresController@update","as"=>"familiares.update"));
 
         Route::get("comercios/exportar/excel",array("uses"=>"ComerciosController@exportarExcel","as"=>"comercios.exportar.excel"));
+        Route::get("rifas/exportar/excel",array("uses"=>"RifasController@exportarExcel","as"=>"rifas.exportar.excel"));
+        Route::get("circulos/exportar/excel",array("uses"=>"CirculosController@exportarExcel","as"=>"circulos.exportar.excel"));
 
 
 
