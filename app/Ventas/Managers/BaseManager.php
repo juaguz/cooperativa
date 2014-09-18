@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Circulos\Managers;
+namespace Ventas\Managers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -32,6 +32,9 @@ abstract class BaseManager {
         return $isValid;
     }
 
+
+
+
     public function getErrors(){
 
         return $this->errors;
@@ -46,7 +49,7 @@ abstract class BaseManager {
 
       if(!$this->isValid()){
             return false;
-      }
+        }
 
         $this->entity->fill($this->data);
         $this->entity->save();

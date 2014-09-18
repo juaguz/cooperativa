@@ -90,7 +90,7 @@ class PrestamosController extends \BaseController {
             $cuotaRepo = $this->prestamosCuotasRepo->newCuotas($id);
             $cuotasManager = new PrestamosCuotasManager($cuotaRepo,$cuota);
             $cuotasManager->save();
-        }
+    }
 
         return Redirect::route('prestamos.edit',$id)->with('mensaje_exito','Prestamo Creado Correctamente!');
 

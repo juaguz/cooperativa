@@ -35,7 +35,10 @@ Route::group(array('before' => 'auth'), function () {
         Route::resource("circulos", "CirculosController");
         Route::resource("prestamos","PrestamosController");
 
+
         Route::post("prestamos/getTabla",["as"=>"prestamos.getTabla","uses"=>"PrestamosController@getTabla"]);
+
+
 
         Route::post("circulos/getTabla",["as"=>"circulos.getTabla","uses"=>"CirculosController@getTabla"]);
 
@@ -43,7 +46,9 @@ Route::group(array('before' => 'auth'), function () {
 
         Route::post("prestamos/actualizar",["as"=>"prestamos.actualizar","uses"=>"PrestamosController@actualizar"]);
 
+
         Route::post("prestamos/getTablaPrestamo",["as"=>"prestamos.getTablaPrestamo","uses"=>"PrestamosController@getTablaPrestamo"]);
+
 
         Route::post("circulos/getTablaCirculo",["as"=>"circulos.getTablaCirculo","uses"=>"CirculosController@getTablaCirculo"]);
 
@@ -71,11 +76,19 @@ Route::group(array('before' => 'auth'), function () {
 
         Route::get("comercios/exportar/excel",array("uses"=>"ComerciosController@exportarExcel","as"=>"comercios.exportar.excel"));
         Route::get("rifas/exportar/excel",array("uses"=>"RifasController@exportarExcel","as"=>"rifas.exportar.excel"));
+
         Route::get("circulos/exportar/excel",array("uses"=>"CirculosController@exportarExcel","as"=>"circulos.exportar.excel"));
 
 
 
         //Fin Familiares//
+
+        //Ventas//
+        Route::resource("ventas","VentasController");
+        Route::post("ventas/getTablaVenta",["as"=>"ventas.getTablaVentas","uses"=>"VentasController@getTablaVenta"]);
+        Route::post("ventas/getTabla",["as"=>"ventas.getTabla","uses"=>"VentasController@getTabla"]);
+        Route::post("ventas/actualizar",["as"=>"ventas.actualizar","uses"=>"VentasController@actualizar"]);
+
 
 
 

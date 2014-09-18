@@ -1,9 +1,11 @@
 <?php
 
+use Circulos\Managers\CirculosSociosManagers;
 use Circulos\Repositories\CirculosRepo;
 use Circulos\Repositories\CirculosSociosRepo;
 use Circulos\Managers\CirculosManager;
 use Socios\Repositories\SociosRepo;
+use Socios\Managers\SociosManager;
 
 class CirculosController extends \BaseController {
 
@@ -64,16 +66,28 @@ class CirculosController extends \BaseController {
     public function store()
     {
         //
-
-        $data  = Input::all();
+        $respuestas  = [];
+        $data      = Input::all();
+        $idsSocios = explode(',',$data['socios']);
         $circulo = $this->circulosRepo->newCirculo();
         $circuloManager = new CirculosManager($circulo,$data);
         if($circuloManager->save()){
-            return Redirect::route('circulos.edit',$circulo->id)->with('mensaje_exito',"Circulo creado Correctamente.");
+            $idCirculo = $circulo->id;
+            foreach($idsSocios as $idSocio){
+                $socio = $this->circulosSociosRepo->newCirculosSocios($idCirculo,$idSocio);
+                $socioManager = new CirculosSociosManagers($socio,[]);
+                $socioManager->save();
+            }
 
+            $respuestas  = ["ruta"=>route(['circulos.edit',$idCirculo]),
+                            "response"=>201
+                            ];
+            return Response::json($respuestas);
         }
 
-        return Redirect::back()->withErrors($circuloManager->getErrors())->withInput();
+        $respuestas  = ["response"=>400,"errores"=>$circuloManager->getErrors()];
+        return Response::json($respuestas);
+
 
     }
 

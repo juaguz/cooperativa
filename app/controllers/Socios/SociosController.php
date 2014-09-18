@@ -78,7 +78,9 @@ class SociosController extends \BaseController {
 	public function store()
 	{
 
+
         $data  = Input::all();
+
         $socio = $this->sociosRepo->newSocio();
         $socioManager = new SociosManager($socio,$data);
         if($socioManager->save()){

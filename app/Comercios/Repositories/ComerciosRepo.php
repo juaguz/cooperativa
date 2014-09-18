@@ -35,7 +35,13 @@ class ComerciosRepo extends BaseRepo
 
     }
 
-    public function buscar($busqueda)
+    public function getComboComercio(){
+
+        return $this->model->orderBy('nombre')->lists('nombre', 'id');
+
+    }
+
+      public function buscar($busqueda)
     {
 
         if (isset($busqueda['nombre']) and !empty($busqueda['nombre'])) {

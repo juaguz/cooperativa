@@ -29,7 +29,8 @@
           "Comercios\\":"app/Comercios",
           "Rifas\\":"app/Rifas",
           "Circulos\\":"app/Circulos",
-          "Prestamos\\":"app/Prestamos"
+          "Prestamos\\":"app/Prestamos",
+          "Ventas\\":"app/Ventas"
 
         },
 		"classmap": [

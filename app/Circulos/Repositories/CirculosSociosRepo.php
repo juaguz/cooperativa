@@ -8,17 +8,17 @@
 
 namespace Circulos\Repositories;
 
-use Circulos\Entities\Circulos;
+use Circulos\Entities\CirculosSocios;
 
 class CirculosSociosRepo extends BaseRepo {
 
 
-    public function newSocios($idCirculo){
+    public function newCirculosSocios($idCirculo,$idSocio){
         $socios = $this->getModel();
 
         $socios->id_circulo = $idCirculo;
 
-        $socios->id_usuario  = \Auth::user()->id;
+        $socios->id_socio   = $idSocio;
 
         return $socios;
 
@@ -29,7 +29,7 @@ class CirculosSociosRepo extends BaseRepo {
     public function getModel()
     {
         // TODO: Implement getModel() method.
-        return new Circulos();
+        return new CirculosSocios();
 
     }
 }

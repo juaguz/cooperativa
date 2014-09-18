@@ -5,8 +5,14 @@
         <ul class="tab-bar">
             <li class="active"><a href="#datoSocio" data-toggle="tab"><i class="fa fa-user"></i> Datos del Socio</a></li>
             <li><a href="#familiares" data-toggle="tab"><i class="fa fa-users"></i> Familiares</a></li>
-            <li><a href="#prestamos" data-toggle="tab"><i class="fa fa-money"></i> Prestamos</a></li>
+            <li><a href="#prestamos" data-toggle="tab"><i class="fa fa-dollar"></i> Prestamos</a></li>
             <li><a href="#circulos" data-toggle="tab"><i class="fa fa-circle-o"></i> Circulos</a></li>
+            <li><a href="#rifas" data-toggle="tab"><i class="fa fa-ticket"></i> Rifas</a></li>
+            <li><a href="#ventas" data-toggle="tab"><i class="fa fa-money"></i> Ventas</a></li>
+            <li><a href="#ordenes" data-toggle="tab"><i class="fa fa-folder-o"></i> Ordenes de Compra</a></li>
+            <li><a href="#ordenes" data-toggle="tab"><i class="fa fa-folder-o"></i> Bonos</a></li>
+            <li><a href="#futbol" data-toggle="tab"><i class="fa fa-futbol-o"></i> Peña de Futbol</a></li>
+            <li><a href="#pesca" data-toggle="tab"><i class="fa fa-anchor"></i> Peña de Pesca</a></li>
         </ul>
     </div>
     <div class="panel-body">
@@ -20,9 +26,8 @@
             <div class="tab-pane fade" id="prestamos">
               @include('prestamos.tabla',["prestamos"=>$socio->getPrestamos]);
             </div>
-            <div class="tab-pane fade" id="circulos">
-                @include('circulos.tabla',["circulos"=>$socio->getCirculos]);
-            </div>
+            <!--<div class="tab-pane fade" id="circulos">
+            </div>-->
         </div>
     </div>
 </div>
