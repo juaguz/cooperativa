@@ -62,6 +62,15 @@ class Socios extends \Eloquent{
         //return $this->hasMany('Circulos\Entities\Circulos','id_socio','id');
 
     }
+    public function getVentas(){
+        return $this->hasMany('Ventas\Entities\Ventas','id_socio','id');        
+    }
+    public function getPesca(){
+        return $this->hasMany('Servicios\Entities\Servicios','id_socio','id')->where('id_penia','=',1);        
+    }
+    public function getFutbol(){
+        return $this->hasMany('Servicios\Entities\Servicios','id_socio','id')->where('id_penia','=',2);        
+    }
 
 
 

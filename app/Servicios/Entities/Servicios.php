@@ -13,7 +13,7 @@ class Servicios extends \Eloquent{
 
     protected  $table     = "servicios";
 
-    protected  $fillable  = ["id_socio","tipo_penia","monto","interes","cantidad_cuotas","descripcion"];
+    protected  $fillable  = ["id_socio","id_penia","monto","interes","cantidad_cuotas","descripcion"];
 
     public function cuotas(){
 

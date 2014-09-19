@@ -18,16 +18,25 @@
     <div class="panel-body">
         <div class="tab-content">
             <div class="tab-pane fade in active" id="datoSocio">
-                @include('socios.contenido_tabs.formulario');
+                @include('socios.contenido_tabs.formulario')
             </div>
             <div class="tab-pane fade" id="familiares">
-                @include('socios.contenido_tabs.familiares');
+                @include('socios.contenido_tabs.familiares')
             </div>
             <div class="tab-pane fade" id="prestamos">
-              @include('prestamos.tabla',["prestamos"=>$socio->getPrestamos]);
+              @include('prestamos.tabla',["prestamos"=>$socio->getPrestamos])
             </div>
             <!--<div class="tab-pane fade" id="circulos">
             </div>-->
+            <div class="tab-pane fade" id="ventas">
+              @include('ventas.tabla',["ventas"=>$socio->getVentas])
+            </div>
+            <div class="tab-pane fade" id="futbol">
+              @include('servicios.tabla',["servicios"=>$socio->getFutbol])
+            </div>
+            <div class="tab-pane fade" id="pesca">
+              @include('servicios.tabla',["servicios"=>$socio->getPesca])
+            </div>
         </div>
     </div>
 </div>
