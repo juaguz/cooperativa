@@ -30,7 +30,9 @@
           "Rifas\\":"app/Rifas",
           "Circulos\\":"app/Circulos",
           "Prestamos\\":"app/Prestamos",
-          "Ventas\\":"app/Ventas"
+          "Ventas\\":"app/Ventas",
+          "Servicios\\":"app/Servicios",
+          "Penias\\":"app/Penias"
 
         },
 		"classmap": [

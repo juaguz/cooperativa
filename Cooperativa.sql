@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2014 a las 04:28:34
+-- Tiempo de generación: 19-09-2014 a las 05:23:01
 -- Versión del servidor: 5.5.32
 -- Versión de PHP: 5.4.19
 
@@ -355,6 +355,32 @@ INSERT INTO `cuotas_prestamo` (`id`, `id_prestamo`, `importe`, `fecha_vencimient
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cuotas_servicios`
+--
+
+CREATE TABLE IF NOT EXISTS `cuotas_servicios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `importe` float NOT NULL,
+  `fecha_vencimiento` date NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_servicio` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `cuotas_servicios`
+--
+
+INSERT INTO `cuotas_servicios` (`id`, `importe`, `fecha_vencimiento`, `created_at`, `updated_at`, `id_servicio`, `id_usuario`) VALUES
+(1, 110, '2014-09-18', '2014-09-18 22:32:45', '2014-09-18 22:32:45', 2, 1),
+(2, 110, '2014-10-18', '2014-09-18 22:32:45', '2014-09-18 22:32:45', 2, 1),
+(3, 110, '2014-11-18', '2014-09-18 22:32:45', '2014-09-18 22:32:45', 2, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cuotas_ventas`
 --
 
@@ -544,6 +570,26 @@ INSERT INTO `parentezcos` (`id`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `penias`
+--
+
+CREATE TABLE IF NOT EXISTS `penias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `penias`
+--
+
+INSERT INTO `penias` (`id`, `nombre`) VALUES
+(1, 'Pesca'),
+(2, 'Futbol');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `perfiles`
 --
 
@@ -632,6 +678,34 @@ CREATE TABLE IF NOT EXISTS `rifas` (
 
 INSERT INTO `rifas` (`id`, `nombre`, `desde`, `hasta`, `ganador`, `precio`, `fecha_sorteo`, `id_usuario`, `created_at`, `updated_at`) VALUES
 (1, 'rifa', 1, 10000, 0, 300, '2014-08-09', 1, '2014-08-17 18:50:07', '2014-08-17 18:50:07');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicios`
+--
+
+CREATE TABLE IF NOT EXISTS `servicios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_socio` int(11) NOT NULL,
+  `id_penia` int(11) NOT NULL,
+  `monto` float NOT NULL,
+  `interes` float NOT NULL,
+  `cantidad_cuotas` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `servicios`
+--
+
+INSERT INTO `servicios` (`id`, `id_socio`, `id_penia`, `monto`, `interes`, `cantidad_cuotas`, `created_at`, `updated_at`, `descripcion`, `id_usuario`) VALUES
+(1, 1, 0, 300, 10, 3, '2014-09-18 22:31:37', '2014-09-18 22:31:37', 'Viaje a Córdoba', 1),
+(2, 1, 0, 300, 10, 3, '2014-09-18 22:32:45', '2014-09-18 22:32:45', 'Viaje a Córdoba', 1);
 
 -- --------------------------------------------------------
 

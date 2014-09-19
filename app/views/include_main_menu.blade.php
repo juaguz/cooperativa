@@ -120,6 +120,17 @@
                     </ul>
                 </li>
 
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Servicios </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('servicios.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Servicios</span></a></li>
+                        <li><a href="{{ route('servicios.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Servicio </span></a></li>
+                        <li><a href="@{{ route('servicios.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
+                    </ul>
+                </li>
+
                 <!--<li> <a href="#">
                         <span class="menu-icon"> <i class="fa fa-chevron-right"></i> </span>
                         <span class="text"> Menu 4 </span>

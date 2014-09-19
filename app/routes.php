@@ -89,6 +89,12 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("ventas/getTabla",["as"=>"ventas.getTabla","uses"=>"VentasController@getTabla"]);
         Route::post("ventas/actualizar",["as"=>"ventas.actualizar","uses"=>"VentasController@actualizar"]);
 
+        //Servicios//
+        Route::resource("servicios","ServiciosController");
+        Route::post("servicios/getTablaServicio",["as"=>"servicios.getTablaServicios","uses"=>"ServiciosController@getTablaServicio"]);
+        Route::post("servicios/getTabla",["as"=>"servicios.getTabla","uses"=>"ServiciosController@getTabla"]);
+        Route::post("servicios/actualizar",["as"=>"servicios.actualizar","uses"=>"ServiciosController@actualizar"]);
+
 
 
 
