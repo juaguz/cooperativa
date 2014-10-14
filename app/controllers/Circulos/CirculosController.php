@@ -1,12 +1,15 @@
 <?php
 
 use Carbon\Carbon;
+use Circulos\Managers\CirculosCuotasManager;
 use Circulos\Managers\CirculosSociosManagers;
+use Circulos\Repositories\CirculosCuotasRepo;
 use Circulos\Repositories\CirculosRepo;
 use Circulos\Repositories\CirculosSociosRepo;
 use Circulos\Managers\CirculosManager;
 use Socios\Repositories\SociosRepo;
 use Socios\Managers\SociosManager;
+
 
 class CirculosController extends \BaseController {
 
@@ -18,14 +21,20 @@ class CirculosController extends \BaseController {
     protected $circulosRepo;
     protected $circulosSociosRepo;
     protected $sociosRepo;
+    /**
+     * @var CirculosCuotasRepo
+     */
+    private $circulosCuotasRepo;
+    private $fechaDesde;
 
 
-    public function __construct(CirculosRepo $circulosRepo, CirculosSociosRepo $circulosSociosRepo,SociosRepo $sociosRepo){
+    public function __construct(CirculosRepo $circulosRepo, CirculosSociosRepo $circulosSociosRepo,SociosRepo $sociosRepo, CirculosCuotasRepo $circulosCuotasRepo){
 
         $this->circulosRepo       = $circulosRepo;
         $this->circulosSociosRepo = $circulosSociosRepo;
         $this->sociosRepo         = $sociosRepo;
 
+        $this->circulosCuotasRepo = $circulosCuotasRepo;
     }
 
     /**
@@ -35,11 +44,11 @@ class CirculosController extends \BaseController {
      */
     function diffFechas($fechaDesde, $fechaHasta)
     {
-        $fechaDesde = Carbon::createFromFormat('d/m/Y', $fechaDesde);
-        $fechaHasta = Carbon::createFromFormat('d/m/Y', $fechaHasta);
+        $this->fechaDesde = $this->createFecha($fechaDesde);
+        $fechaHasta = $this->createFecha($fechaHasta);
         $response = [
-                        "cantidadMeses" => $fechaDesde->diffInMonths($fechaHasta),
-                        "mes" => $fechaDesde->format('m')
+                        "cantidadMeses" => $this->fechaDesde->diffInMonths($fechaHasta),
+                        "mes" => $this->fechaDesde->format('m')
         ];
 
         return $response;
@@ -91,17 +100,12 @@ class CirculosController extends \BaseController {
         $idsSocios = explode(',',$data['socios']);
         $circulo = $this->circulosRepo->newCirculo();
         $circuloManager = new CirculosManager($circulo,$data);
+        $cantidadCuotas  = $this->diffFechas($data['fecha_inicio'],$data['fecha_fin']);
+
         if($circuloManager->save()){
             $idCirculo = $circulo->id;
-            foreach($idsSocios as $idSocio){
-                $socioCirculo = $this->circulosSociosRepo->newCirculosSocios($idCirculo,$idSocio);
-                $socioManager = new CirculosSociosManagers($socioCirculo,[]);
-                $socioManager->save();
-                $idCirculoSoc = $socioCirculo->id;
-
-            }
-
-            $respuestas  = ["ruta"=>route(['circulos.edit',$idCirculo]),
+            $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
+            $respuestas  = ["ruta"=>route('circulos.edit',$idCirculo),
                             "response"=>201
                             ];
             return Response::json($respuestas);
@@ -197,21 +201,53 @@ class CirculosController extends \BaseController {
 
         $circulos  = $this->circulosRepo->all();
 
-
-
         Excel::create('Circulos', function($excel) use($circulos) {
-
             $excel->sheet('Sheetname', function($sheet) use($circulos) {
-
                 $sheet->loadView('circulos.listado_excel',compact("circulos"));
-
-
-
-
             });
-
         })->export('xls');
 
+    }
+
+    /**
+     * @param $fechaDesde
+     * @return static
+     */
+    public function createFecha($fechaDesde)
+    {
+        return Carbon::createFromFormat('d/m/Y', $fechaDesde);
+    }
+
+    /**
+     * @param $cantidadCuotas
+     * @param $idCirculoSoc
+     */
+    public function cuotasCirculos($cantidadCuotas, $idCirculoSoc)
+    {
+        for ($i = 1; $i <= $cantidadCuotas['cantidadMeses']; $i++) {
+            $mes = $this->fechaDesde->addMonths($i);
+            $vencimiento = $mes->lastOfMonth();
+            $repo = $this->circulosCuotasRepo->newCirculosCuotas($idCirculoSoc, $vencimiento);
+            $manager = new CirculosCuotasManager($repo, []);
+            $manager->save();
+
+        }
+    }
+
+    /**
+     * @param $idsSocios
+     * @param $idCirculo
+     * @param $cantidadCuotas
+     */
+    public function circuloSocios($idsSocios, $idCirculo, $cantidadCuotas)
+    {
+        foreach ($idsSocios as $idSocio) {
+            $socioCirculo = $this->circulosSociosRepo->newCirculosSocios($idCirculo, $idSocio);
+            $socioManager = new CirculosSociosManagers($socioCirculo, []);
+            $socioManager->save();
+            $idCirculoSoc = $socioCirculo->id;
+            $this->cuotasCirculos($cantidadCuotas, $idCirculoSoc);
+        }
     }
 
 
