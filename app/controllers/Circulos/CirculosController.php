@@ -70,8 +70,9 @@ class CirculosController extends \BaseController {
 
         $form_data       = array('route' => 'circulos.store', 'method' => 'POST','id'=>'circuloFrm');
         $action          = 'Nuevo';
+        $socios          = $this->sociosRepo->getComboNroLegajo();
 
-        return View::make("circulos.create",compact("form_data","action"));
+        return View::make("circulos.create",compact("form_data","action","socios"));
 
     }
 

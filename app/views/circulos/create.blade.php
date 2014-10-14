@@ -48,14 +48,15 @@
 
 <div class="row">
     <div class="form-group col-md-4">
-        <select id="socios" class="form-control sociosCombo">
+        <!--<select id="socios" class="form-control sociosCombo">
                 <option value="0">Seleccione</option>
                 <option value="1">Usuario1</option>
                 <option value="2">Usuario2</option>
                 <option value="3">Usuario3</option>
 
 
-        </select>
+        </select>-->
+        {{ Form::select('socios',$socios,null,['id'=>'socios','class'=>'form-control sociosCombo'])}}
     </div>
     <div class="form-group col-md-4">
         <button class="btn btn-primary" id="btnAgregar">Agregar</button>
