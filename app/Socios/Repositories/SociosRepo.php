@@ -48,10 +48,10 @@ class SociosRepo extends BaseRepo
 
     public function buscar($busqueda)
     {
-
-        if (isset($busqueda['nombre']) and !empty($busqueda['nombre'])) {
-            $nombre = $busqueda["nombre"];
-            $datos = $this->model->where("nombre", "LIKE", "%$nombre%");
+		//die("ola");
+        if (isset($busqueda['nro_legajo']) and !empty($busqueda['nro_legajo'])) {
+            $nro_legajo = $busqueda["nro_legajo"];
+            $datos = $this->model->where("nro_legajo", "LIKE", "%$nro_legajo%");
         }
 
         if (isset($datos)) {

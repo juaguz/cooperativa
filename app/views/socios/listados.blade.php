@@ -15,7 +15,7 @@
 {{ Form::model(isset($busqueda) ? $busqueda : null,["method"=>"GET"]) }}
 <div class="row" id="busqueda">
     <div class="col-md-2">
-        {{ Form::text('nombre',null,array('class'=>'form-control','type'=>'text','placeholder'=>'Ingrese Nombre')) }}
+        {{ Form::text('nro_legajo',null,array('class'=>'form-control','type'=>'text','placeholder'=>'Ingrese Legajo')) }}
     </div>
 
     <div class="col-md-2">

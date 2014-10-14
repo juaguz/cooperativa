@@ -14,6 +14,8 @@
 
 //hola hola hola hgjh
 // Nos mostrará el formulario de login.
+use Carbon\Carbon;
+
 Route::get('/', 'AuthController@showLogin');
 
 Route::get('login', 'AuthController@showLogin');

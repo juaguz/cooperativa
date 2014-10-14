@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Circulos\Managers\CirculosSociosManagers;
 use Circulos\Repositories\CirculosRepo;
 use Circulos\Repositories\CirculosSociosRepo;
@@ -25,6 +26,23 @@ class CirculosController extends \BaseController {
         $this->circulosSociosRepo = $circulosSociosRepo;
         $this->sociosRepo         = $sociosRepo;
 
+    }
+
+    /**
+     * @param $fechaDesde
+     * @param $fechaHasta
+     * @return mixed
+     */
+    function diffFechas($fechaDesde, $fechaHasta)
+    {
+        $fechaDesde = Carbon::createFromFormat('d/m/Y', $fechaDesde);
+        $fechaHasta = Carbon::createFromFormat('d/m/Y', $fechaHasta);
+        $response = [
+                        "cantidadMeses" => $fechaDesde->diffInMonths($fechaHasta),
+                        "mes" => $fechaDesde->format('m')
+        ];
+
+        return $response;
     }
 
 
@@ -66,6 +84,7 @@ class CirculosController extends \BaseController {
     public function store()
     {
         //
+
         $respuestas  = [];
         $data      = Input::all();
         $idsSocios = explode(',',$data['socios']);
@@ -74,9 +93,11 @@ class CirculosController extends \BaseController {
         if($circuloManager->save()){
             $idCirculo = $circulo->id;
             foreach($idsSocios as $idSocio){
-                $socio = $this->circulosSociosRepo->newCirculosSocios($idCirculo,$idSocio);
-                $socioManager = new CirculosSociosManagers($socio,[]);
+                $socioCirculo = $this->circulosSociosRepo->newCirculosSocios($idCirculo,$idSocio);
+                $socioManager = new CirculosSociosManagers($socioCirculo,[]);
                 $socioManager->save();
+                $idCirculoSoc = $socioCirculo->id;
+
             }
 
             $respuestas  = ["ruta"=>route(['circulos.edit',$idCirculo]),
