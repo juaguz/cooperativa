@@ -44,11 +44,12 @@ class CirculosController extends \BaseController {
      */
     function diffFechas($fechaDesde, $fechaHasta)
     {
-        $this->fechaDesde = $this->createFecha($fechaDesde);
+        $this->fechaDesde = $fechaDesde;
+        $fechaDesde = $this->createFecha($fechaDesde);
         $fechaHasta = $this->createFecha($fechaHasta);
         $response = [
-                        "cantidadMeses" => $this->fechaDesde->diffInMonths($fechaHasta),
-                        "mes" => $this->fechaDesde->format('m')
+            "cantidadMeses" => $fechaDesde->diffInMonths($fechaHasta),
+            "mes" => $fechaDesde->format('m')
         ];
 
         return $response;
@@ -106,8 +107,8 @@ class CirculosController extends \BaseController {
             $idCirculo = $circulo->id;
             $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
             $respuestas  = ["ruta"=>route('circulos.edit',$idCirculo),
-                            "response"=>201
-                            ];
+                "response"=>201
+            ];
             return Response::json($respuestas);
         }
 
@@ -178,9 +179,9 @@ class CirculosController extends \BaseController {
 
     public function getTabla(){
 
-       $cantSocios = Input::get("cantidad_socios",false);
-       $socios     = $this->sociosRepo->getComboNroLegajo();
-       return View::make('circulos.tablaSocios',compact("cantSocios","socios"));
+        $cantSocios = Input::get("cantidad_socios",false);
+        $socios     = $this->sociosRepo->getComboNroLegajo();
+        return View::make('circulos.tablaSocios',compact("cantSocios","socios"));
 
 
     }
@@ -224,13 +225,13 @@ class CirculosController extends \BaseController {
      */
     public function cuotasCirculos($cantidadCuotas, $idCirculoSoc)
     {
+        $fechaDesde = $this->createFecha($this->fechaDesde);
         for ($i = 1; $i <= $cantidadCuotas['cantidadMeses']; $i++) {
-            $mes = $this->fechaDesde->addMonths($i);
+            $mes = $fechaDesde->addMonth();
             $vencimiento = $mes->lastOfMonth();
             $repo = $this->circulosCuotasRepo->newCirculosCuotas($idCirculoSoc, $vencimiento);
             $manager = new CirculosCuotasManager($repo, []);
             $manager->save();
-
         }
     }
 
