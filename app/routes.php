@@ -35,7 +35,8 @@ Route::group(array('before' => 'auth'), function () {
         Route::resource("rifas", "RifasController");
         Route::resource("cocheria/facturas","FacturasController");
         Route::resource("circulos", "CirculosController");
-        Route::resource("prestamos","PrestamosController");
+        Route::resource("prestamos", "PrestamosController");
+
 
 
         Route::post("prestamos/getTabla",["as"=>"prestamos.getTabla","uses"=>"PrestamosController@getTabla"]);
@@ -55,6 +56,7 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("circulos/getTablaCirculo",["as"=>"circulos.getTablaCirculo","uses"=>"CirculosController@getTablaCirculo"]);
 
         Route::get("cocheria/facturas/exportar/excel",array("uses"=>"FacturasController@exportarExcel","as"=>"cocheria.facturas.exportar.excel"));
+
 
         Route::get("socios/buscar/{slug?}",["as"=>"socios.buscar","uses"=>"SociosController@buscar"]);
         Route::get("socios/exportar/excel",array("uses"=>"SociosController@exportarExcel","as"=>"socios.exportar.excel"));
@@ -96,6 +98,13 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("servicios/getTablaServicio",["as"=>"servicios.getTablaServicios","uses"=>"ServiciosController@getTablaServicio"]);
         Route::post("servicios/getTabla",["as"=>"servicios.getTabla","uses"=>"ServiciosController@getTabla"]);
         Route::post("servicios/actualizar",["as"=>"servicios.actualizar","uses"=>"ServiciosController@actualizar"]);
+
+        //Recibos
+        Route::resource("recibos","RecibosController");
+        Route::post("recibos/getTablaRecibos",["as"=>"recibos.getTablaRecibos","uses"=>"RecibosController@getTablaRecibos"]);
+        Route::post("recibos/getTabla",["as"=>"recibos.getTabla","uses"=>"RecibosController@getTabla"]);
+        Route::post("recibos/actualizar",["as"=>"recibos.actualizar","uses"=>"RecibosController@actualizar"]);
+        Route::get("recibos/exportar/excel",array("uses"=>"RecibosController@exportarExcel","as"=>"recibos.exportar.excel"));
 
 
 

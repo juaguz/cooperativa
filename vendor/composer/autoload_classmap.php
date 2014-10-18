@@ -48,6 +48,7 @@ return array(
     'NacionalidadTableSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'PrestamosController' => $baseDir . '/app/controllers/Prestamos/PrestamosController.php',
     'ProvinciaTableSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
+    'RecibosController' => $baseDir . '/app/controllers/Recibos/RecibosController.php',
     'RifasController' => $baseDir . '/app/controllers/Rifas/RifasController.php',
     'ServiciosController' => $baseDir . '/app/controllers/Servicios/ServiciosController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',

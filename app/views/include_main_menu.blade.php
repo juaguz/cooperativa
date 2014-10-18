@@ -131,6 +131,17 @@
                     </ul>
                 </li>
 
+                <li class="openable">
+                    <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
+                        <span class="text"> Recibos </span> <span class="menu-hover"></span> </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('recibos.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Recibos</span></a></li>
+                        <li><a href="{{ route('recibos.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Nuevo Recibo </span></a></li>
+                        <li><a href="@{{ route('recibos.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>
+
+                    </ul>
+                </li>
+
                 <!--<li> <a href="#">
                         <span class="menu-icon"> <i class="fa fa-chevron-right"></i> </span>
                         <span class="text"> Menu 4 </span>

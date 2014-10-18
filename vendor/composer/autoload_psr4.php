@@ -11,6 +11,7 @@ return array(
     'Socios\\' => array($baseDir . '/app/Socios'),
     'Servicios\\' => array($baseDir . '/app/Servicios'),
     'Rifas\\' => array($baseDir . '/app/Rifas'),
+    'Recibos\\' => array($baseDir . '/app/Recibos'),
     'Prestamos\\' => array($baseDir . '/app/Prestamos'),
     'Penias\\' => array($baseDir . '/app/Penias'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
@@ -19,4 +20,5 @@ return array(
     'Combos\\' => array($baseDir . '/app/Combos'),
     'Cocheria\\' => array($baseDir . '/app/Cocheria'),
     'Circulos\\' => array($baseDir . '/app/Circulos'),
+    'Bonos\\' => array($baseDir . '/app/Bonos'),
 );
