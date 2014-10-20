@@ -53,6 +53,7 @@
 
 				<!-- show the nerd (uses the show method found at GET /nerds/{id} -->
 				<a class="btn btn-small btn-info" href="{{ route('rifas.edit',$value->id) }}">Editar</a>
+				<a class="btn btn-small btn-info" href="{{ route('rifas.vender',$value->id) }}">Vender Rifas</a>
 
 
 

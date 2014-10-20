@@ -110,7 +110,8 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("recibos/actualizar",["as"=>"recibos.actualizar","uses"=>"RecibosController@actualizar"]);
         Route::get("recibos/exportar/excel",array("uses"=>"RecibosController@exportarExcel","as"=>"recibos.exportar.excel"));
 
-
+        //Rifas
+        Route::get("rifas/vender/{id}",["uses"=>"RifasController@vender","as"=>"rifas.vender"]);
 
 
 });

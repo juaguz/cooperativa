@@ -43,9 +43,7 @@ class RifasRepo extends BaseRepo
             $datos = $this->model->where("nombre", "LIKE", "%$nombre%");
         }
 
-        if (isset($datos)) {
-            return $datos->paginate(20);
-        }
+        if (isset($datos)) return $datos->paginate(20);
 
         return $this->model->paginate(20);
 

@@ -154,5 +154,10 @@ class RifasController extends \BaseController {
 
     }
 
+    public function vender($id){
+        $rifa = $this->rifasRepo->find($id);
+        return View::make('rifas.venta',compact("rifa"));
+    }
+
 
 }

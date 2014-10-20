@@ -24,6 +24,12 @@ class Rifas extends \Eloquent{
         return \Time::FormatearToNormal($value);
     }
 
+    public function rifasSocios(){
+        return $this->hasMany();
+    }
+
+
+
 
 
 }
