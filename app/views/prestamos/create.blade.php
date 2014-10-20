@@ -4,7 +4,7 @@
 @section ('title') {{$action}} prestamo @stop
 
 @section ('content')
-<h1>{{$action}} Prestamo</h1>
+<h1>{{$action}} Prestamo <a href="{{ route('socios.edit',$prestamo->id_socio) }}" style="color:cornflowerblue">{{ $prestamo->socio->nombre }} {{ $prestamo->socio->apellido }}</a></h1>
 
 
 
@@ -40,6 +40,9 @@
 	<div class="form-group col-md-4">
 		{{ Form::button('Generar', array('type' => 'button', 'class' => 'btn btn-default','id'=>'btnGenerar')) }}
 		{{ Form::button('Guardar', array('type' => 'submit', 'class' => 'btn btn-primary','id'=>'btnGuardar','disabled'=>'disabled')) }}
+        @if(isset($prestamo))
+        <a class="btn btn-small btn-info generar_orden" data-toggle="modal" data-target="#modalPrestamos" href="#" data-id="{{$prestamo->id}}">Imprimir Orden de Pago</a>
+        @endif
 	</div>
 </div>
 <div id="tablaResultado">
@@ -56,6 +59,7 @@
 
 
 @section('scripts')
+{{ HTML::script('assets/js/ordenes_pago/prestamos.js') }}
 <script>
     $(function(){
         var btnGuardar  = $("#btnGuardar");
@@ -115,3 +119,4 @@
 </script>
 
 @stop
+@include('prestamos.modal')

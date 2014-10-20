@@ -1,4 +1,7 @@
 @extends('header')
+@section('scripts')
+{{ HTML::script('assets/js/ordenes_pago/prestamos.js') }}
+@stop
 @section('content')
 <div class="panel panel-default">
     <div class="panel-tab clearfix">
@@ -41,3 +44,4 @@
     </div>
 </div>
 @stop
+@include('prestamos.modal')
