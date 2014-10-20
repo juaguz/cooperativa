@@ -9,11 +9,11 @@
 namespace Rifas\Entities;
 
 
-class RifasSocios extends Eloquent{
+class RifasSocios extends \Eloquent{
 
     protected $table = 'rifas_socios';
 
     public function numero(){
-        $this->hasOne('Rifas\Entities\RifasNumeros','id_rifas_socios','id');
+        return $this->hasOne('Rifas\Entities\RifasNumeros','id_rifas_socios','id');
     }
 }

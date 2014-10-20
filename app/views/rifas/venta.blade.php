@@ -42,23 +42,24 @@
                         <div class="seperator"></div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-3">
                                     <label>Seleccione Socio</label>
-                                    <select class="select2"></select>
+                                    {{Form::select('socio',$socios,null,["class"=>"form-control select2"])}}
                                 </div>
                                 <div class="col-md-5">
                                     <div class="row rifas">
                                         <label>Seleccione N°1</label>
-                                        <select class="select2" name="numero[]"></select>
+
+                                        {{Form::select('numero[]',$rangoRifas,null,["class"=>"form-control"])}}
                                     </div>
                                     <div class="row rifas">
                                         <label>Seleccione N°2</label>
-                                        <select class="select2" name="numero[]"></select>
+                                        {{Form::select('numero[]',$rangoRifas,null,["class"=>"form-control"])}}
                                     </div>
 
                                     <div class="row rifas">
                                         <label>Seleccione N°3</label>
-                                        <select class="select2" name="numero[]"></select>
+                                        {{Form::select('numero[]',$rangoRifas,null,["class"=>"form-control"])}}
                                     </div>
                                 </div>
                             </div>

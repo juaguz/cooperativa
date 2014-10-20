@@ -25,7 +25,7 @@ class Rifas extends \Eloquent{
     }
 
     public function rifasSocios(){
-        return $this->hasMany();
+        return $this->hasMany("Rifas/Entities/RifasSocios","id_rifa","id");
     }
 
 

@@ -14,6 +14,7 @@ return array(
     'Recibos\\' => array($baseDir . '/app/Recibos'),
     'Prestamos\\' => array($baseDir . '/app/Prestamos'),
     'Penias\\' => array($baseDir . '/app/Penias'),
+    'OrdenesPago\\' => array($baseDir . '/app/OrdenesPago'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Familiares\\' => array($baseDir . '/app/Familiares'),
     'Comercios\\' => array($baseDir . '/app/Comercios'),

@@ -1,7 +1,10 @@
 <?php
 
+use Rifas\Repositories\RifasNumerosRepo;
 use Rifas\Repositories\RifasRepo;
 use Rifas\Managers\RifasManager;
+use Rifas\Repositories\RifasSociosRepo;
+use Socios\Repositories\SociosRepo;
 
 class RifasController extends \BaseController {
 
@@ -11,12 +14,27 @@ class RifasController extends \BaseController {
 	 * @return Response
 	 */
     protected $rifasRepo;
+    /**
+     * @var SociosRepo
+     */
+    private $sociosRepo;
+    /**
+     * @var RifasSociosRepo
+     */
+    private $rifasSociosRepo;
+    /**
+     * @var RifasNumerosRepo
+     */
+    private $numerosRepo;
 
 
-    public function __construct(RifasRepo $rifasRepo){
+    public function __construct(RifasRepo $rifasRepo,SociosRepo $sociosRepo, RifasSociosRepo $rifasSociosRepo, RifasNumerosRepo $numerosRepo ){
 
         $this->rifasRepo  = $rifasRepo;
 
+        $this->sociosRepo = $sociosRepo;
+        $this->rifasSociosRepo = $rifasSociosRepo;
+        $this->numerosRepo = $numerosRepo;
     }
 
 
@@ -156,7 +174,11 @@ class RifasController extends \BaseController {
 
     public function vender($id){
         $rifa = $this->rifasRepo->find($id);
-        return View::make('rifas.venta',compact("rifa"));
+        $socios = $this->sociosRepo->getComboNroLegajo();
+        $rifasSocios = $this->numerosRepo->getNumerosRifa($id);
+
+        $rangoRifas = range($rifa->desde,$rifa->hasta);
+        return View::make('rifas.venta',compact("rifa","socios","rangoRifas"));
     }
 
 
