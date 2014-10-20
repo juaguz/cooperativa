@@ -51,11 +51,11 @@
 
 
 <script>
+    fecha();
+    $('.select2').select2();
     function fecha(){
         $('.fecha').datepicker({"language":'es'});
     }
-    fecha();
-    $('.select2').select2();
 
 
 
@@ -68,6 +68,7 @@
 <!-- Datepicker -->
 
 
+{{ HTML::script('assets/js/helper.js') }}
 
 
 @yield('scripts')

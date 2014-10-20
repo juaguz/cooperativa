@@ -64,7 +64,9 @@
 
 </div>
 
-<div class="row" id="resultado" style="display: none">
+
+
+<div class="row" id="resultado" style="">
     <div class="col-md-10">
         <table class="table">
             <thead>
@@ -72,7 +74,14 @@
                 <th>Borrar</th>
             </thead>
             <tbody>
-
+            @if(isset($sociosCirculo))
+                @foreach($sociosCirculo as $socio)
+                <tr id="socioTr{{$socio->socios->id}}">
+                    <td>{{$socio->socios->apellido}} {{$socio->socios->nombre}} Nro Legajo: {{$socio->socios->nro_legajo}}</td>
+                    <td><button type="button" class="btn btn-danger" onclick="borrar('{{$socio->socios->id}}')"><i class="fa fa-trash-o"></i></button></td>
+                </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>

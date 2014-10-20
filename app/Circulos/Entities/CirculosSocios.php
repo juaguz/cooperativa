@@ -13,6 +13,8 @@ class CirculosSocios extends \Eloquent{
 
     protected $table = 'circulos_socios';
 
-
+    public function socios(){
+        return $this->hasOne('Socios\Entities\Socios','id','id_socio');
+    }
 
 } 

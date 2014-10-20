@@ -143,7 +143,11 @@ class CirculosController extends \BaseController {
         $form_data       = array('route' => ['circulos.update',$id], 'method' => 'PATCH','id'=>'circuloFrm');
         $action          = 'Modificar';
         $circulo         = $this->circulosRepo->find($id);
-        return View::make("circulos.create",compact("form_data","action","circulo"));
+        $sociosCirculo   = $circulo->circulosSocios()->with('socios')->get();
+
+        $socios          = $this->sociosRepo->getComboNroLegajoInNotCircle($circulo->circulosSocios()->get(['id_socio'])->toArray());
+
+        return View::make("circulos.create",compact("form_data","action","circulo","socios","sociosCirculo"));
     }
 
 

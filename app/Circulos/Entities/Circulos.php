@@ -33,6 +33,10 @@ class Circulos extends \Eloquent{
         return \Time::FormatearToNormal($value);
     }
 
+    public function circulosSocios(){
+
+        return $this->hasMany('Circulos\Entities\CirculosSocios','id_circulo','id');
+    }
 
 
 }

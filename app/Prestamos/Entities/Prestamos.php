@@ -25,6 +25,11 @@ class Prestamos extends \Eloquent{
         return $this->hasOne("Socios\Entities\Socios","id","id_socio");
     }
 
+    public function ordenPago(){
+
+        return $this->hasOne("OrdenesPago\Entities\OrdenPagoEntity","id_orden_pago","id");
+    }
+
 
 
 } 

@@ -32,4 +32,9 @@ class PrestamosRepo  extends BaseRepo{
 
     }
 
+    public function getPrestamo($id)
+    {
+        return $this->model->with('ordenPago')->with('socio')->where('id',$id)->get();
+    }
+
 } 

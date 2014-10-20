@@ -112,9 +112,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Maatwebsite\Excel\ExcelServiceProvider',
-
-
-
+        'OrdenesPago\ServiceProvider\OrdenPagoServiceProvider',
     ),
 
 	/*
@@ -183,6 +181,7 @@ return array(
 		'Carbon'		  => 'Carbon\Carbon',
         'PDF'             => 'Thujohn\Pdf\PdfFacade',
         'Excel'           => 'Maatwebsite\Excel\Facades\Excel',
+        'OrdenesPago'       => 'OrdenesPago\ServiceProvider\OrdenPagoFacade'
 
 	),
 

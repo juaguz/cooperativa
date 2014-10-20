@@ -24,7 +24,8 @@
             <!-- we will add this later since its a little more complicated than the other two buttons -->
 
             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-            <a class="btn btn-small btn-info" href="{{ route('prestamos.edit',$value->id) }}">Editar</a>
+            <a class="btn btn-small btn-info" href="{{ route('prestamos.edit',$value->id)}}">Editar</a>
+            <a class="btn btn-small btn-info generar_orden" data-toggle="modal" data-target="#modalPrestamos" href="#" data-id="{{$value->id}}">Imprimir Orden de Pago</a>
 
 
 

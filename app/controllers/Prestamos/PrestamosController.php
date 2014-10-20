@@ -84,13 +84,12 @@ class PrestamosController extends \BaseController {
         $prestamoRepo     = $this->prestamosRepo->newPrestamo();
         $prestamoManager = new PrestamosManager($prestamoRepo,$data);
         $prestamoManager->save();
+
         $id = $prestamoRepo->id;
 
-        foreach($dataCuotas as $cuota){
-            $cuotaRepo = $this->prestamosCuotasRepo->newCuotas($id);
-            $cuotasManager = new PrestamosCuotasManager($cuotaRepo,$cuota);
-            $cuotasManager->save();
-    }
+        $this->saveCuotas($dataCuotas, $id);
+
+        OrdenesPago::save($id,1);
 
         return Redirect::route('prestamos.edit',$id)->with('mensaje_exito','Prestamo Creado Correctamente!');
 
@@ -128,7 +127,6 @@ class PrestamosController extends \BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
 	public function actualizar()
@@ -160,5 +158,39 @@ class PrestamosController extends \BaseController {
 		//
 	}
 
+    public function getOrdenPago(){
+        $idPrestamo = Input::get('id_prestamo');
+        $prestamo = $this->prestamosRepo->getPrestamo($idPrestamo);
+        $prestamo = $prestamo[0];
+        //dd($prestamo['orden_pago']->id);
+        $socio       = $prestamo->socio->nombre." ".$prestamo->socio->apellido;
+        $socioLegajo = $prestamo->socio->nro_legajo;
+        $monto       = $prestamo->monto;
+        $cuotas      = $prestamo->cantidad_cuotas;
+
+        $data = [   "tipo_comprobante"=>'Prestamo',
+                    "idComprobante"=>$prestamo['orden_pago']->id,
+                    "fecha"=>$prestamo->created_at,
+                    "contenido"=>View::make('prestamos.orden_pago',
+                        compact("socio","socioLegajo","monto","cuotas")
+
+                    )->render()
+        ];
+        return OrdenesPago::render($data);
+
+    }
+
+    /**
+     * @param $dataCuotas
+     * @param $id
+     */
+    private function saveCuotas($dataCuotas, $id)
+    {
+        foreach ($dataCuotas as $cuota) {
+            $cuotaRepo = $this->prestamosCuotasRepo->newCuotas($id);
+            $cuotasManager = new PrestamosCuotasManager($cuotaRepo, $cuota);
+            $cuotasManager->save();
+        }
+    }
 
 }
