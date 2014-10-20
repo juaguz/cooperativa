@@ -32,6 +32,7 @@
                 </div>
             </div>
     </div>
+    {{Form::open(["route"=>["rifas.venta",$idRifa],"method"=>"POST"])}}
     <div class="row">
             <div class="col-md-12">
                     <h4 class="headline">
@@ -72,5 +73,6 @@
                     </div>
                 </div>
         </div>
+        {{Form::close()}}
 
 @stop

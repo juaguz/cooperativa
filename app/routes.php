@@ -112,6 +112,7 @@ Route::group(array('before' => 'auth'), function () {
 
         //Rifas
         Route::get("rifas/vender/{id}",["uses"=>"RifasController@vender","as"=>"rifas.vender"]);
+        Route::post("rifas/vender/{id}",["uses"=>"RifasController@saveVender","as"=>"rifas.venta"]);
 
 
 });

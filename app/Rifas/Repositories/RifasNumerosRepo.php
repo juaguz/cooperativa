@@ -27,4 +27,18 @@ class RifasNumerosRepo extends BaseRepo{
             ])->get();
 
     }
+
+    public function newRifasNumeros($idRifasSocio,$numero){
+
+        $model = $this->getModel();
+        $model->id_rifas_socios = $idRifasSocio;
+        $model->numero = $numero;
+        return $model;
+    }
+
+
+
+
+
+
 }

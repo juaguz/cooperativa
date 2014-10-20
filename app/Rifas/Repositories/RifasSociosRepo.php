@@ -28,4 +28,11 @@ class RifasSociosRepo extends BaseRepo {
             ->get();
     }
 
+
+    public function newRifa($id){
+        $model = $this->getModel();
+        $model->id_rifa = $id;
+        return $model;
+    }
+
 }
