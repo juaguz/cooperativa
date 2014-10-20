@@ -35,11 +35,15 @@ Route::group(array('before' => 'auth'), function () {
         Route::resource("rifas", "RifasController");
         Route::resource("cocheria/facturas","FacturasController");
         Route::resource("circulos", "CirculosController");
+
+        Route::get("prestamos/getOrden",["as"=>"prestamos.getOrden","uses"=>"PrestamosController@getOrdenPago"]);
+
         Route::resource("prestamos", "PrestamosController");
 
 
 
         Route::post("prestamos/getTabla",["as"=>"prestamos.getTabla","uses"=>"PrestamosController@getTabla"]);
+
 
 
 
