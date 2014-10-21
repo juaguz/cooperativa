@@ -45,9 +45,9 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <label>Seleccione Socio</label>
-                                    {{Form::select('socio',$socios,null,["class"=>"form-control select2"])}}
+                                    {{Form::select('id_socio',$socios,null,["class"=>"form-control select2"])}}
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <div class="row rifas">
                                         <label>Seleccione N°1</label>
 

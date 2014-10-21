@@ -1,6 +1,7 @@
 <?php
 
 use Rifas\Managers\RifasNumerosManager;
+use Rifas\Managers\RifasSociosManager;
 use Rifas\Repositories\RifasNumerosRepo;
 use Rifas\Repositories\RifasRepo;
 use Rifas\Managers\RifasManager;
@@ -176,9 +177,15 @@ class RifasController extends \BaseController {
 
     public function saveVender($id){
         $data = Input::all();
-        $rifasSocio = $this->rifasSociosRepo->newRifa($id);
-        $rifasSocioManager = new RifasNumerosManager($rifasSocio,$data);
-        $rifasSocioManager->save();
+        DB::transaction(function() use($data,$id){
+            $rifasSocio = $this->rifasSociosRepo->newRifa($id);
+            $rifasSocioManager = new RifasSociosManager($rifasSocio,$data);
+            $rifasSocioManager->save();
+            $idRifaSocio = $rifasSocio->id;
+            $this->saveNumeros($data, $idRifaSocio);
+        });
+
+        return Redirect::back()->with('mensaje_exito','Rifas Vendidas Correctamente');
 
     }
 
@@ -187,9 +194,37 @@ class RifasController extends \BaseController {
         $rifa = $this->rifasRepo->find($idRifa);
         $socios = $this->sociosRepo->getComboNroLegajo();
         $rifasNumeros = $this->numerosRepo->getNumerosRifa($idRifa);
-        $rango = range($rifa->desde,$rifa->hasta);
-        $rangoRifas = array_combine($rango,$rango);
+        $rangoRifas = $this->rangos($rifa, $rifasNumeros);
         return View::make('rifas.venta',compact("rifa","socios","rangoRifas","idRifa"));
+    }
+
+    /**
+     * @param $data
+     * @param $idRifaSocio
+     */
+    private function saveNumeros($data, $idRifaSocio)
+    {
+        foreach ($data['numero'] as $numero) {
+            $rifasNumero = $this->numerosRepo->newRifasNumeros($idRifaSocio, $numero);
+            $rifasNumeroManager = new RifasNumerosManager($rifasNumero,[]);
+            $rifasNumeroManager->save();
+
+        }
+    }
+
+    /**
+     * @param $rifa
+     * @param $rifasNumeros
+     * @return array
+     */
+    private function rangos($rifa, $rifasNumeros)
+    {
+        $rango = range($rifa->desde, $rifa->hasta);
+        $rangoRifas = array_combine($rango, $rango);
+        foreach ($rifasNumeros as $key => $value) {
+            unset($rangoRifas[$value->numero]);
+        }
+        return $rangoRifas;
     }
 
 

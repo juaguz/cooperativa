@@ -12,7 +12,8 @@ namespace Rifas\Entities;
 class RifasSocios extends \Eloquent{
 
     protected $table = 'rifas_socios';
-
+    protected $fillable = ['id_socio'];
+    public $timestamps = false;
     public function numero(){
         return $this->hasOne('Rifas\Entities\RifasNumeros','id_rifas_socios','id');
     }
