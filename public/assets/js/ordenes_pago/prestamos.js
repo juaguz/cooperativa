@@ -8,6 +8,6 @@
         var idPrestamo = e.attr("data-id");
         utils.ajax(null,'get','prestamos/getOrden',{'id_prestamo':idPrestamo},function(html){
             $("#cuerpo").html(html);
-        },true)
+        })
     });
 })();
