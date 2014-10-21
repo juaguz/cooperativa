@@ -72,6 +72,10 @@ class Socios extends \Eloquent{
         return $this->hasMany('Servicios\Entities\Servicios','id_socio','id')->where('id_penia','=',2);        
     }
 
+    public function getRifas(){
+        return $this->hasMany('Rifas\Entities\RifasSocios','id_socio','id');
+    }
+
 
 
 

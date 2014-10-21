@@ -31,6 +31,24 @@
             </div>
             <!--<div class="tab-pane fade" id="circulos">
             </div>-->
+            <div class="tab-pane fade" id="rifas">
+                <table class="table">
+                    <thead>
+                        <td>Nombre Rifas</td>
+                        <td>Numeros</td>
+                    </thead>
+                    <tbody>
+                        @foreach($socio->getRifas as $rifaSocio)
+                        <tr>
+                            <td>{{$rifaSocio->rifa->nombre}}</td>
+                            <td>
+                                @include('rifas.listado_numeros',$rifaSocio)
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
             <div class="tab-pane fade" id="ventas">
               @include('ventas.tabla',["ventas"=>$socio->getVentas])
             </div>

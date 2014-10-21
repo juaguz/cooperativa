@@ -24,6 +24,7 @@ class RifasSociosRepo extends BaseRepo {
     public function getRifas($id){
         return $this->model
             ->with('numero')
+            ->with('socio')
             ->where('id_rifa','=',$id)
             ->get();
     }

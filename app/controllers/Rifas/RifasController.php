@@ -195,7 +195,8 @@ class RifasController extends \BaseController {
         $socios = $this->sociosRepo->getComboNroLegajo();
         $rifasNumeros = $this->numerosRepo->getNumerosRifa($idRifa);
         $rangoRifas = $this->rangos($rifa, $rifasNumeros);
-        return View::make('rifas.venta',compact("rifa","socios","rangoRifas","idRifa"));
+        $rifasSocios =$this->rifasSociosRepo->getRifas($idRifa);
+        return View::make('rifas.venta',compact("rifa","socios","rangoRifas","idRifa","rifasSocios"));
     }
 
     /**

@@ -5,33 +5,6 @@
     }
 </style>
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-                <h4 class="headline">
-                    Rifas Vendidas
-                    <span class="line"></span>
-                </h4>
-                <div class="panel panel-default">
-                    <div class="seperator"></div>
-                    <div class="panel-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <td>Socio</td>
-                            <td>Numeros</td>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Socio</td>
-                                <td>1,2,3,4,5,6</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="seperator"></div>
-                    </div>
-                </div>
-            </div>
-    </div>
     {{Form::open(["route"=>["rifas.venta",$idRifa],"method"=>"POST"])}}
     <div class="row">
             <div class="col-md-12">
@@ -47,7 +20,7 @@
                                     <label>Seleccione Socio</label>
                                     {{Form::select('id_socio',$socios,null,["class"=>"form-control select2"])}}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="row rifas">
                                         <label>Seleccione N°1</label>
 
@@ -73,6 +46,6 @@
                     </div>
                 </div>
         </div>
-        {{Form::close()}}
-
+{{Form::close()}}
+@include('rifas.listado_vendidas');
 @stop
