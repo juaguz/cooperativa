@@ -18,8 +18,17 @@ use Maatwebsite\Excel\Exceptions\LaravelExcelException;
  * @author     Maatwebsite <info@maatwebsite.nl>
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
-class Excel
-{
+class Excel {
+
+    /**
+     * Filter
+     * @var array
+     */
+    protected $filters = array(
+        'registered' =>  array(),
+        'enabled'    =>  array()
+    );
+
     /**
      * Excel object
      * @var PHPExcel
@@ -40,7 +49,7 @@ class Excel
 
     /**
      * Construct Excel
-     * @param  PHPExcel $excel
+     * @param  PHPExcel           $excel
      * @param  LaravelExcelReader $reader
      * @param  LaravelExcelWriter $writer
      */
@@ -54,7 +63,7 @@ class Excel
 
     /**
      * Create a new file
-     * @param  string $title
+     * @param                $filename
      * @param  callable|null $callback
      * @return LaravelExcelWriter
      */
@@ -74,7 +83,7 @@ class Excel
         $writer->setTitle($filename);
 
         // Do the callback
-        if($callback instanceof Closure)
+        if ($callback instanceof Closure)
             call_user_func($callback, $writer);
 
         // Return the writer object
@@ -85,10 +94,10 @@ class Excel
      *
      *  Load an existing file
      *
-     *  @param  string $file The file we want to load
-     *  @param  callback|null $callback
-     *  @param  string|null $encoding
-     *  @return LaravelExcelReader
+     * @param  string        $file The file we want to load
+     * @param  callback|null $callback
+     * @param  string|null   $encoding
+     * @return LaravelExcelReader
      *
      */
     public function load($file, $callback = null, $encoding = null)
@@ -99,6 +108,9 @@ class Excel
         // Inject excel object
         $reader->injectExcel($this->excel);
 
+        // Enable filters
+        $reader->setFilters($this->filters);
+
         // Set the encoding
         $encoding = is_string($callback) ? $callback : $encoding;
 
@@ -106,7 +118,7 @@ class Excel
         $reader->load($file, $encoding);
 
         // Do the callback
-        if($callback instanceof Closure)
+        if ($callback instanceof Closure)
             call_user_func($callback, $reader);
 
         // Return the reader object
@@ -122,30 +134,33 @@ class Excel
     {
         $sheets = is_array($sheets) ? $sheets : func_get_args();
         $this->reader->setSelectedSheets($sheets);
+
         return $this;
     }
 
     /**
      * Select sheets by index
-     * @param  [type] $sheets [description]
-     * @return [type]         [description]
+     * @param array $sheets
+     * @return $this
      */
     public function selectSheetsByIndex($sheets = array())
     {
         $sheets = is_array($sheets) ? $sheets : func_get_args();
         $this->reader->setSelectedSheetIndices($sheets);
+
         return $this;
     }
 
     /**
      * Batch import
-     * @param  $files
+     * @param           $files
      * @param  callback $callback
      * @return PHPExcel
      */
     public function batch($files, Closure $callback)
     {
         $batch = new Batch;
+
         return $batch->start($this, $files, $callback);
     }
 
@@ -174,19 +189,90 @@ class Excel
     }
 
     /**
+     * Set filters
+     * @param   array $filters
+     * @return  Excel
+     */
+    public function registerFilters($filters = array())
+    {
+        // If enabled array key exists
+        if(array_key_exists('enabled', $filters))
+        {
+            // Set registered array
+            $registered = $filters['registered'];
+
+            // Filter on enabled
+            $this->filter($filters['enabled']);
+        }
+        else
+        {
+            $registered = $filters;
+        }
+
+        // Register the filters
+        $this->filters['registered'] = !empty($this->filters['registered']) ? array_merge($this->filters['registered'], $registered) : $registered;
+        return $this;
+    }
+
+    /**
+     * Enable certain filters
+     * @param  string|array     $filter
+     * @param bool|false|string $class
+     * @return Excel
+     */
+    public function filter($filter, $class = false)
+    {
+        // Add multiple filters
+        if(is_array($filter))
+        {
+            $this->filters['enabled'] = !empty($this->filters['enabled']) ? array_merge($this->filters['enabled'], $filter) : $filter;
+        }
+        else
+        {
+            // Add single filter
+            $this->filters['enabled'][] = $filter;
+
+            // Overrule filter class for this request
+            if($class)
+                $this->filters['registered'][$filter] = $class;
+        }
+
+        // Remove duplicates
+        $this->filters['enabled'] = array_unique($this->filters['enabled']);
+
+        return $this;
+    }
+
+    /**
+     * Get register, enabled (or both) filters
+     * @param  string|boolean $key [description]
+     * @return array
+     */
+    public function getFilters($key = false)
+    {
+        return $key ? $this->filters[$key] : $this->filters;
+    }
+
+    /**
      * Dynamically call methods
      * @throws LaravelExcelException
      */
     public function __call($method, $params)
     {
         // If the dynamic call starts with "with", add the var to the data array
-        if(method_exists($this->excel, $method))
+        if (method_exists($this->excel, $method))
         {
             // Call the method from the excel object with the given params
             return call_user_func_array(array($this->excel, $method), $params);
         }
 
-        throw new LaravelExcelException('Laravel Excel method ['. $method .'] does not exist');
-    }
+        // If reader method exists, call that one
+        if (method_exists($this->reader, $method))
+        {
+            // Call the method from the reader object with the given params
+            return call_user_func_array(array($this->reader, $method), $params);
+        }
 
+        throw new LaravelExcelException('Laravel Excel method [' . $method . '] does not exist');
+    }
 }

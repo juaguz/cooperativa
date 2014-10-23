@@ -33,7 +33,8 @@
           "Ventas\\":"app/Ventas",
           "Servicios\\":"app/Servicios",
           "Penias\\":"app/Penias",
-          "OrdenesPago\\":"app/OrdenesPago"
+          "OrdenesPago\\":"app/OrdenesPago",
+          "OrdenesCompras\\":"app/OrdenesCompras"
 
         },
 		"classmap": [

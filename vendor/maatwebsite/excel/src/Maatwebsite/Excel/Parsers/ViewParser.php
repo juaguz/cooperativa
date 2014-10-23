@@ -1,7 +1,7 @@
 <?php namespace Maatwebsite\Excel\Parsers;
 
-use View;
 use Maatwebsite\Excel\Readers\Html;
+use Illuminate\Support\Facades\View;
 
 /**
  *
@@ -37,7 +37,7 @@ class ViewParser {
     /**
      * Construct the view parser
      * @param Html $reader
-     * @return  void
+     * @return \Maatwebsite\Excel\Parsers\ViewParser
      */
     public function __construct(Html $reader)
     {
@@ -46,20 +46,21 @@ class ViewParser {
 
     /**
      * Parse the view
-     * @param  LaravelExcelWorksheet $sheet
-     * @return LaravelExcelWorksheet
+     * @param  \Maatwebsite\Excel\Classes\LaravelExcelWorksheet $sheet
+     * @return \Maatwebsite\Excel\Classes\LaravelExcelWorksheet
      */
     public function parse($sheet)
     {
         $html = View::make($this->getView(), $this->getData(), $this->getMergeData())->render();
+
         return $this->_loadHTML($sheet, $html);
     }
 
     /**
      * Load the HTML
-     * @param  LaravelExcelWorksheet $sheet
-     * @param  string $html
-     * @return LaravelExcelWorksheet
+     * @param  \Maatwebsite\Excel\Classes\LaravelExcelWorksheet $sheet
+     * @param  string                                           $html
+     * @return \Maatwebsite\Excel\Classes\LaravelExcelWorksheet
      */
     protected function _loadHTML($sheet, $html)
     {
@@ -95,11 +96,11 @@ class ViewParser {
 
     /**
      * Set the view
-     * @param string $view
+     * @param bool|string $view
      */
     public function setView($view = false)
     {
-        if($view)
+        if ($view)
             $this->view = $view;
     }
 
@@ -109,7 +110,7 @@ class ViewParser {
      */
     public function setData($data = array())
     {
-        if(!empty($data))
+        if (!empty($data))
             $this->data = array_merge($this->data, $data);
     }
 
@@ -119,8 +120,7 @@ class ViewParser {
      */
     public function setMergeData($mergeData = array())
     {
-        if(!empty($mergeData))
+        if (!empty($mergeData))
             $this->mergeData = array_merge($this->mergeData, $mergeData);
     }
-
 }

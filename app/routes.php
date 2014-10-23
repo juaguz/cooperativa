@@ -38,8 +38,11 @@ Route::group(array('before' => 'auth'), function () {
 
         Route::get("prestamos/getOrden",["as"=>"prestamos.getOrden","uses"=>"PrestamosController@getOrdenPago"]);
 
+        Route::get("ordenes/compras/getOrden","OrdenesComprasController@getOrdenCompra");
+
         Route::resource("prestamos", "PrestamosController");
 
+        Route::resource("ordenes/compras","OrdenesComprasController");
 
 
         Route::post("prestamos/getTabla",["as"=>"prestamos.getTabla","uses"=>"PrestamosController@getTabla"]);

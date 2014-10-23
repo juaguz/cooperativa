@@ -75,6 +75,9 @@ class Socios extends \Eloquent{
     public function getRifas(){
         return $this->hasMany('Rifas\Entities\RifasSocios','id_socio','id');
     }
+    public function getOrdenes(){
+        return $this->hasMany('OrdenesCompras\Entities\OrdenCompra','id_socio','id');
+    }
 
 
 
