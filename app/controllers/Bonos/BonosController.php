@@ -1,10 +1,10 @@
 <?php
 use Comercios\Repositories\ComerciosRepo;
-use OrdenesCompras\Managers\OrdenCompraManager;
-use OrdenesCompras\Repositories\OrdenCompraRepo;
+use Bonos\Managers\BonoManager;
+use Bonos\Repositories\BonoRepo;
 use Socios\Repositories\SociosRepo;
 
-class OrdenesComprasController extends BaseController {
+class BonosController extends BaseController {
 
 
     /**
@@ -16,29 +16,29 @@ class OrdenesComprasController extends BaseController {
      */
     private $comerciosRepo;
     /**
-     * @var OrdenCompraRepo
+     * @var BonoRepo
      */
-    private $ordenCompraRepo;
+    private $bonoRepo;
 
-    function __construct(SociosRepo $sociosRepo, ComerciosRepo $comerciosRepo, OrdenCompraRepo $ordenCompraRepo)
+    function __construct(SociosRepo $sociosRepo, ComerciosRepo $comerciosRepo, BonoRepo $bonoRepo)
     {
         $this->sociosRepo = $sociosRepo;
         $this->comerciosRepo = $comerciosRepo;
-        $this->ordenCompraRepo = $ordenCompraRepo;
+        $this->bonoRepo = $bonoRepo;
     }
 
     public function  index(){
-        $ordenes = $this->ordenCompraRepo->all();
-        return View::make('ordenes_compras.index',compact("ordenes"));
+        $bonos = $this->bonoRepo->all();
+        return View::make('bonos.index',compact("bonos"));
     }
 
     public function create(){
 
-        $form_data = array('route' => 'ordenes.compras.store', 'method' => 'POST');
+        $form_data = array('route' => 'bonos.store', 'method' => 'POST');
 
         list($socios, $comercios) = $this->getCombos();
 
-        return View::make('ordenes_compras.create',compact("form_data","socios","comercios"));
+        return View::make('bonos.create',compact("form_data","socios","comercios"));
 
     }
 
@@ -46,19 +46,19 @@ class OrdenesComprasController extends BaseController {
     public function store(){
 
         $data = Input::all();
-        $ordenRepo = $this->ordenCompraRepo->newOrden();
-        $ordenManager = new  OrdenCompraManager($ordenRepo,$data);
-        $ordenManager->save();
-        return Redirect::route('ordenes.compras.edit',$ordenRepo->id)->with('mensaje_exito',"Venta Creada Correctamente.");
+        $bonoRepo = $this->bonoRepo->newBono();
+        $bonoManager = new  BonoManager($bonoRepo,$data);
+        $bonoManager->save();
+        return Redirect::route('bonos.edit',$bonoRepo->id)->with('mensaje_exito',"Bono Creada Correctamente.");
 
     }
 
 
     public function edit($id){
-        $orden = $this->ordenCompraRepo->find($id);
-        $form_data = array('route' => 'ordenes.compras.update', 'method' => 'PUT');
+        $bono = $this->bonoRepo->find($id);
+        $form_data = array('route' => 'bonos.update', 'method' => 'PUT');
         list($socios, $comercios) = $this->getCombos();
-        return View::make('ordenes_compras.create',compact("form_data","socios","comercios","orden"));
+        return View::make('bonos.create',compact("form_data","socios","comercios","bono"));
 
     }
 
@@ -74,20 +74,20 @@ class OrdenesComprasController extends BaseController {
     }
 
 
-    public function getOrdenCompra(){
-        $idOrden = Input::get('id_orden');
-        $orden = $this->ordenCompraRepo->getOrden($idOrden);
-        $orden = $orden[0];
+    public function getBono(){
+        $idBono = Input::get('id_bono');
+        $bono = $this->bonoRepo->getBono($idBono);
+        $bono = $bono[0];
         $data = [
-            "tipo_comprobante"=>'Orden de Compra',
-            "idComprobante"=>$orden->id,
-            "fecha"=>$orden->created_at,
-            "contenido"=>View::make('ordenes_compras.orden_compra',
-                compact("orden")
+            "tipo_comprobante"=>'Bono',
+            "idComprobante"=>$bono->id,
+            "fecha"=>$bono->created_at,
+            "contenido"=>View::make('bonos.bono',
+                compact("bono")
 
             )->render()
         ];
-        return OrdenesPago::render($data);
+        return OrdenesPago::render($data); //ordenes de pago sirve para hacer el render de todos los comprobantes se deberia llamar Comprobante
 
     }
 

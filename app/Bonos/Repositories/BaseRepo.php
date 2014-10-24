@@ -1,7 +1,7 @@
 <?php
 
 
-namespace OrdenesCompras\Repositories;
+namespace Bonos\Repositories;
 
 
 abstract class BaseRepo {

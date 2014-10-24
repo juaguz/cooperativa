@@ -1,7 +1,7 @@
 <?php
 
 
-namespace OrdenesCompras\Managers;
+namespace Bonos\Managers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;

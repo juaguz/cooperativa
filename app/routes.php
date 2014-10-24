@@ -117,6 +117,10 @@ Route::group(array('before' => 'auth'), function () {
         Route::get("rifas/vender/{id}",["uses"=>"RifasController@vender","as"=>"rifas.vender"]);
         Route::post("rifas/vender/{id}",["uses"=>"RifasController@saveVender","as"=>"rifas.venta"]);
 
+        //Bonos
+        Route::get("bonos/getBono","BonosController@getBono");
+        Route::resource("bonos","BonosController");
+
 
 });
 

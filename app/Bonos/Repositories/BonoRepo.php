@@ -1,7 +1,7 @@
 <?php
-namespace OrdenesCompras\Repositories;
+namespace Bonos\Repositories;
 use Illuminate\Support\Facades\Auth;
-use OrdenesCompras\Entities\OrdenCompra;
+use Bonos\Entities\Bono;
 
 
 /**
@@ -11,18 +11,18 @@ use OrdenesCompras\Entities\OrdenCompra;
  * Time: 11:59
  */
 
-class OrdenCompraRepo extends BaseRepo {
+class BonoRepo extends BaseRepo {
 
     /**
-     * @return OrdenCompra
+     * @return Bono
      */
     public function getModel()
     {
-        return new OrdenCompra();
+        return new Bono();
     }
 
 
-    public function newOrden(){
+    public function newBono(){
 
         $model = $this->getModel();
         $model->id_usuario = Auth::user()->id;
@@ -31,7 +31,7 @@ class OrdenCompraRepo extends BaseRepo {
     }
 
 
-    public function getOrden($id){
+    public function getBono($id){
        return $this->model
             ->with('socio')
             ->with('comercio')

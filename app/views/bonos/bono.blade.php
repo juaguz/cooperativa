@@ -1,12 +1,12 @@
-Socio:{{$orden->socio->nombre}} {{$orden->socio->apellido}} N° {{$orden->socio->nro_legajo}}
+Socio:{{$bono->socio->nombre}} {{$bono->socio->apellido}} N° {{$bono->socio->nro_legajo}}
 <br>
-@if(isset($orden->importe) && $orden->importe>0)
-    Importe de  {{$orden->importe}}
+@if(isset($bono->importe) && $bono->importe>0)
+    Importe  {{$bono->importe}}
 @endif
 <br>
-Comercio: {{$orden->comercio->nombre}}
+Comercio: {{$bono->comercio->nombre}}
 <br>
-Dirección: {{$orden->comercio->direccion}}
+Dirección: {{$bono->comercio->direccion}}
 
 
 

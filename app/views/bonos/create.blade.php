@@ -1,11 +1,11 @@
 @extends('header')
 @section('scripts')
 
-{{ HTML::script('assets/js/ordenes_compras.js') }}
+{{ HTML::script('assets/js/bonos.js') }}
 
 @stop
 @section('content')
-  {{ Form::model(isset($orden) ? $orden : null,$form_data, array('role' => 'form')) }}
+  {{ Form::model(isset($bono) ? $bono : null,$form_data, array('role' => 'form')) }}
     <div class="row">
         <div class="form-group col-md-4">
             {{ Form::label('id_socio', 'Socio') }}
@@ -21,10 +21,10 @@
         </div>
     </div>
     <button class="btn btn-primary" type="submit"> Guardar </button>
-    @if(isset($orden))
-    <a class="btn btn-small btn-info generar_orden_venta" data-toggle="modal" data-target="#modalOrdenVenta" href="#" data-id="{{$orden->id}}">Imprimir Orden de Pago</a>
+    @if(isset($bono))
+    <a class="btn btn-small btn-info generar_bono" data-toggle="modal" data-target="#modalBono" href="#" data-id="{{$bono->id}}">Imprimir Bono</a>
     @endif
   {{Form::close()}}
-@include('ordenes_compras.modal')
+@include('bonos.modal')
 
 @stop

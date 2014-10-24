@@ -1,8 +1,8 @@
 @extends('header')
 @section('scripts')
-    {{ HTML::script('assets/js/ordenes_compras.js') }}
+    {{ HTML::script('assets/js/bonos.js') }}
 @stop
 @section('content')
-    @include('ordenes_compras.tabla')
+    @include('bonos.tabla')
 @stop
-@include('ordenes_compras.modal')
+@include('bonos.modal')

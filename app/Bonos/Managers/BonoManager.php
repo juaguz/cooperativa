@@ -1,4 +1,4 @@
-<?php namespace OrdenesCompras\Managers;
+<?php namespace Bonos\Managers;
 
 
 /**
@@ -8,7 +8,7 @@
  * Time: 11:58
  */
 
-class OrdenCompraManager extends BaseManager{
+class BonoManager extends BaseManager{
 
     public function getRules()
     {

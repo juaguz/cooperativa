@@ -10,8 +10,8 @@
 </head>
 
 <body class="pace-done">
-<!-- Overlay Div -->
-<div id="overlay" class="transparent"></div>
+<!-- Overlay Div
+<div id="overlay" class="transparent"></div>-->
 <!-- wrapper -->
 <div id="wrapper" class="preload">
     <!-- top-nav-->
