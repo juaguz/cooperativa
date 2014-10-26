@@ -38,5 +38,11 @@ class Time {
         }
     }
 
+    public static function CreateDate($date){
+        return Carbon::createFromFormat('d/m/Y', $date);
+
+    }
+
+
 }
  
