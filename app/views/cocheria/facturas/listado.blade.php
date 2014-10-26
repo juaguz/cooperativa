@@ -26,7 +26,6 @@
         <th>Legajo Socio</th>
         <th>Nombre Familiar</th>
         <th>Apellido Familiar</th>
-        <th>Parentezco</th>
         <th>Importe</th>
         <th>Porcentaje</th>
         <th>Descripción</th>
@@ -41,9 +40,13 @@
         <td>{{ $value->getSocios->nombre }}</td>
         <td>{{ $value->getSocios->apellido }}</td>
         <td>{{ $value->getSocios->nro_legajo }}</td>
+        @if($value->getFamiliares)
         <td>{{ $value->getFamiliares->nombre }}</td>
         <td>{{ $value->getFamiliares->apellido }}</td>
-        <td>{{ $value->getFamiliares->getParentezco->descripcion }}</td>
+        @else
+        <td>{{ $value->nombre }}</td>
+        <td>{{ $value->apellido }}</td>
+        @endif
         <td>{{ $value->importe}}</td>
         <td>{{ $value->porcentaje }}</td>
         <td>{{ $value->descripcion }}</td>

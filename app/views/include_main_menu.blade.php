@@ -77,11 +77,11 @@
                 </li>
                 <li class="openable">
                     <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
-                        <span class="text"> Ventas </span> <span class="menu-hover"></span> </a>
+                        <span class="text"> Ventas / Financiación </span> <span class="menu-hover"></span> </a>
                     <ul class="submenu">
                         <li><a href="{{ route('ventas.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Ventas</span></a></li>
-                        <li><a href="{{ route('ventas.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Venta </span></a></li>
-                        <li><a href="@{{ route('ventas.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Ventas a excel </span></a></li>
+                        <li><a href="{{ route('ventas.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Crear Venta / Financiar </span></a></li>
+                        <li><a href="@{{ route('ventas.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Bajar a excel </span></a></li>
                     </ul>
                 </li>
 

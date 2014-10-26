@@ -78,6 +78,9 @@ class Socios extends \Eloquent{
     public function getOrdenes(){
         return $this->hasMany('OrdenesCompras\Entities\OrdenCompra','id_socio','id');
     }
+    public function getBonos(){
+        return $this->hasMany('Bonos\Entities\Bono','id_socio','id');
+    }
 
 
 

@@ -107,12 +107,12 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Combos\Composers\ComposerServiceProvider',
+        'OrdenesPago\ServiceProvider\OrdenPagoServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
         'Thujohn\Pdf\PdfServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Maatwebsite\Excel\ExcelServiceProvider',
-        'OrdenesPago\ServiceProvider\OrdenPagoServiceProvider',
     ),
 
 	/*
