@@ -1,7 +1,7 @@
 <div class="row">
         <div class="col-md-12">
                 <h4 class="headline">
-                    Rifas V$rifasSociosendidas
+                    Rifas Vendidas
                     <span class="line"></span>
                 </h4>
                 <div class="panel panel-default">
@@ -13,6 +13,7 @@
                             <td>Socio</td>
                             <td>Numeros</td>
                             <td>Fecha</td>
+                            <td>Cuotas</td>
                         </thead>
                         <tbody>
                             @foreach($rifasSocios as $rifaSocio)
@@ -22,6 +23,7 @@
                                     @include('rifas.listado_numeros')
                                 </td>
                                 <td>{{$rifaSocio->created_at}}</td>
+                                <td><button class="btn btn-primary cuotas_rifas" data-url="{{route('rifas.cuotas')}}" data-id_rifa_socio="{{$rifaSocio->id}}">Cuotas</button></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -34,3 +36,5 @@
                 </div>
             </div>
     </div>
+
+    @include('rifas.modal_cuotas')

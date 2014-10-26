@@ -19,12 +19,10 @@ class RifasNumerosRepo extends BaseRepo{
     }
 
     public function getNumerosRifa($id){
-        return $this->model->with(
-            [
-                'rifasSocios'=>function($q) use ($id){
+        return $this->model->whereHas('rifasSocios',
+            function($q) use ($id){
                     $q->where('id_rifa','=',$id);
-                }
-            ])->get();
+            })->get();
 
     }
 

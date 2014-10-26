@@ -2,6 +2,7 @@
 @section('scripts')
 {{ HTML::script('assets/js/ordenes_pago/prestamos.js') }}
 {{ HTML::script('assets/js/ordenes_compras.js') }}
+{{ HTML::script('assets/js/rifas.js') }}
 @stop
 @section('content')
 <div class="panel panel-default">
@@ -37,6 +38,7 @@
                     <thead>
                         <td>Nombre Rifas</td>
                         <td>Numeros</td>
+                        <td>Cuotas</td>
                     </thead>
                     <tbody>
                         @foreach($socio->getRifas as $rifaSocio)
@@ -45,10 +47,13 @@
                             <td>
                                 @include('rifas.listado_numeros',$rifaSocio)
                             </td>
+                            <td><button class="btn btn-primary cuotas_rifas" data-url="{{route('rifas.cuotas')}}" data-id_rifa_socio="{{$rifaSocio->id}}">Ver Cuotas</button></td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
+
             </div>
             <div class="tab-pane fade" id="ordenes_compras">
               @include('ordenes_compras.tabla',["ordenes"=>$socio->getOrdenes])
@@ -68,3 +73,4 @@
 @stop
 @include('prestamos.modal')
 @include('ordenes_compras.modal')
+@include('rifas.modal_cuotas')

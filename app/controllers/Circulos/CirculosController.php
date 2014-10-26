@@ -98,14 +98,10 @@ class CirculosController extends \BaseController {
 
         $respuestas  = [];
         $data      = Input::all();
-        $idsSocios = explode(',',$data['socios']);
         $circulo = $this->circulosRepo->newCirculo();
         $circuloManager = new CirculosManager($circulo,$data);
-        $cantidadCuotas  = $this->diffFechas($data['fecha_inicio'],$data['fecha_fin']);
-
         if($circuloManager->save()){
-            $idCirculo = $circulo->id;
-            $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
+            $idCirculo = $this->saveSocios($data, $circulo);
             $respuestas  = [
                 "success"=>true,
                 "ruta"=>route('circulos.edit',$idCirculo),
@@ -161,20 +157,14 @@ class CirculosController extends \BaseController {
      */
     public function update($id)
     {
-        //
         $data  = Input::all();
-        $idsSocios = explode(',',$data['socios']);
-
-
         $circulo  = $this->circulosRepo->find($id);
         $circuloManager = new CirculosManager($circulo,$data);
         if($circuloManager->save()){
-            //return Redirect::route('circulos.edit',$circulo->id)->with('mensaje_exito',"Circulo actualizado Correctamente.");
+            $this->saveSocios($data,$circulo);
             return  ["success"=>true];
         }
-
         return ["success"=>false,"errores"=>$circuloManager->getErrors()];
-
     }
 
     public function getTablaCirculo(){
@@ -235,7 +225,7 @@ class CirculosController extends \BaseController {
      */
     public function createFecha($fechaDesde)
     {
-        return Carbon::createFromFormat('d/m/Y', $fechaDesde);
+        return Time::CreateDate($fechaDesde);
     }
 
     /**
@@ -268,6 +258,20 @@ class CirculosController extends \BaseController {
             $idCirculoSoc = $socioCirculo->id;
             $this->cuotasCirculos($cantidadCuotas, $idCirculoSoc);
         }
+    }
+
+    /**
+     * @param $data
+     * @param $circulo
+     * @return mixed
+     */
+    private function saveSocios($data, $circulo)
+    {
+        $idsSocios = explode(',', $data['socios']);
+        $cantidadCuotas = $this->diffFechas($data['fecha_inicio'], $data['fecha_fin']);
+        $idCirculo = $circulo->id;
+        $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
+        return $idCirculo;
     }
 
 
