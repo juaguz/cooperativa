@@ -31,7 +31,7 @@ class Time {
     }
 
     public static function FormatearToNormal($sFecha){
-        if(!empty($sFecha)){
+        if(!empty($sFecha) && $sFecha != '0000-00-00'){
             self::$sFecha = $sFecha;
             self::$sFormato = "d/m/Y";
             return self::fecha();
