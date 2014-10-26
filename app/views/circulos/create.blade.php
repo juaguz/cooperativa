@@ -68,7 +68,7 @@
 
 <div class="row" id="resultado" style="">
     <div class="col-md-10">
-        <table class="table">
+        <table class="table" id="tablaSocios">
             <thead>
                 <th>Socio</th>
                 <th>Borrar</th>
@@ -108,6 +108,7 @@
 {{ HTML::script('assets/js/jquery.jstepper.min.js') }}
 <script>
     var sociosJson  = new Array();
+    var utils       = new Helper();
     $(function(){
 
             $('.solonumeros').jStepper({minValue:0,minLength:1});
@@ -155,7 +156,9 @@
                 var idSocio        =  socioCombo.val();
                 var cantInpt       = $("#cantidad_socios");
                 var cantidadSocios =  cantInpt.val();
-                if(sociosJson.length == cantidadSocios ){
+                var cantidadAgregados = $("#tablaSocios tbody tr").length;
+                console.log(cantidadAgregados);
+                if( cantidadAgregados == cantidadSocios ){
                     cantInpt.focus();
                     return alert("No se Puede Seguir Cargando Socios, aumente la cantidad");
                 }
@@ -169,23 +172,30 @@
                 $("#resultado").show();
                 var table          =  $("#resultado table tbody");
                 sociosJson.push(idSocio);
-                console.log(sociosJson);
                 table.append('<tr id="socioTr'+idSocio+'"><td id="socioTd'+idSocio+'">'+datoSocio+'</td><td><button type="button" class="btn btn-danger" onclick="borrar('+idSocio+')"><i class="fa fa-trash-o"></i></button></td></tr>');
 
 
             });
     });
-    function borrar(idSocio){
-        var tr = '#socioTr'+idSocio;
-        var nombre = $('#socioTd'+idSocio).text();
-        $(tr).remove();
-        $("#socios").append('<option value="'+idSocio+'">'+nombre+'</option>');
-        $.each(sociosJson, function(i, v) {
-            if (v== idSocio) {
-                sociosJson.splice(i);
-                return;
-            }
+    function borrarSocioTabla(idSocio){
+var tr = '#socioTr'+idSocio;
+                            var nombre = $('#socioTd'+idSocio).text();
+                            $(tr).remove();
+                            $("#socios").append('<option value="'+idSocio+'">'+nombre+'</option>');
+                            $.each(sociosJson, function(i, v) {
+                                if (v == idSocio) {
+                                    sociosJson.splice(i);
+                                    return;
+                                }
+                            });
+}
+function borrar(idSocio){
+        utils.ajax(null,'POST','circulos/socios/borrar',{id_socio:idSocio},function(respuesta){
+                if(respuesta==true){
+                    borrarSocioTabla(idSocio);
+                }
         });
+
     }
 </script>
 

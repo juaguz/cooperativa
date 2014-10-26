@@ -12,7 +12,6 @@
         <div class="panel-body">
             <div class="row">
                 <div class="form-group">
-
                         <label for="socio[{{$i}}][id_socio]"  class="col-sm-4 control-label">Socio</label>
                         <div class="col-sm-12">
                             {{ Form::select('socio[$i][id_socio]',$socios,null,['class'=>'form-control select2']) }}

@@ -106,13 +106,15 @@ class CirculosController extends \BaseController {
         if($circuloManager->save()){
             $idCirculo = $circulo->id;
             $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
-            $respuestas  = ["ruta"=>route('circulos.edit',$idCirculo),
-                "response"=>201
+            $respuestas  = [
+                "success"=>true,
+                "ruta"=>route('circulos.edit',$idCirculo),
+
             ];
             return Response::json($respuestas);
         }
 
-        $respuestas  = ["response"=>400,"errores"=>$circuloManager->getErrors()];
+        $respuestas  = ["response"=>false,"errores"=>$circuloManager->getErrors()];
         return Response::json($respuestas);
 
 
@@ -161,14 +163,17 @@ class CirculosController extends \BaseController {
     {
         //
         $data  = Input::all();
+        $idsSocios = explode(',',$data['socios']);
+
+
         $circulo  = $this->circulosRepo->find($id);
         $circuloManager = new CirculosManager($circulo,$data);
         if($circuloManager->save()){
-            return Redirect::route('circulos.edit',$circulo->id)->with('mensaje_exito',"Circulo actualizado Correctamente.");
-
+            //return Redirect::route('circulos.edit',$circulo->id)->with('mensaje_exito',"Circulo actualizado Correctamente.");
+            return  ["success"=>true];
         }
 
-        return Redirect::back()->withErrors($circuloManager->getErrors())->withInput();
+        return ["success"=>false,"errores"=>$circuloManager->getErrors()];
 
     }
 
@@ -194,12 +199,22 @@ class CirculosController extends \BaseController {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function desHabilitar()
     {
-        //
+        $idSocio = Input::get('id_socio',false);
+        $idCirculo = Input::get('id_circulo',false);
+        if($idSocio && $idCirculo){
+            $circulosSocios = $this->circulosSociosRepo->getCirculoSocio($idCirculo,$idSocio);
+            $circulosSocios->dado_baja = 1;
+            $circuloManager = new CirculosSociosManagers($circulosSocios,[]);
+            if($circuloManager->save()){
+                return true;
+            }
+
+        }
+
     }
 
     public function exportarExcel(){

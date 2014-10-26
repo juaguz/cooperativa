@@ -25,6 +25,13 @@ class CirculosSociosRepo extends BaseRepo {
 
     }
 
+    public function getCirculoSocio($idCirculo,$IdSocio){
+        return $this->model
+                            ->where('id_circulo','=',$idCirculo)
+                            ->where('id_socio','=',$IdSocio)
+                            ->get();
+
+    }
 
     public function getModel()
     {

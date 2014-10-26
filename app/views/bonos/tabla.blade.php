@@ -14,7 +14,7 @@
                 <td>{{$bono->comercio->nombre}} {{$bono->comercio->direccion}}</td>
                 <td>{{$bono->importe}}</td>
                 <td>
-                    <a href="{{route('bonos.edit',$orden->id)}}" class="btn btn-primary">Editar</a>
+                    <a href="{{route('bonos.edit',$bono->id)}}" class="btn btn-primary">Editar</a>
                     <a class="btn btn-small btn-info generar_bono" data-toggle="modal" data-target="#modalBono" href="#" data-id="{{$bono->id}}">Imprimir Bono</a>
                 </td>
             </tr>

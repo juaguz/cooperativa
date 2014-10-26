@@ -120,7 +120,7 @@ Route::group(array('before' => 'auth'), function () {
         //Bonos
         Route::get("bonos/getBono","BonosController@getBono");
         Route::resource("bonos","BonosController");
-
+        Route::post("circulos/socios/borrar",'CirculosController@desHabilitar');
 
 });
 
