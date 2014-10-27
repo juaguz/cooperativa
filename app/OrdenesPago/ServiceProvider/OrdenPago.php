@@ -21,9 +21,12 @@ class OrdenPago {
     }
 
 
-    public function save($idOrden,$idTipo){
+    public function save($idOrden,$idTipo,$monto,$concepto,$fecha){
 
         $ordenPago = $this->ordenPagoRepo->newOrdenPago($idOrden,$idTipo);
+        $ordenPago->importe = $monto;
+        $ordenPago->concepto = $concepto;
+        $ordenPago->fecha = $fecha;
         $ordenPagoManager = new OrdenesPagosManager($ordenPago,[]);
         $ordenPagoManager->save();
         return $ordenPago;

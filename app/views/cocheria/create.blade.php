@@ -98,8 +98,8 @@
         errorClass: "invalid",
         rules:{
             fecha:{
-                required: true,
-                date:true
+                required: true
+
             },
             porcentaje:{
                 required:true,

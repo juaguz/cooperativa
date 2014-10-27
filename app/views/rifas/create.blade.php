@@ -38,17 +38,17 @@
 <div class="row">
 	<div class="form-group col-md-4">
         {{ Form::label('fecha_sorteo', 'Fecha de Sorteo') }}
-        {{ Form::text('fecha_sorteo', null, array('placeholder' => 'Ingrese Fecha de Sorteo ', 'class' => 'form-control fecha')) }}
+        {{ Form::text('fecha_sorteo', null, array('placeholder' => 'Ingrese Fecha de Sorteo ', 'class' => 'form-control fecha','required'=>'required')) }}
 	</div>
         <div class="form-group col-md-4">
                 {{ Form::label('fecha_desde', 'Fecha Desde') }}
-                {{ Form::text('fecha_desde', null, array('placeholder' => 'Ingrese Fecha', 'class' => 'form-control fecha')) }}
+                {{ Form::text('fecha_desde', null, array('placeholder' => 'Ingrese Fecha', 'class' => 'form-control fecha','required'=>'required')) }}
         	</div>
  </div>
  <div class="row">
 	<div class="form-group col-md-4">
         {{ Form::label('fecha_hasta', 'Fecha Hasta') }}
-        {{ Form::text('fecha_hasta', null, array('placeholder' => 'Ingrese Fecha', 'class' => 'form-control fecha')) }}
+        {{ Form::text('fecha_hasta', null, array('placeholder' => 'Ingrese Fecha', 'class' => 'form-control fecha','required'=>'required')) }}
 	</div>
     <div class="form-group col-md-4">
                 {{ Form::label('cuotas', 'Cantidad de Cuotas') }}

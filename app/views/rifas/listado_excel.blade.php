@@ -2,19 +2,19 @@
 	<thead>
 		<tr>
 			<th>Nombre</th>
-			<th>Direcci&oacute;n</th>
-            <th>Tel&eacute;fono</th>
-            <th>Contacto</th>
+			<th>Desde</th>
+            <th>Hasta</th>
+            <th>Meses</th>
 
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($comercios as $key => $value)
+		@foreach($rifas as $key => $value)
 		<tr>
 			<td>{{ $value->nombre }}</td>
-            <td>{{ $value->direccion }}</td>
-            <td>{{ $value->telefono }}</td>
-            <td>{{ $value->persona_contacto }}</td>
+            <td>{{ $value->desde }}</td>
+            <td>{{ $value->hasta }}</td>
+            <td>{{ $value->meses }}</td>
 
 			<!-- we will also add show, edit, and delete buttons -->
 

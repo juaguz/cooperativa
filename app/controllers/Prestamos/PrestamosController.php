@@ -89,7 +89,7 @@ class PrestamosController extends \BaseController {
 
         $this->saveCuotas($dataCuotas, $id);
 
-        OrdenesPago::save($id,1);
+        OrdenesPago::save($id,1,$data['monto'],"Pago de Prestamo $id",$prestamoRepo->created_at);
 
         return Redirect::route('prestamos.edit',$id)->with('mensaje_exito','Prestamo Creado Correctamente!');
 

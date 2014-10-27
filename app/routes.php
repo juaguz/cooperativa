@@ -44,6 +44,10 @@ Route::group(array('before' => 'auth'), function () {
 
         Route::resource("ordenes/compras","OrdenesComprasController");
 
+        Route::resource("ordenes/pagos","OrdenesPagosController");
+
+        Route::post("ordenes/pagos/comprobante/{id}",["uses"=>"OrdenesPagosController@generarComprobante","as"=>"ordenes.pagos.comprobante"]);
+
 
         Route::post("prestamos/getTabla",["as"=>"prestamos.getTabla","uses"=>"PrestamosController@getTabla"]);
 

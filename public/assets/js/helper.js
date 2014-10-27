@@ -9,7 +9,7 @@
 var Helper = function(){
 
     //url absoluta de la apliacion por ej http://desarrollo.micovoz.com.ar/crm
-    var basePath = window.location.protocol + "//" + window.location.host+"/cooperativa/";
+    var basePath = window.location.protocol + "//" + window.location.host+"/cooperativa/public/";
     this.basePath = basePath;
     var el;
 
