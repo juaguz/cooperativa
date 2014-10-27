@@ -121,6 +121,7 @@ Route::group(array('before' => 'auth'), function () {
         Route::get("bonos/getBono","BonosController@getBono");
         Route::resource("bonos","BonosController");
         Route::post("circulos/socios/borrar",'CirculosController@desHabilitar');
+        Route::get("circulos/socios/borrar/{id}",['uses'=>'CirculosController@eliminar','as'=>'circulos.elimiar_socio']);
         Route::post("rifas/getTableCuotas",["as"=>"rifas.cuotas",'uses'=>'RifasController@getRifasCuotasTable']);
 
         Route::post("rifas/updateCuotas",  ["as"=>"rifas.update.cuotas",'uses'=>'RifasController@updateRifasCuotasSocio']);

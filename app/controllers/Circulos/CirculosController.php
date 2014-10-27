@@ -162,7 +162,11 @@ class CirculosController extends \BaseController {
         $circuloManager = new CirculosManager($circulo,$data);
         if($circuloManager->save()){
             $this->saveSocios($data,$circulo);
-            return  ["success"=>true];
+            return [
+                "success"=>true,
+                "ruta"=>route('circulos.edit',$id),
+
+            ];
         }
         return ["success"=>false,"errores"=>$circuloManager->getErrors()];
     }
@@ -186,6 +190,17 @@ class CirculosController extends \BaseController {
     }
 
 
+    public function eliminar($id){
+        $circulosSocios = $this->circulosSociosRepo->find($id);
+        $circulosSocios->dado_baja = 1;
+        $circuloManager = new CirculosSociosManagers($circulosSocios,[]);
+        if($circuloManager->save()){
+            return Redirect::back()->with('mensaje_exito',"Socio Eliminado del Circulo.");
+
+        }
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -195,12 +210,13 @@ class CirculosController extends \BaseController {
     {
         $idSocio = Input::get('id_socio',false);
         $idCirculo = Input::get('id_circulo',false);
+
         if($idSocio && $idCirculo){
             $circulosSocios = $this->circulosSociosRepo->getCirculoSocio($idCirculo,$idSocio);
             $circulosSocios->dado_baja = 1;
             $circuloManager = new CirculosSociosManagers($circulosSocios,[]);
             if($circuloManager->save()){
-                return true;
+                return ["success"=>true];
             }
 
         }
@@ -267,11 +283,14 @@ class CirculosController extends \BaseController {
      */
     private function saveSocios($data, $circulo)
     {
-        $idsSocios = explode(',', $data['socios']);
-        $cantidadCuotas = $this->diffFechas($data['fecha_inicio'], $data['fecha_fin']);
-        $idCirculo = $circulo->id;
-        $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
-        return $idCirculo;
+        if(!empty($data['socios'])){
+
+            $idsSocios = explode(',', $data['socios']);
+            $cantidadCuotas = $this->diffFechas($data['fecha_inicio'], $data['fecha_fin']);
+            $idCirculo = $circulo->id;
+            $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
+            return $idCirculo;
+        }
     }
 
 

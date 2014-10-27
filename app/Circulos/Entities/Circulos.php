@@ -35,7 +35,7 @@ class Circulos extends \Eloquent{
 
     public function circulosSocios(){
 
-        return $this->hasMany('Circulos\Entities\CirculosSocios','id_circulo','id');
+        return $this->hasMany('Circulos\Entities\CirculosSocios','id_circulo','id')->where('dado_baja','=',0);
     }
 
 

@@ -67,6 +67,8 @@
             <div class="tab-pane fade" id="futbol">
               @include('servicios.tabla',["servicios"=>$socio->getFutbol])
             </div>
+                @include('socios.contenido_tabs.circulos')
+            </div>
             <div class="tab-pane fade" id="pesca">
               @include('servicios.tabla',["servicios"=>$socio->getPesca])
             </div>

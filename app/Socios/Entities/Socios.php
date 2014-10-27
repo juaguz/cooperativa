@@ -58,8 +58,8 @@ class Socios extends \Eloquent{
         return $this->hasMany('Prestamos\Entities\Prestamos','id_socio','id');
 
     }
-    public function getCirculos(){
-        //return $this->hasMany('Circulos\Entities\Circulos','id_socio','id');
+    public function getCirculosSocios(){
+        return $this->hasMany('Circulos\Entities\CirculosSocios','id_socio','id')->where('dado_baja','=',0);
 
     }
     public function getVentas(){
