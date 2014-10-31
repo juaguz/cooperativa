@@ -13,7 +13,7 @@ class PrestamosCuotas extends \Eloquent{
 
     protected $table = "cuotas_prestamo";
 
-    protected $fillable = ["importe","fecha_vencimiento"];
+    protected $fillable = ["importe","fecha_vencimiento","nro_cuota"];
 
 
     public function setFechaVencimientoAttribute($value){

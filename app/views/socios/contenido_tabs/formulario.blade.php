@@ -109,6 +109,16 @@
 
 </div>
 <div class="row">
+
+    <div class="form-group col-md-4 ">
+        {{ Form::label('se_liquida', '¿Se liquida?') }}
+        {{ Form::select('se_liquida',$sino ,null,array('class' => 'form-control','id'=>'')) }}
+
+    </div>
+
+
+</div>
+<div class="row">
     <div class="form-group col-md-4">
         <span>Valor Hist&oacute;rico: {{ $socio->valor_historico or " " }} </span>
     </div>

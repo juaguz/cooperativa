@@ -12,7 +12,7 @@ class Socios extends \Eloquent{
 
     protected $table = "socios";
 
-    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop","socio_cocheria");
+    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop","socio_cocheria","se_liquida");
 
     public function getTipoDocumento(){
 

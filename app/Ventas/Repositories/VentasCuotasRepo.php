@@ -17,10 +17,12 @@ class VentasCuotasRepo extends BaseRepo {
         return new VentasCuotas();
     }
 
-    public function newCuotas($idVenta){
+    public function newCuotas($idVenta,$nro_cuota){
         $cuotas = $this->getModel();
 
         $cuotas->id_venta = $idVenta;
+
+        $cuotas->nro_cuota = $nro_cuota;
 
         $cuotas->id_usuario  = \Auth::user()->id;
 

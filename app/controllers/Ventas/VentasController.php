@@ -89,11 +89,7 @@ class VentasController extends \BaseController {
         $ventaManager->save();
         $id = $ventaRepo->id;
 
-        foreach($dataCuotas as $cuota){
-            $cuotaRepo = $this->ventasCuotasRepo->newCuotas($id);
-            $cuotasManager = new VentasCuotasManager($cuotaRepo,$cuota);
-            $cuotasManager->save();
-    }
+        $this->saveCuotas($dataCuotas, $id);
 
         return Redirect::route('ventas.edit',$id)->with('mensaje_exito','Venta Creado Correctamente!');
 
@@ -163,6 +159,21 @@ class VentasController extends \BaseController {
 	{
 		//
 	}
+
+    /**
+     * @param $dataCuotas
+     * @param $id
+     */
+    public function saveCuotas($dataCuotas, $id)
+    {
+        $i = 1;
+        foreach ($dataCuotas as $cuota) {
+            $cuotaRepo = $this->ventasCuotasRepo->newCuotas($id,$i);
+            $cuotasManager = new VentasCuotasManager($cuotaRepo, $cuota);
+            $cuotasManager->save();
+            $i++;
+        }
+    }
 
 
 }
