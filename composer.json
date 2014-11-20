@@ -28,7 +28,8 @@
           "Penias\\":"app/Penias",
           "OrdenesPago\\":"app/OrdenesPago",
           "Bonos\\":"app/Bonos",
-          "OrdenesCompras\\":"app/OrdenesCompras"
+          "OrdenesCompras\\":"app/OrdenesCompras",
+          "Recibos\\":"app/Recibos"
 
         },
 		"classmap": [

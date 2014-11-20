@@ -98,21 +98,19 @@ class CirculosController extends \BaseController {
 
         $respuestas  = [];
         $data      = Input::all();
-        $idsSocios = explode(',',$data['socios']);
         $circulo = $this->circulosRepo->newCirculo();
         $circuloManager = new CirculosManager($circulo,$data);
-        $cantidadCuotas  = $this->diffFechas($data['fecha_inicio'],$data['fecha_fin']);
-
         if($circuloManager->save()){
-            $idCirculo = $circulo->id;
-            $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
-            $respuestas  = ["ruta"=>route('circulos.edit',$idCirculo),
-                "response"=>201
+            $idCirculo = $this->saveSocios($data, $circulo);
+            $respuestas  = [
+                "success"=>true,
+                "ruta"=>route('circulos.edit',$idCirculo),
+
             ];
             return Response::json($respuestas);
         }
 
-        $respuestas  = ["response"=>400,"errores"=>$circuloManager->getErrors()];
+        $respuestas  = ["response"=>false,"errores"=>$circuloManager->getErrors()];
         return Response::json($respuestas);
 
 
@@ -159,17 +157,18 @@ class CirculosController extends \BaseController {
      */
     public function update($id)
     {
-        //
         $data  = Input::all();
         $circulo  = $this->circulosRepo->find($id);
         $circuloManager = new CirculosManager($circulo,$data);
         if($circuloManager->save()){
-            return Redirect::route('circulos.edit',$circulo->id)->with('mensaje_exito',"Circulo actualizado Correctamente.");
+            $this->saveSocios($data,$circulo);
+            return [
+                "success"=>true,
+                "ruta"=>route('circulos.edit',$id),
 
+            ];
         }
-
-        return Redirect::back()->withErrors($circuloManager->getErrors())->withInput();
-
+        return ["success"=>false,"errores"=>$circuloManager->getErrors()];
     }
 
     public function getTablaCirculo(){
@@ -191,15 +190,37 @@ class CirculosController extends \BaseController {
     }
 
 
+    public function eliminar($id){
+        $circulosSocios = $this->circulosSociosRepo->find($id);
+        $circulosSocios->dado_baja = 1;
+        $circuloManager = new CirculosSociosManagers($circulosSocios,[]);
+        if($circuloManager->save()){
+            return Redirect::back()->with('mensaje_exito',"Socio Eliminado del Circulo.");
+
+        }
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function desHabilitar()
     {
-        //
+        $idSocio = Input::get('id_socio',false);
+        $idCirculo = Input::get('id_circulo',false);
+
+        if($idSocio && $idCirculo){
+            $circulosSocios = $this->circulosSociosRepo->getCirculoSocio($idCirculo,$idSocio);
+            $circulosSocios->dado_baja = 1;
+            $circuloManager = new CirculosSociosManagers($circulosSocios,[]);
+            if($circuloManager->save()){
+                return ["success"=>true];
+            }
+
+        }
+
     }
 
     public function exportarExcel(){
@@ -220,7 +241,7 @@ class CirculosController extends \BaseController {
      */
     public function createFecha($fechaDesde)
     {
-        return Carbon::createFromFormat('d/m/Y', $fechaDesde);
+        return Time::CreateDate($fechaDesde);
     }
 
     /**
@@ -252,6 +273,23 @@ class CirculosController extends \BaseController {
             $socioManager->save();
             $idCirculoSoc = $socioCirculo->id;
             $this->cuotasCirculos($cantidadCuotas, $idCirculoSoc);
+        }
+    }
+
+    /**
+     * @param $data
+     * @param $circulo
+     * @return mixed
+     */
+    private function saveSocios($data, $circulo)
+    {
+        if(!empty($data['socios'])){
+
+            $idsSocios = explode(',', $data['socios']);
+            $cantidadCuotas = $this->diffFechas($data['fecha_inicio'], $data['fecha_fin']);
+            $idCirculo = $circulo->id;
+            $this->circuloSocios($idsSocios, $idCirculo, $cantidadCuotas);
+            return $idCirculo;
         }
     }
 

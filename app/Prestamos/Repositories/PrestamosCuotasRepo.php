@@ -17,11 +17,10 @@ class PrestamosCuotasRepo extends BaseRepo {
         return new PrestamosCuotas();
     }
 
-    public function newCuotas($idPrestamo,$nro_cuota){
+    public function newCuotas($idPrestamo){
         $cuotas = $this->getModel();
 
         $cuotas->id_prestamo = $idPrestamo;
-        $cuotas->nro_cuota   = $nro_cuota;
 
         $cuotas->id_usuario  = \Auth::user()->id;
 

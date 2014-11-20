@@ -4,7 +4,7 @@
 @section ('title') {{$action}} venta @stop
 
 @section ('content')
-<h1>{{$action}} Venta</h1>
+<h1>{{$action}} Venta / Financiación</h1>
 
 
 

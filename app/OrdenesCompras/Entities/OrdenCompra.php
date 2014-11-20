@@ -11,7 +11,7 @@ use Time;
 class OrdenCompra extends \Eloquent {
 
     protected $table = 'ordenes_compras';
-    protected $fillable = ["id_socio","id_comercio","importe","created_at","updated_at"];
+    protected $fillable = ["id_socio","id_comercio","importe","created_at","updated_at","fecha_vencimiento"];
 
 
     public function socio(){
@@ -26,6 +26,16 @@ class OrdenCompra extends \Eloquent {
     public function getCreatedAtAttribute($value){
 
         return Time::FormatearToNormal($value);
+
+    }
+    public function getFechaVencimientoAttribute($value){
+
+        return Time::FormatearToNormal($value);
+
+    }
+    public function setFechaVencimientoAttribute($value){
+
+        return $this->attributes["fecha_vencimiento"] = \Time::FormatearToMysql($value);
 
     }
 } 

@@ -16,10 +16,16 @@ class OrdenPagoRepo extends BaseRepo {
         return new OrdenPagoEntity();
     }
 
-    public function newOrdenPago($idOrden,$idTipo){
+    public function newOrdenPago($idOrden=0,$idTipo=0){
         $orden = $this->getModel();
         $orden->id_orden_pago = $idOrden;
         $orden->id_tipo_comprobante = $idTipo;
+        $orden->id_usuario = \Auth::user()->id;
         return $orden;
+    }
+
+    public function getOrder($paginate){
+
+        return $this->model->orderBy('id','desc')->paginate($paginate);
     }
 }

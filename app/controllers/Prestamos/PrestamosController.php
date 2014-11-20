@@ -187,12 +187,10 @@ class PrestamosController extends \BaseController {
      */
     private function saveCuotas($dataCuotas, $id)
     {
-        $i = 1;
         foreach ($dataCuotas as $cuota) {
-            $cuotaRepo = $this->prestamosCuotasRepo->newCuotas($id,$i);
+            $cuotaRepo = $this->prestamosCuotasRepo->newCuotas($id);
             $cuotasManager = new PrestamosCuotasManager($cuotaRepo, $cuota);
             $cuotasManager->save();
-            $i++;
         }
     }
 

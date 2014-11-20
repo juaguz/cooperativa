@@ -12,6 +12,13 @@ use Circulos\Entities\CirculosSocios;
 
 class CirculosSociosRepo extends BaseRepo {
 
+    public function getModel()
+    {
+        // TODO: Implement getModel() method.
+        return new CirculosSocios();
+
+    }
+
 
     public function newCirculosSocios($idCirculo,$idSocio){
         $socios = $this->getModel();
@@ -25,11 +32,13 @@ class CirculosSociosRepo extends BaseRepo {
 
     }
 
-
-    public function getModel()
-    {
-        // TODO: Implement getModel() method.
-        return new CirculosSocios();
+    public function getCirculoSocio($idCirculo,$IdSocio){
+        return $this->model
+                            ->where('id_circulo','=',$idCirculo)
+                            ->where('id_socio','=',$IdSocio)
+                            ->first();
 
     }
+
+
 }

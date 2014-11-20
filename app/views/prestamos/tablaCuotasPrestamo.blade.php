@@ -33,6 +33,14 @@
                         </div>
                 </div>
             </div>
+            <div class="row">
+                    <div class="form-group">
+                            <label for="cuota[{{ $i }}][nro_recibo]"  class="col-sm-4 control-label">Pagada En Cooperativa, recibo N°</label>
+                            <div class="col-sm-5">
+                                <input name="cuota[{{ $i }}][nro_recibo]" class="form-control" value="{{ $cuota->nro_recibo  }}">
+                            </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

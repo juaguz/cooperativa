@@ -12,7 +12,7 @@ class Socios extends \Eloquent{
 
     protected $table = "socios";
 
-    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop","socio_cocheria","se_liquida");
+    protected $fillable = array("nombre","apellido","id_tipo_documento","nro_documento","id_sexo","id_estudio","id_tipo_socio","nro_legajo","direccion","localidad","socio_futbol","socio_pesca","tel_cel","tel_part","tel_lab","fecha_nac","socio_coop","socio_cocheria");
 
     public function getTipoDocumento(){
 
@@ -58,8 +58,8 @@ class Socios extends \Eloquent{
         return $this->hasMany('Prestamos\Entities\Prestamos','id_socio','id');
 
     }
-    public function getCirculos(){
-        //return $this->hasMany('Circulos\Entities\Circulos','id_socio','id');
+    public function getCirculosSocios(){
+        return $this->hasMany('Circulos\Entities\CirculosSocios','id_socio','id')->where('dado_baja','=',0);
 
     }
     public function getVentas(){
@@ -77,6 +77,9 @@ class Socios extends \Eloquent{
     }
     public function getOrdenes(){
         return $this->hasMany('OrdenesCompras\Entities\OrdenCompra','id_socio','id');
+    }
+    public function getBonos(){
+        return $this->hasMany('Bonos\Entities\Bono','id_socio','id');
     }
 
 

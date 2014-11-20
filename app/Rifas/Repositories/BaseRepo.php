@@ -44,6 +44,10 @@ abstract class BaseRepo {
 
         return $this->model->where($campo,'LIKE',"%$valor%");
     }
+    public function where($campo,$valor){
+
+        return $this->model->where($campo,'=',"$valor")->get();
+    }
 
 
 

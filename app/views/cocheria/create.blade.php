@@ -11,9 +11,14 @@
 <div class="row">
 
     <div class="form-group col-md-4">
-        {{ Form::label('fecha', 'Fecha') }}
+        {{ Form::label('fecha', 'Fecha de Factura') }}
         {{ Form::text('fecha', null, array('placeholder' => '', 'class' => 'form-control fecha','required'=>'required')) }}
     </div>
+    <div class="form-group col-md-4">
+        {{ Form::label('fecha_defuncion', 'Fecha de Defunción') }}
+        {{ Form::text('fecha_defuncion', null, array('placeholder' => '', 'class' => 'form-control fecha','required'=>'required')) }}
+    </div>
+
 </div>
 <div class="row">
 
@@ -24,7 +29,7 @@
 
     <div class="form-group col-md-4">
         {{ Form::label('id_familiar', 'Familiar') }}
-        {{ Form::select('id_familiar',isset($familiaresCombo) ? $familiaresCombo:[] ,null, array('placeholder' => '', 'class' => 'form-control','required'=>'required')) }}
+        {{ Form::select('id_familiar',isset($familiaresCombo) ? $familiaresCombo:[] ,null, array('placeholder' => '', 'class' => 'form-control')) }}
     </div>
 </div>
 
@@ -40,14 +45,41 @@
     </div>
 </div>
 <div class="row">
-
+    <div class="form-group col-md-8">
+        {{Form::label('nombre','Nombre') }}
+        {{ Form::text('nombre', null, array('placeholder' => '', 'class' => 'form-control')) }}
+    </div>
+    <div class="form-group col-md-8">
+        {{ Form::label('apellido','Apellido') }}
+        {{ Form::text('apellido', null, array('placeholder' => '', 'class' => 'form-control')) }}
+    </div>
+</div>
+<div class="row">
    <div class="form-group col-md-8">
-       {{Form::label('descripcion','Descripcion') }}
+       {{ Form::label('descripcion','Descripcion') }}
        {{ Form::textarea('descripcion', null, array('placeholder' => '', 'class' => 'form-control')) }}
    </div>
 
-
-
+</div>
+<div class="row">
+    <div class="form-group col-md-8">
+        {{Form::label('monto_quincenal','Monto Quincenal') }}
+        {{ Form::text('monto_quincenal', null, array('placeholder' => '', 'class' => 'form-control','type'=>'number')) }}
+    </div>
+    <div class="form-group col-md-8">
+        {{ Form::label('monto_mensual','Monto Mensual') }}
+        {{ Form::text('monto_mensual', null, array('placeholder' => '', 'class' => 'form-control','type'=>'number')) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-8">
+        {{ Form::label('primer_vencimiento', 'Fecha de Vencimiento 1era Quincena') }}
+        {{ Form::text('primer_vencimiento', null, array('placeholder' => '', 'class' => 'form-control fecha','required'=>'required')) }}
+    </div>
+    <div class="form-group col-md-8">
+        {{ Form::label('segundo_vencimiento', 'Fecha de Vencimiento 2da Quincena/Mensuales') }}
+        {{ Form::text('segundo_vencimiento', null, array('placeholder' => '', 'class' => 'form-control fecha','required'=>'required')) }}
+    </div>
 </div>
 
 <div class="row">
@@ -66,8 +98,8 @@
         errorClass: "invalid",
         rules:{
             fecha:{
-                required: true,
-                date:true
+                required: true
+
             },
             porcentaje:{
                 required:true,

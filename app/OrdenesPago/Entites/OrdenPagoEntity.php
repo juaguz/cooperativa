@@ -7,5 +7,18 @@
  */
 
 class OrdenPagoEntity extends \Eloquent {
-    protected $table = 'ordenes_pagos';
+    protected $table    = 'ordenes_pagos';
+    protected $fillable = ["quien","a_quien","importe","fecha","concepto","updated_at"];
+
+    public function setFechaAttribute($value){
+
+        $this->attributes["fecha"] = \Time::FormatearToMysql($value);
+
+    }
+    public function getFechaAttribute($value){
+
+        return \Time::FormatearToNormal($value);
+    }
+
+
 }

@@ -3,7 +3,16 @@
 
 @section ('title') {{$action}} circulo @stop
 
+
+
+
 @section ('content')
+<div class="alert alert-success" style="display:none" id="mensajeCorrectoCirculo">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Socio Eliminado Correctamente</strong>
+</div>
+
+
 <h1>{{$action}} Círculo</h1>
 
 
@@ -68,7 +77,7 @@
 
 <div class="row" id="resultado" style="">
     <div class="col-md-10">
-        <table class="table">
+        <table class="table" id="tablaSocios">
             <thead>
                 <th>Socio</th>
                 <th>Borrar</th>
@@ -78,7 +87,7 @@
                 @foreach($sociosCirculo as $socio)
                 <tr id="socioTr{{$socio->socios->id}}">
                     <td>{{$socio->socios->apellido}} {{$socio->socios->nombre}} Nro Legajo: {{$socio->socios->nro_legajo}}</td>
-                    <td><button type="button" class="btn btn-danger" onclick="borrar('{{$socio->socios->id}}')"><i class="fa fa-trash-o"></i></button></td>
+                    <td><button type="button" class="btn btn-danger" onclick="borrar('{{$socio->socios->id}}','{{$circulo->id}}')"><i class="fa fa-trash-o"></i></button></td>
                 </tr>
                 @endforeach
             @endif
@@ -108,6 +117,7 @@
 {{ HTML::script('assets/js/jquery.jstepper.min.js') }}
 <script>
     var sociosJson  = new Array();
+    var utils       = new Helper();
     $(function(){
 
             $('.solonumeros').jStepper({minValue:0,minLength:1});
@@ -143,10 +153,22 @@
                    cache:false,
                    processData:false,
                    contentType:false,
+                    beforeSend:function(){
+                        $.blockUI({ message: '<div class="progress-bar progress-bar-danger" style="width: 100%;">Cargando...</div>' });
+
+                   },
                     success:function(respuesta){
-                        console.log(respuesta);
+                        if(respuesta.success){
+                            $.blockUI({ message: '<div class="progress-bar progress-bar-success" style="width: 100%;">Redirigiendo...</div>' });
+                            window.location.assign(respuesta.ruta);
+                        }
+
+
                     }
                 });
+
+
+
             });
 
             $("#btnAgregar").click(function(e){
@@ -155,7 +177,9 @@
                 var idSocio        =  socioCombo.val();
                 var cantInpt       = $("#cantidad_socios");
                 var cantidadSocios =  cantInpt.val();
-                if(sociosJson.length == cantidadSocios ){
+                var cantidadAgregados = $("#tablaSocios tbody tr").length;
+                console.log(cantidadAgregados);
+                if( cantidadAgregados == cantidadSocios ){
                     cantInpt.focus();
                     return alert("No se Puede Seguir Cargando Socios, aumente la cantidad");
                 }
@@ -169,23 +193,38 @@
                 $("#resultado").show();
                 var table          =  $("#resultado table tbody");
                 sociosJson.push(idSocio);
-                console.log(sociosJson);
                 table.append('<tr id="socioTr'+idSocio+'"><td id="socioTd'+idSocio+'">'+datoSocio+'</td><td><button type="button" class="btn btn-danger" onclick="borrar('+idSocio+')"><i class="fa fa-trash-o"></i></button></td></tr>');
 
 
             });
     });
-    function borrar(idSocio){
+    function borrarSocioTabla(idSocio){
         var tr = '#socioTr'+idSocio;
+
         var nombre = $('#socioTd'+idSocio).text();
         $(tr).remove();
         $("#socios").append('<option value="'+idSocio+'">'+nombre+'</option>');
-        $.each(sociosJson, function(i, v) {
-            if (v== idSocio) {
-                sociosJson.splice(i);
-                return;
-            }
+            $.each(sociosJson, function(i, v) {
+                if (v == idSocio) {
+                    sociosJson.splice(i);
+                    return;
+                }
+       });
+}
+function borrar(idSocio,idCirculo){
+        console.log(idCirculo);
+        var idCirculo = idCirculo || null;
+        if(idCirculo==null){
+            return borrarSocioTabla(idSocio);
+        }
+        utils.ajax(null,'POST','circulos/socios/borrar',{id_socio:idSocio,id_circulo:idCirculo},function(respuesta){
+                if(respuesta.success==true){
+
+                    borrarSocioTabla(idSocio);
+                    $("#mensajeCorrectoCirculo").show();
+                }
         });
+
     }
 </script>
 

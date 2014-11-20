@@ -17,4 +17,8 @@ class CirculosSocios extends \Eloquent{
         return $this->hasOne('Socios\Entities\Socios','id','id_socio');
     }
 
+    public function circulo(){
+        return $this->belongsTo('Circulos\Entities\Circulos','id_circulo','id');
+    }
+
 } 
