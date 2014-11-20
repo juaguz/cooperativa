@@ -44,6 +44,9 @@
     <div class="form-group col-md-4">
 
         {{ Form::button('Guardar', array('type' => 'submit', 'class' => 'btn btn-primary','id'=>'id_guardar')) }}
+        @if(isset($recibo))
+            <a class="btn btn-small btn-primary generar_recibo" data-id="{{ $recibo->id}}">Imprimir</a>
+        @endif
     </div>
 </div>
 {{ Form::close() }}
@@ -66,3 +69,4 @@
 </script>
 
 @stop
+@include('recibos.modal')

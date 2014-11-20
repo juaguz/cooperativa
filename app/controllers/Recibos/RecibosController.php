@@ -136,6 +136,20 @@ class RecibosController extends \BaseController {
 	{
 		//
 	}
+    public function getRecibo(){
+        $idRecibo = Input::get('id_recibo');
+        $recibo = $this->recibosRepo->getRecibo($idRecibo);
 
+        $data = [
+            "tipo_comprobante"=>'Recibo',
+            "idComprobante"=>$recibo->id,
+            "fecha"=>$recibo->fecha,
+            "contenido"=>View::make('recibos.recibo',
+                compact("recibo")
+
+            )->render()
+        ];
+        return OrdenesPago::render($data);
+    }
 
 }

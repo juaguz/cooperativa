@@ -11,6 +11,7 @@
 {{ HTML::script('assets/js/messages_es_AR.js') }}
 {{ HTML::script('assets/js/jquery.blockUI.js') }}
 
+
 <!-- Bootstrap -->
 <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
 {{ HTML::script('bootstrap/bootstrap/js/bootstrap.min.js') }}
@@ -69,6 +70,6 @@
 
 
 {{ HTML::script('assets/js/helper.js') }}
-
+{{ HTML::script('assets/js/recibos.js') }}
 
 @yield('scripts')

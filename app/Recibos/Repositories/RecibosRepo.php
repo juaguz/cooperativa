@@ -43,5 +43,10 @@ class RecibosRepo extends BaseRepo
 
     }
 
+    public function getRecibo($idRecibo)
+    {
+        return $this->model->where('id','=',$idRecibo)->get()->first();
+    }
+
 
 } 

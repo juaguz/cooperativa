@@ -111,11 +111,13 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("servicios/actualizar",["as"=>"servicios.actualizar","uses"=>"ServiciosController@actualizar"]);
 
         //Recibos
+        Route::get("recibos/getRecibo",array("uses"=>"RecibosController@getRecibo","as"=>"recibos.getRecibo"));
         Route::resource("recibos","RecibosController");
         Route::post("recibos/getTablaRecibos",["as"=>"recibos.getTablaRecibos","uses"=>"RecibosController@getTablaRecibos"]);
         Route::post("recibos/getTabla",["as"=>"recibos.getTabla","uses"=>"RecibosController@getTabla"]);
         Route::post("recibos/actualizar",["as"=>"recibos.actualizar","uses"=>"RecibosController@actualizar"]);
         Route::get("recibos/exportar/excel",array("uses"=>"RecibosController@exportarExcel","as"=>"recibos.exportar.excel"));
+
 
         //Rifas
         Route::get("rifas/vender/{id}",["uses"=>"RifasController@vender","as"=>"rifas.vender"]);
