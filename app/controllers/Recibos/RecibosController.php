@@ -20,8 +20,11 @@ class RecibosController extends \BaseController {
 	 */
 	public function index()
 	{
-        $recibos = $this->recibosRepo->paginate(15);
-        return View::make("recibos.listado",compact("recibos"));
+        //$recibos = $this->recibosRepo->paginate(15);
+        $busqueda = Input::except('page');
+
+        $recibos   = $this->recibosRepo->buscar($busqueda)->paginate(15);
+        return View::make("recibos.listado",compact("recibos","busqueda"));
 
 
 	}
@@ -98,13 +101,13 @@ class RecibosController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
+{
 
-        $recibo        = $this->recibosRepo->find($id);
-        $form_data       = array('route' => array('recibos.update',$id), 'method' => 'PATCH','id'=>'form_factura','novalidate'=>'novalidate');
-        $action          = 'Cargar';
-        return View::make("recibos.create",compact("form_data","action","recibo"));
-	}
+    $recibo        = $this->recibosRepo->find($id);
+    $form_data       = array('route' => array('recibos.update',$id), 'method' => 'PATCH','id'=>'form_factura','novalidate'=>'novalidate');
+    $action          = 'Cargar';
+    return View::make("recibos.create",compact("form_data","action","recibo"));
+}
 
 
 	/**

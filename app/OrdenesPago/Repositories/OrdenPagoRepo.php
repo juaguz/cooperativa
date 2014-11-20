@@ -28,4 +28,15 @@ class OrdenPagoRepo extends BaseRepo {
 
         return $this->model->orderBy('id','desc')->paginate($paginate);
     }
+
+    public function buscar($busqueda)
+    {
+        $orden = $this->model;
+        //por q campo queres filtrar? por el id
+        $orden = (isset($busqueda['id'])) ? $orden->where('id','=',$busqueda['id']):$orden;
+
+        return $orden;
+
+
+    }
 }

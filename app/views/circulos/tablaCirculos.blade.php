@@ -18,7 +18,7 @@
             <td>{{ $value->fecha_inicio }}</td>
             <td>{{ $value->fecha_fin }}</td>
 			<td>
-				<a class="btn btn-small btn-info" href="{{ route('circulos.edit',$value->id) }}">Editar</a>
+				<a class="btn btn-small btn-primary" href="{{ route('circulos.edit',$value->id) }}">Modificar</a>
 			</td>
 		</tr>
 	@endforeach

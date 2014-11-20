@@ -10,7 +10,7 @@
 @stop
 
 @section ('content')
-    <a href="{{ route('circulos.create') }}"><button class="btn btn-primary" >Crear Círculo <i class="glyphicon glyphicon-user"></i></button></a>
+    <a href="{{ route('circulos.create') }}"><button class="btn btn-default" >Crear Círculo </button></a>
 <h2>Listados de Círculos</h2>
 {{ Form::model(isset($busqueda) ? $busqueda : null,["method"=>"GET"]) }}
 <div class="row" id="busqueda">

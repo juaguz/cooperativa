@@ -123,17 +123,17 @@
                     <a href="#"> <span class="menu-icon"> <i class="fa fa-chevron-right"></i></span>
                         <span class="text"> Comprobantes </span> <span class="menu-hover"></span> </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('recibos.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Recibos</span></a></li>
-                        <li><a href="{{ route('recibos.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Nuevo Recibo </span></a></li>
+                        <li><a href="{{ route('recibos.index') }}"><span class="submenu-label">  Listado de Recibos</span></a></li>
+                        <li><a href="{{ route('recibos.create') }}"><span class="submenu-label">  Nuevo Recibo </span></a></li>
                         <!--<li><a href="@{{ route('recibos.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Exportar a excel </span></a></li>-->
-                        <li><a href="{{ route('ordenes.compras.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de OC</span></a></li>
-                        <li><a href="{{ route('ordenes.compras.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Nueva Orden de Compra</span></a></li>
+                        <li><a href="{{ route('ordenes.compras.index') }}"><span class="submenu-label">  Listado de OC</span></a></li>
+                        <li><a href="{{ route('ordenes.compras.create') }}"><span class="submenu-label">  Nueva Orden de Compra</span></a></li>
                         <!--<li><a href="@{{ route('ordenes.compras.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i>  Ordenes de Compra a excel </span></a></li>-->
-                        <li><a href="{{ route('bonos.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Bonos</span></a></li>
-                        <li><a href="{{ route('bonos.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Nuevo Bono</span></a></li>
+                        <li><a href="{{ route('bonos.index') }}"><span class="submenu-label">  Listado de Bonos</span></a></li>
+                        <li><a href="{{ route('bonos.create') }}"><span class="submenu-label">  Nuevo Bono</span></a></li>
                         <!--<li><a href="@{{ route('bonos.exportar.excel') }}"><span class="submenu-label"><i class="fa fa-file-excel-o"></i> Bonos a excel </span></a></li>-->
-                        <li><a href="{{ route('ordenes.pagos.index') }}"><span class="submenu-label"><i class="fa fa-users"></i>  Listado de Ordenes de Pago</span></a></li>
-                        <li><a href="{{ route('ordenes.pagos.create') }}"><span class="submenu-label"><i class="fa fa-user"></i>  Nueva Orden de Pago</span></a></li>
+                        <li><a href="{{ route('ordenes.pagos.index') }}"><span class="submenu-label">  Listado de Ordenes de Pago</span></a></li>
+                        <li><a href="{{ route('ordenes.pagos.create') }}"><span class="submenu-label">  Nueva Orden de Pago</span></a></li>
 
                     </ul>
                 </li>

@@ -26,9 +26,13 @@ class OrdenesPagosController extends BaseController{
 
     public function index(){
 
-        $ordenes = $this->ordenPagoRepo->getOrder(30);
+        //$ordenes = $this->ordenPagoRepo->getOrder(30);
 
-        return View::make('ordenes_pagos.index',compact("ordenes"));
+        $busqueda = Input::except('page');
+
+        $ordenes   = $this->ordenPagoRepo->buscar($busqueda)->paginate(15);
+
+        return View::make('ordenes_pagos.index',compact("ordenes","busqueda"));
 
 
     }
@@ -59,8 +63,9 @@ class OrdenesPagosController extends BaseController{
 
     public function edit($id){
 
-        $form_data = array('route' => 'ordenes.pagos.update', 'method' => 'PUT');
+
         $orden_pago  = $this->ordenPagoRepo->find($id);
+        $form_data = array('route' => ['ordenes.pagos.update',$id], 'method' => 'PUT');
         return View::make('ordenes_pagos.create',compact("form_data","orden_pago"));
 
     }

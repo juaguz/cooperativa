@@ -12,10 +12,21 @@
 @section ('content')
 
 <a  href="{{ route('recibos.create') }}" class="btn btn-default">Nuevo Recibo</a>
-<a  href="{{ route('recibos.exportar.excel') }}" class="btn btn-default">Exportar Recibos</a>
+
 
 <h2>Listados de Recibos</h2>
+{{ Form::model(isset($busqueda) ? $busqueda : null,["method"=>"GET"]) }}
+<div class="row" id="busqueda">
+    <div class="col-md-2">
+        {{ Form::text('id',null,array('class'=>'form-control','type'=>'text','placeholder'=>'Ingrese Nro de Recibo')) }}
+    </div>
 
+    <div class="col-md-2">
+        <button class="btn btn-success">Buscar</button>
+    </div>
+
+</div>
+{{ Form::close() }}
 
 <table class="table table-hover">
     <thead>
@@ -46,7 +57,7 @@
             <!-- we will add this later since its a little more complicated than the other two buttons -->
 
             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-            <a class="btn btn-small btn-info" href="{{ route('recibos.edit',$value->id) }}">Editar</a>
+            <a class="btn btn-small btn-primary" href="{{ route('recibos.edit',$value->id) }}">Modificar</a>
 
 
 

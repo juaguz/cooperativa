@@ -35,7 +35,7 @@ class RifasRepo extends BaseRepo
 
     }
 
-       public function buscar($busqueda)
+    public function buscar($busqueda)
     {
 
         if (isset($busqueda['nombre']) and !empty($busqueda['nombre'])) {

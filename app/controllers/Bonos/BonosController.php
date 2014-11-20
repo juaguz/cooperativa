@@ -28,8 +28,12 @@ class BonosController extends BaseController {
     }
 
     public function  index(){
-        $bonos = $this->bonoRepo->all();
-        return View::make('bonos.index',compact("bonos"));
+
+        $busqueda = Input::except('page');
+
+        //$bonos = $this->bonoRepo->all();
+        $bonos   = $this->bonoRepo->buscar($busqueda)->paginate(15);
+        return View::make('bonos.index',compact("bonos","busqueda"));
     }
 
     public function create(){
@@ -56,7 +60,7 @@ class BonosController extends BaseController {
 
     public function edit($id){
         $bono = $this->bonoRepo->find($id);
-        $form_data = array('route' => 'bonos.update', 'method' => 'PUT');
+        $form_data = array('route' => ['bonos.update',$id], 'method' => 'PUT');//bueno, gracias!teamo
         list($socios, $comercios) = $this->getCombos();
         return View::make('bonos.create',compact("form_data","socios","comercios","bono"));
 
@@ -89,6 +93,26 @@ class BonosController extends BaseController {
         ];
         return OrdenesPago::render($data); //ordenes de pago sirve para hacer el render de todos los comprobantes se deberia llamar Comprobante
 
+    }
+
+    public function editsfsdf($id)
+    {
+
+        $bono            = $this->bonoRepo->find($id);
+        $form_data       = array('route' => array('bonos.update',$id), 'method' => 'PATCH','id'=>'form_factura','novalidate'=>'novalidate');
+        $action          = 'Cargar';
+        return View::make("recibos.create",compact("form_data","action","bono"));
+    }
+
+
+    public function update($id)
+    {
+        $data = Input::all();
+        $bono = $this->bonoRepo->find($id);
+
+        $bonoManager = new BonoManager($bono,$data);
+        $bonoManager->save();
+        return Redirect::route('bonos.edit',$bono->id)->with('mensaje_exito',"Bono Editado Correctamente.");
     }
 
 } 

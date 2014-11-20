@@ -28,7 +28,7 @@
     </div>
     <button class="btn btn-primary" type="submit"> Guardar </button>
     @if(isset($bono))
-    <a class="btn btn-small btn-info generar_bono" data-toggle="modal" data-target="#modalBono" href="#" data-id="{{$bono->id}}">Imprimir Bono</a>
+    <a class="btn btn-small btn-success generar_bono" data-toggle="modal" data-target="#modalBono" href="#" data-id="{{$bono->id}}">Imprimir Bono</a>
     @endif
   {{Form::close()}}
 @include('bonos.modal')

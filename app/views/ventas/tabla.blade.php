@@ -1,4 +1,11 @@
+<a  href="{{ route('ventas.create') }}" class="btn btn-default">Nueva Venta</a>
+
+
+
 <h2>Listados de Ventas</h2>
+
+
+
 <table class="table table-hover">
     <thead>
     <tr>
@@ -26,7 +33,7 @@
             <!-- we will add this later since its a little more complicated than the other two buttons -->
 
             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-            <a class="btn btn-small btn-info" href="{{ route('ventas.edit',$value->id) }}">Editar</a>
+            <a class="btn btn-small btn-primary" href="{{ route('ventas.edit',$value->id) }}">Ingresar</a>
 
 
 
