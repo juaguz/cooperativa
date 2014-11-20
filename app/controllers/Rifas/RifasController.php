@@ -250,7 +250,6 @@ class RifasController extends \BaseController {
 
 
     }
-
     /**
      * @param $idRifaSocio
      * @param $fechaFormat

@@ -28,8 +28,11 @@ class OrdenesComprasController extends BaseController {
     }
 
     public function  index(){
-        $ordenes = $this->ordenCompraRepo->all();
-        return View::make('ordenes_compras.index',compact("ordenes"));
+        //$ordenes = $this->ordenCompraRepo->all();
+        $busqueda = Input::except('page');
+
+        $ordenes  = $this->ordenCompraRepo->buscar($busqueda)->paginate(15);
+        return View::make('ordenes_compras.index',compact("ordenes","busqueda"));
     }
 
     public function create(){
@@ -56,10 +59,19 @@ class OrdenesComprasController extends BaseController {
 
     public function edit($id){
         $orden = $this->ordenCompraRepo->find($id);
-        $form_data = array('route' => 'ordenes.compras.update', 'method' => 'PUT');
+        $form_data = array('route' =>['ordenes.compras.update',$id], 'method' => 'PUT'); //listo
         list($socios, $comercios) = $this->getCombos();
         return View::make('ordenes_compras.create',compact("form_data","socios","comercios","orden"));
 
+    }
+
+    public function update($id)
+    {
+        $data = Input::all();
+        $orden = $this->ordenCompraRepo->find($id);
+        $ordenManager = new OrdenCompraManager($orden,$data);
+        $ordenManager->save();
+        return Redirect::route('ordenes.compras.edit',$orden->id)->with('mensaje_exito',"OC  Editada Correctamente.");
     }
 
     /**

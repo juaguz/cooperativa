@@ -31,6 +31,17 @@ class RecibosRepo extends BaseRepo
         return $recibo;
 
     }
+    //aca tenes que escribir la busqueda
+    public function buscar($busqueda)
+    {
+        $recibo = $this->model;
+        //por q campo queres filtrar? por el id
+        $recibo = (isset($busqueda['id'])) ? $recibo->where('id','=',$busqueda['id'])->orderBy('id','desc'):$recibo->orderBy('id','desc');
+
+        return $recibo;
+
+
+    }
 
 
 } 

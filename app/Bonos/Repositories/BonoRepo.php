@@ -38,4 +38,14 @@ class BonoRepo extends BaseRepo {
             ->where('id','=',$id)->get();
 
     }
+    public function buscar($busqueda)
+    {
+        $bono = $this->model;
+        //por q campo queres filtrar? por el id
+        $bono = (isset($busqueda['id'])) ? $bono->where('id','=',$busqueda['id']):$bono->orderBy('id','desc');
+
+        return $bono;
+
+
+    }
 }

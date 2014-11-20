@@ -28,7 +28,7 @@
     </div>
     <button class="btn btn-primary" type="submit"> Guardar </button>
     @if(isset($orden))
-    <a class="btn btn-small btn-info generar_orden_venta" data-toggle="modal" data-target="#modalOrdenVenta" href="#" data-id="{{$orden->id}}">Imprimir Orden de Compra</a>
+    <a class="btn btn-small btn-success generar_orden_venta" data-toggle="modal" data-target="#modalOrdenVenta" href="#" data-id="{{$orden->id}}">Imprimir Orden de Compra</a>
     @endif
   {{Form::close()}}
 @include('ordenes_compras.modal')

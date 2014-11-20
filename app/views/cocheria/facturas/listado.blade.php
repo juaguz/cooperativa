@@ -11,8 +11,8 @@
 
 @section ('content')
 
-<a  href="{{ route('cocheria.facturas.create') }}" class="btn btn-default">Cargar Factura</a>
-<a  href="{{ route('cocheria.facturas.exportar.excel') }}" class="btn btn-default">Exportar Facturas</a>
+<a  href="{{ route('cocheria.facturas.create') }}" class="btn btn-default">Nueva Factura</a>
+
 
 <h2>Listados de Facturas</h2>
 
@@ -59,7 +59,7 @@
             <!-- we will add this later since its a little more complicated than the other two buttons -->
 
             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-            <a class="btn btn-small btn-info" href="{{ route('cocheria.facturas.edit',$value->id) }}">Editar</a>
+            <a class="btn btn-small btn-primary" href="{{ route('cocheria.facturas.edit',$value->id) }}">Modificar</a>
 
 
 

@@ -4,10 +4,10 @@
     }
 </style>
  <div class="col-sm-12" id="mensajeCorrecto" style="display: none">
-<div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Cuotas Editadas Correctamente</strong>
-</div>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Cuotas Editadas Correctamente</strong>
+    </div>
  </div>
 <div class="col-sm-12">
 

@@ -10,7 +10,7 @@
 @stop
 
 @section ('content')
-    <a href="{{ route('comercios.create') }}"><button class="btn btn-primary" >Crear Comercio <i class="glyphicon glyphicon-user"></i></button></a>
+    <a href="{{ route('comercios.create') }}"><button class="btn btn-default" >Nuevo Comercio </button></a>
 <h2>Listados de Comercios</h2>
 {{ Form::model(isset($busqueda) ? $busqueda : null,["method"=>"GET"]) }}
 <div class="row" id="busqueda">
@@ -50,7 +50,7 @@
 				<!-- we will add this later since its a little more complicated than the other two buttons -->
 
 				<!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-				<a class="btn btn-small btn-info" href="{{ route('comercios.edit',$value->id) }}">Editar</a>
+				<a class="btn btn-small btn-primary" href="{{ route('comercios.edit',$value->id) }}">Modificar</a>
 
 
 

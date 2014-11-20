@@ -29,9 +29,12 @@ class PrestamosController extends \BaseController {
 	 */
 	public function index()
 	{
-		$prestamos = $this->prestamosRepo->paginate(10);
+		//$prestamos = $this->prestamosRepo->paginate(10);
+        $busqueda = Input::except('page');
 
-        return View::make('prestamos.listados',["prestamos"=>$prestamos]);
+        $prestamos   = $this->prestamosRepo->buscar($busqueda);
+
+        return View::make('prestamos.listados',["prestamos"=>$prestamos,"buscar"]);
 
 	}
 

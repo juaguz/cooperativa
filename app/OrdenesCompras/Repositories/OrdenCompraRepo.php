@@ -38,4 +38,15 @@ class OrdenCompraRepo extends BaseRepo {
             ->where('id','=',$id)->get();
 
     }
+
+    public function buscar($busqueda)
+    {
+        $ordenes = $this->model;
+        //por q campo queres filtrar? por el id
+        $ordenes = (isset($busqueda['id'])) ? $ordenes->where('id','=',$busqueda['id']):$ordenes->orderBy('id','desc');
+
+        return $ordenes;
+
+
+    }
 }

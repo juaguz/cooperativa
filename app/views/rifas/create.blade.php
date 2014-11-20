@@ -65,7 +65,7 @@
 	</div>
 	@if(isset($rifa))
 	<div class="form-group col-md-4">
-		<a class="btn btn-small btn-info" href="{{ route('rifas.vender',$rifa->id) }}">Vender Rifas</a>
+		<a class="btn btn-small btn-primary" href="{{ route('rifas.vender',$rifa->id) }}">Vender Rifas</a>
 	</div>
 	@endif
 </div>

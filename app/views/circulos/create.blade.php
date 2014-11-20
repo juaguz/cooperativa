@@ -68,7 +68,7 @@
         {{ Form::select('socios',$socios,null,['id'=>'socios','class'=>'form-control sociosCombo'])}}
     </div>
     <div class="form-group col-md-4">
-        <button class="btn btn-primary" id="btnAgregar">Agregar</button>
+        <button class="btn btn-primary" id="btnAgregar">Agregar Socio</button>
     </div>
 
 </div>

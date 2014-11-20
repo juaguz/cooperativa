@@ -37,4 +37,19 @@ class PrestamosRepo  extends BaseRepo{
         return $this->model->with('ordenPago')->with('socio')->where('id',$id)->get();
     }
 
+    public function buscar($busqueda)
+    {
+
+        if (isset($busqueda['id']) and !empty($busqueda['id'])) {
+            $nombre = $busqueda["id"];
+            $datos = $this->model->where("id", "=", $nombre);
+        }
+
+        if (isset($datos)) return $datos->paginate(20);
+
+        return $this->model->paginate(20);
+
+    }
+
+
 } 
