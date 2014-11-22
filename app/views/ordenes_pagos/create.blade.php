@@ -28,7 +28,7 @@
 </div>
 <button class="btn btn-primary" type="submit"> Guardar </button>
 @if(isset($orden_pago))
-    <a class="btn btn-small btn-info generar_orden" data-toggle="modal" data-url="{{route('ordenes.pagos.comprobante',$orden_pago->id)}}" data-target="#modalOrdenPago" href="#" data-id="{{$orden_pago->id}}">Imprimir</a>
+    <a class="btn btn-small btn-success generar_orden" data-toggle="modal" data-url="{{route('ordenes.pagos.comprobante',$orden_pago->id)}}" data-target="#modalOrdenPago" href="#" data-id="{{$orden_pago->id}}">Imprimir</a>
 @endif
 {{Form::close()}}
 @include('ordenes_pagos.modal')

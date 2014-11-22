@@ -58,7 +58,7 @@
 
             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
             <a class="btn btn-small btn-primary" href="{{ route('recibos.edit',$value->id) }}">Modificar</a>
-            <a class="btn btn-small btn-primary generar_recibo" data-id="{{ $value->id}}">Imprimir</a>
+            <a class="btn btn-small btn-success generar_recibo" data-id="{{ $value->id}}">Imprimir</a>
 
 
 

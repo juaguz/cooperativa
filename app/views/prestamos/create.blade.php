@@ -46,7 +46,7 @@
 		{{ Form::button('Generar', array('type' => 'button', 'class' => 'btn btn-default','id'=>'btnGenerar')) }}
 		{{ Form::button('Guardar', array('type' => 'submit', 'class' => 'btn btn-primary','id'=>'btnGuardar','disabled'=>'disabled')) }}
         @if(isset($prestamo))
-        <a class="btn btn-small btn-info generar_orden" data-toggle="modal" data-target="#modalPrestamos" href="#" data-id="{{$prestamo->id}}">Imprimir Orden de Pago</a>
+        <a class="btn btn-small btn-success generar_orden" data-toggle="modal" data-target="#modalPrestamos" href="#" data-id="{{$prestamo->id}}">Imprimir Orden de Pago</a>
         @endif
 	</div>
 </div>

@@ -45,7 +45,7 @@
 
         {{ Form::button('Guardar', array('type' => 'submit', 'class' => 'btn btn-primary','id'=>'id_guardar')) }}
         @if(isset($recibo))
-            <a class="btn btn-small btn-primary generar_recibo" data-id="{{ $recibo->id}}">Imprimir</a>
+            <a class="btn btn-small btn-success generar_recibo" data-id="{{ $recibo->id}}">Imprimir</a>
         @endif
     </div>
 </div>
