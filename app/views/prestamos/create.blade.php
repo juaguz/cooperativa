@@ -5,7 +5,7 @@
 
 @section ('content')
 <h1>{{$action}} Prestamo
-@if(isset($prestamo)))
+@if(isset($prestamo))
 <a href="{{ route('socios.edit',$prestamo->id_socio) }}" style="color:cornflowerblue">{{ $prestamo->socio->nombre }} {{ $prestamo->socio->apellido }}</a>
 @endif
 
