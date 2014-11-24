@@ -36,4 +36,15 @@ class RifasSociosRepo extends BaseRepo {
         return $model;
     }
 
+    public function buscarGanador($nro, $idRifa)
+    {
+        return $this->model
+                    ->with('socio')
+                    ->where('id_rifa','=',$idRifa)
+                    ->whereHas('numero',function($q) use($nro){
+                        $q->where('numero','=',$nro);
+                    })->first();
+
+    }
+
 }

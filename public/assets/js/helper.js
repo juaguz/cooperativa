@@ -9,12 +9,16 @@
 var Helper = function(){
 
     //url absoluta de la apliacion por ej http://desarrollo.micovoz.com.ar/crm
-    var basePath = window.location.protocol + "//" + window.location.host+"/cooperativa/public/";
+    var basePath = window.location.protocol + "//" + window.location.host+"/cooperativa/";
     this.basePath = basePath;
     var el;
 
     var onOpenModal = function(divModal){
         divModal.modal();
+    }
+    this.onOpenModal = function(divModal){
+        var divModal =  $(divModal);
+        onOpenModal(divModal);
     }
     /*
      * Abre una ventana modal (bootstrap)

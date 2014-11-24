@@ -7,6 +7,35 @@
                 <div class="panel panel-default">
                     <div class="seperator"></div>
                     <div class="panel-body">
+                       <div class="row" style="margin-bottom:5px">
+                            <div class="col-md-2">
+                                <input class="form-control" id="nroBuscar" placeholder="Buscar Nro...">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary" id="buscar" data-url="{{route("rifas.buscar",$idRifa)}}">Buscar »</button>
+                            </div>
+                            <div class="col-md-2"></div>
+
+                             @if($rifa->ganador == 0)
+                                 <div class="col-md-2">
+                                    <input class="form-control" id="nroGanador" name="ganador" placeholder="Asignar Nro Ganador..." >
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary" id="guardarNumero" data-url="{{route("rifas.asignar.ganador",$idRifa)}}">Aceptar »</button>
+                                    <button class="btn btn-info"    id="buscarNumeroGanador" data-url="{{route("rifas.buscar",$idRifa)}}">Buscar Numero »</button>
+                                </div>
+                            @else
+                                <div class="col-md-2">
+                                    <input class="form-control" id="nroGanador" name="ganador" value="{{$rifa->ganador}}" placeholder="Asignar Nro Ganador..."  readonly >
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-info"    id="buscarNumeroGanador" data-url="{{route("rifas.buscar",$idRifa)}}">Buscar Numero »</button>
+                                </div>
+                            @endif
+
+                       </div>
+
+
                     @if($rifasSocios->count() > 0)
                     <table class="table table-responsive">
                         <thead>

@@ -1,9 +1,6 @@
 @extends('header')
 @section('scripts')
-
 {{ HTML::script('assets/js/rifas.js') }}
-
-
 @stop
 <style>
     .rifas{

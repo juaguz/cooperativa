@@ -12,7 +12,7 @@ class Rifas extends \Eloquent{
 
     protected $table = "rifas";
 
-    protected $fillable = array("nombre","desde","hasta","precio","fecha_sorteo","fecha_desde","fecha_hasta","cuotas");
+    protected $fillable = array("nombre","desde","hasta","precio","fecha_sorteo","fecha_desde","fecha_hasta","cuotas","ganador");
 
     public function setFechaSorteoAttribute($value){
 
@@ -43,7 +43,7 @@ class Rifas extends \Eloquent{
     }
 
     public function rifasSocios(){
-        return $this->hasMany("Rifas/Entities/RifasSocios","id_rifa","id");
+        return $this->hasMany("Rifas\Entities\RifasSocios","id_rifa","id");
     }
 
 

@@ -14,9 +14,7 @@ class RifasManager extends BaseManager {
     public function getRules()
     {
         // TODO: Implement getRules() method.
-        $rules = [
-            "nombre"=>"required"
-        ];
+        $rules = [];
         return $rules;
     }
 }

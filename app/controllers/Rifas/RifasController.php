@@ -275,6 +275,21 @@ class RifasController extends \BaseController {
     }
 
 
+    public  function  buscarNro($idRifa){
+        $nro = Input::get('nro');
+        $ganador = $this->rifasSociosRepo->buscarGanador($nro,$idRifa);
+
+        if(count($ganador)>0){
+            $resp    = ["success"=>true,"respuesta"=>$ganador];
+            return $resp;
+        }
+        return $resp = [
+          "respuesta"=> "Nro no vendido",
+            "success"=>false
+        ];
+
+    }
+
     public function updateRifasCuotasSocio(){
 
         $cuotas = Input::get('cuota',false);
@@ -292,4 +307,15 @@ class RifasController extends \BaseController {
 
     }
 
+    public  function asignarGanador($id){
+        $data  = Input::all();
+        $rifa  = $this->rifasRepo->find($id);
+        $rifaManager = new RifasManager($rifa,$data);
+        if($rifaManager->save()){
+          return ["success"=>true];
+        }else{
+            return $rifaManager->getErrors();
+        }
+
+    }
 }

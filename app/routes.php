@@ -122,6 +122,8 @@ Route::group(array('before' => 'auth'), function () {
         //Rifas
         Route::get("rifas/vender/{id}",["uses"=>"RifasController@vender","as"=>"rifas.vender"]);
         Route::post("rifas/vender/{id}",["uses"=>"RifasController@saveVender","as"=>"rifas.venta"]);
+        Route::get("rifas/{id}/buscar/numero",["uses"=>"RifasController@buscarNro","as"=>"rifas.buscar"]);
+        Route::get("rifas/{id}/asignar/ganador",["uses"=>"RifasController@asignarGanador","as"=>"rifas.asignar.ganador"]);
 
         //Bonos
         Route::get("bonos/getBono","BonosController@getBono");
