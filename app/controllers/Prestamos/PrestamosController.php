@@ -170,7 +170,7 @@ class PrestamosController extends \BaseController {
         $importe     = $prestamo->importe;
 
         $data = [   "tipo_comprobante"=>'Prestamo',
-                    "idComprobante"=>$prestamo['orden_pago']->id,
+                    "idComprobante"=>$prestamo->id,
                     "fecha"=>$prestamo->created_at,
                     "contenido"=>View::make('prestamos.orden_pago',
                         compact("socio","socioLegajo","monto","cuotas","importe")

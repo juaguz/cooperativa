@@ -71,5 +71,6 @@
 
 {{ HTML::script('assets/js/helper.js') }}
 {{ HTML::script('assets/js/recibos.js') }}
+{{ HTML::script('assets/js/ordenes_pago/imprimir.js') }}
 
 @yield('scripts')

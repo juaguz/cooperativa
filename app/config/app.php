@@ -113,6 +113,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Maatwebsite\Excel\ExcelServiceProvider',
+
     ),
 
 	/*

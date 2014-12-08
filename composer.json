@@ -11,6 +11,7 @@
 		"laravel/framework": "4.2.*",
         "thujohn/pdf": "dev-master",
         "maatwebsite/excel": "1.*"
+
     },
 	"autoload": {
         "psr-4":{

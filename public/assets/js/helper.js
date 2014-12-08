@@ -9,7 +9,7 @@
 var Helper = function(){
 
     //url absoluta de la apliacion por ej http://desarrollo.micovoz.com.ar/crm
-    var basePath = window.location.protocol + "//" + window.location.host+"/cooperativa/";
+    var basePath = window.location.protocol + "//" + window.location.host+"/cooperativa/public/";
     this.basePath = basePath;
     var el;
 
@@ -78,9 +78,10 @@ var Helper = function(){
         $(div).show('slow').delay(3000).slideUp();
     }
 
-    var ajax  = function(token,method,urlParam,data,callback,urlDefault){
+    var ajax  = function(token,method,urlParam,data,callback,urlDefault,mensaje){
         var urlDefault = urlDefault || false;
         var url        = basePath+urlParam;
+        var mensaje    = mensaje || "Cargando..."
         if(urlDefault){
             url = urlParam;
         }
@@ -89,7 +90,7 @@ var Helper = function(){
             url:url,
             data:data,
             beforeSend:function(){
-                $.blockUI({ message: '<div class="progress-bar progress-bar-danger" style="width: 100%;">Cargando...</div>' });
+                $.blockUI({ message: '<div class="progress-bar progress-bar-danger" style="width: 100%;">'+mensaje+'</div>' });
 
             },
             success:function(response){

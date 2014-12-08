@@ -111,6 +111,8 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("servicios/actualizar",["as"=>"servicios.actualizar","uses"=>"ServiciosController@actualizar"]);
 
         //Recibos
+
+        Route::get("recibos/imprimir",['as'=>'recibos.imprimir','uses'=>'ImprimirController@imprimir']);
         Route::get("recibos/getRecibo",array("uses"=>"RecibosController@getRecibo","as"=>"recibos.getRecibo"));
         Route::resource("recibos","RecibosController");
         Route::post("recibos/getTablaRecibos",["as"=>"recibos.getTablaRecibos","uses"=>"RecibosController@getTablaRecibos"]);
@@ -133,6 +135,9 @@ Route::group(array('before' => 'auth'), function () {
         Route::post("rifas/getTableCuotas",["as"=>"rifas.cuotas",'uses'=>'RifasController@getRifasCuotasTable']);
 
         Route::post("rifas/updateCuotas",  ["as"=>"rifas.update.cuotas",'uses'=>'RifasController@updateRifasCuotasSocio']);
+
+
+
 
 });
 

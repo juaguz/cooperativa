@@ -22,7 +22,7 @@
             {{ Form::text('importe',null,array('class' => 'form-control onlynumber')) }}
         </div>
         <div class="form-group col-md-4">
-            {{ Form::label('fecha_vencimiento', 'Fecha de Vencimiento') }}
+            {{ Form::label('fecha_vencimiento', 'Fecha de Liquidacion') }}
             {{ Form::text('fecha_vencimiento', null, array('placeholder' => '', 'class' => 'form-control fecha')) }}
         </div>
     </div>

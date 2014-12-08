@@ -24,9 +24,9 @@
 
             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
             <a class="btn btn-small btn-primary" href="{{ route('prestamos.edit',$value->id)}}">Modificar</a>
-            <a class="btn btn-small btn-success generar_orden" data-toggle="modal" data-target="#modalPrestamos" href="#" data-id="{{$value->id}}">Imprimir <OP></OP></a>
+            <a class="btn btn-small btn-success generar_orden " data-toggle="modal" data-target="#modalPrestamos" href="#" data-id="{{$value->id}}">Imprimir </a>
 
-
+           
 
 
 

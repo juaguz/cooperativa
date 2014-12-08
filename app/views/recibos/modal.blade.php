@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-success"><i class="fa fa-print"></i> Imprimir</button>
+                <button type="button" class="btn btn-success imprimir_comprobante" data-url="{{route('recibos.imprimir')}}"><i class="fa fa-print"></i> Imprimir</button>
             </div>
         </div>
     </div>

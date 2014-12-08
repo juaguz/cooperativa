@@ -4,14 +4,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Orden de Pago</h4>
+        <h4 class="modal-title" id="myModalLabel">Prestamo</h4>
       </div>
       <div class="modal-body" id="cuerpo">
 
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-success"><i class="fa fa-print"></i> Imprimir</button>
+        <button type="button" class="btn btn-success imprimir_comprobante" data-url="{{route('recibos.imprimir')}}"><i class="fa fa-print"></i> Imprimir</button>
       </div>
     </div>
   </div>
